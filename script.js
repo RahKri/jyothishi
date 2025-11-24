@@ -1,5 +1,5 @@
 // Configuration: REPLACE WITH YOUR NUMBER
-const WHATSAPP_NUMBER = "919494793866"; 
+const WHATSAPP_NUMBER = "919496793866"; 
 
 function navigateTo(pageId) {
     // 1. Hide all pages
