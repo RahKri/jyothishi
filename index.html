@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Authentic Namboothiri Astrology from Kerala. Live Prasnam and Remedies.">
+    <title>Illam Jyothisham | Kerala</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo-container">
+            <h1>ഇല്ലം ജ്യോതിഷം</h1>
+            <p>പാരമ്പര്യത്തിൻ്റെ വെളിച്ചം</p>
+        </div>
+        <div class="header-icon">🕉️</div>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <section id="home" class="page active">
+            <div class="hero-card">
+                <h2>വിശ്വസ്തരായ നമ്പൂതിരി ജ്യോതിഷ പണ്ഡിതർ</h2>
+                <p>താന്ത്രിക വിധിപ്രകാരമുള്ള പരിഹാരങ്ങൾ</p>
+                <button class="primary-btn" onclick="navigateTo('astrologers')">പണ്ഡിതരെ കാണുക</button>
+            </div>
+
+            <div class="section-title">ഞങ്ങളുടെ സേവനങ്ങൾ</div>
+
+            <div class="services-grid">
+                <div class="service-card" onclick="contactWhatsApp('I want to know about Prasnam')">
+                    <div class="icon">🐚</div>
+                    <h3>പ്രശ്നചിന്ത</h3>
+                    <p>തൊഴിൽ, വിവാഹ തടസ്സങ്ങൾ മാറാൻ</p>
+                </div>
+                <div class="service-card" onclick="contactWhatsApp('I want a Horoscope reading')">
+                    <div class="icon">📜</div>
+                    <h3>ജാതകം</h3>
+                    <p>ദശാസന്ധികൾ, കണ്ടകശനി പരിഹാരം</p>
+                </div>
+                <div class="service-card" onclick="contactWhatsApp('I need Muhurtham')">
+                    <div class="icon">💍</div>
+                    <h3>മുഹൂർത്തം</h3>
+                    <p>വിവാഹം, ഗൃഹപ്രവേശം</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="astrologers" class="page">
+            <div class="section-title">ഞങ്ങളുടെ ആചാര്യന്മാർ</div>
+            
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-img" style="background-image: url('https://cdn-icons-png.flaticon.com/512/3048/3048122.png');"></div>
+                    <div class="profile-info">
+                        <h3>ശ്രീ. നാരായണൻ നമ്പൂതിരി</h3>
+                        <span class="designation">പ്രധാന ജ്യോതിഷി (35 വർഷം)</span>
+                    </div>
+                </div>
+                <div class="tags">
+                    <span>കവിടി പ്രശ്നം</span>
+                    <span>താന്ത്രിക വിധി</span>
+                </div>
+                <button class="book-btn" onclick="contactWhatsApp('Booking for Narayanan Namboothiri')">ബുക്ക് ചെയ്യാൻ ക്ലിക്ക് ചെയ്യൂ</button>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-img" style="background-image: url('https://cdn-icons-png.flaticon.com/512/3048/3048122.png');"></div>
+                    <div class="profile-info">
+                        <h3>ശ്രീ. കേശവൻ എമ്പ്രാന്തിരി</h3>
+                        <span class="designation">മുഹൂർത്ത വിദഗ്ധൻ (20 വർഷം)</span>
+                    </div>
+                </div>
+                <div class="tags">
+                    <span>വിവാഹ പൊരുത്തം</span>
+                    <span>വാസ്തു</span>
+                </div>
+                <button class="book-btn" onclick="contactWhatsApp('Booking for Kesavan Embrandiri')">ബുക്ക് ചെയ്യാൻ ക്ലിക്ക് ചെയ്യൂ</button>
+            </div>
+        </section>
+
+        <section id="rates" class="page">
+            <div class="section-title">നിരക്കുകൾ (Rates)</div>
+            <div class="rate-card">
+                <div class="rate-row">
+                    <div>
+                        <h4>പൊതുവായ ജാതക ഫലം</h4>
+                        <small>General Horoscope (30 Mins)</small>
+                    </div>
+                    <div class="price">₹500</div>
+                </div>
+                <div class="rate-row">
+                    <div>
+                        <h4>വിവാഹ പൊരുത്തം</h4>
+                        <small>Matching (Voice Note)</small>
+                    </div>
+                    <div class="price">₹300</div>
+                </div>
+                <div class="rate-row">
+                    <div>
+                        <h4>താംബൂല പ്രശ്നം</h4>
+                        <small>Betel Leaf Reading (Live Video)</small>
+                    </div>
+                    <div class="price">₹1,500</div>
+                </div>
+                <div class="rate-row highlight">
+                    <div>
+                        <h4>അഷ്ടമംഗല പ്രശ്നം</h4>
+                        <small>Complete Prasnam (1 Hour)</small>
+                    </div>
+                    <div class="price">₹2,500</div>
+                </div>
+            </div>
+            <p class="note">GPay, PhonePe, Bank Transfer or Revolut (EU).</p>
+        </section>
+
+        <section id="about" class="page">
+            <div class="section-title">ഞങ്ങളെക്കുറിച്ച്</div>
+            <div class="about-card">
+                <p>നൂറ്റാണ്ടുകളുടെ പാരമ്പര്യമുള്ള ഒരു നമ്പൂതിരി കുടുംബത്തിൽ നിന്നുള്ള സംരംഭം. കമ്പ്യൂട്ടർ ജാതകത്തിനപ്പുറം, താന്ത്രിക വിധിപ്രകാരമുള്ള പ്രശ്നചിന്തയും, കവിടി നിരത്തിയുള്ള കൃത്യമായ പ്രവചനവും ഞങ്ങൾ ഉറപ്പ് നൽകുന്നു.</p>
+                <hr>
+                <h4>Contact Support</h4>
+                <p>Phone: +91 99999 99999<br>Email: help@illamvedic.com</p>
+            </div>
+        </section>
+
+    </main>
+
+    <a href="javascript:void(0)" onclick="contactWhatsApp('Hello, I visited your website')" class="float-wa">
+        <svg viewBox="0 0 32 32" class="wa-icon"><path d="M16,2A13,13,0,0,0,8,25.23L2.93,27.3a1,1,0,0,0-.54,1.3,1,1,0,0,0,1,.54l5.63-1.63a13,13,0,1,0,7-25.5Z"></path></svg>
+    </a>
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="navigateTo('home')">
+            <span class="icon">🏠</span>
+            <span class="label">Home</span>
+        </button>
+        <button class="nav-item" onclick="navigateTo('astrologers')">
+            <span class="icon">👨‍🎓</span>
+            <span class="label">Gurus</span>
+        </button>
+        <button class="nav-item" onclick="navigateTo('rates')">
+            <span class="icon">₹</span>
+            <span class="label">Rates</span>
+        </button>
+        <button class="nav-item" onclick="navigateTo('about')">
+            <span class="icon">ℹ️</span>
+            <span class="label">About</span>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
