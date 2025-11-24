@@ -31,6 +31,7 @@ body {
     top: 0;
     z-index: 50;
 }
+.logo-container { text-decoration: none; }
 .logo-container h1 { margin: 0; font-size: 1.5rem; color: var(--primary); font-weight: 700; }
 .logo-container p { margin: 0; font-size: 0.8rem; color: #666; }
 .header-icon { font-size: 1.5rem; }
@@ -56,8 +57,10 @@ body {
 
 .section-title { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin-bottom: 15px; border-left: 4px solid var(--gold); padding-left: 10px; }
 
+/* Grid & Cards */
 .services-grid { display: grid; gap: 15px; }
-.service-card { background: white; padding: 15px; border-radius: 10px; display: flex; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer; border: 1px solid #eee; }
+.service-card { background: white; padding: 15px; border-radius: 10px; display: flex; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer; border: 1px solid #eee; transition: transform 0.2s; }
+.service-card:active { transform: scale(0.98); background-color: #f9f9f9; }
 .service-card .icon { font-size: 2rem; margin-right: 15px; }
 .service-card h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: var(--primary); font-weight: 700; }
 .service-card p { margin: 0; font-size: 0.9rem; color: #666; font-weight: 400; }
@@ -69,26 +72,4 @@ body {
 .profile-info h3 { margin: 0 0 5px 0; font-weight: 700; }
 .designation { font-size: 0.85rem; color: #888; }
 .tags span { background: #f4f4f4; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; color: #555; }
-.book-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; margin-top: 15px; font-weight: bold; font-family: 'Noto Serif Malayalam', serif; cursor: pointer; }
-
-/* Rates Table */
-.rate-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-.rate-row { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid #eee; align-items: center; }
-.rate-row.highlight { background-color: #fffbea; }
-.rate-row h4 { margin: 0 0 5px 0; font-weight: 700; }
-.price { font-weight: bold; color: var(--primary); font-size: 1.1rem; }
-.note { font-size: 0.85rem; color: #777; margin-top: 10px; padding: 10px; background: #eef; border-radius: 5px; }
-
-/* About */
-.about-card { background: white; padding: 20px; border-radius: 10px; line-height: 1.8; }
-
-/* Nav & Float */
-.bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--nav-bg); display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 100; }
-/* Changed from button to a tag for links */
-.nav-item { text-decoration: none; background: none; border: none; display: flex; flex-direction: column; align-items: center; color: #999; cursor: pointer; font-family: sans-serif; }
-.nav-item.active { color: var(--primary); }
-.nav-item .icon { font-size: 1.2rem; margin-bottom: 2px; }
-.nav-item .label { font-size: 0.75rem; }
-
-.float-wa { position: fixed; right: 20px; bottom: 85px; background: var(--whatsapp); width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 90; fill: white; width: 30px; }
-.wa-icon { width: 30px; height: 30px; fill: white; }
+.book-btn { width: 100%; background: var(--primary); color: white; border: none; padding:
