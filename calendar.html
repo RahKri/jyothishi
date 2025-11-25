@@ -3,213 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Illam Jyothisham Calendar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS: Makes it look beautiful */
-        :root {
-            --primary-color: #004d40; /* Deep Green */
-            --accent-color: #d81b60;  /* Pink/Red for highlights */
-            --bg-color: #f4f7f6;
-            --text-color: #333;
-        }
-
-        body {
-            font-family: 'Manjari', sans-serif;
-            background-color: var(--bg-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .calendar-card {
-            background: white;
-            width: 90%;
-            max-width: 400px;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        /* Header Styling */
-        h1 {
-            color: #1a237e; /* Deep Blue */
-            margin: 0;
-            font-size: 1.8rem;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        /* Navigation Bar */
-        .month-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            background: #e8eaf6;
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        .nav-btn {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: var(--primary-color);
-        }
-
-        .month-label {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .sub-month {
-            display: block;
-            font-size: 0.8rem;
-            color: #666;
-            font-weight: normal;
-        }
-
-        /* The Calendar Grid */
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
-            gap: 5px;
-        }
-
-        .day-name {
-            font-weight: bold;
-            color: #555;
-            font-size: 0.9rem;
-            padding-bottom: 10px;
-        }
-
-        .date-cell {
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .date-cell:hover {
-            background-color: #e0f2f1;
-        }
-
-        /* Special Dates */
-        .today {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: bold;
-        }
-
-        .sunday {
-            color: var(--accent-color);
-        }
-    </style>
+    <title>Illam Jyothisham | Calendar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="calendar-card">
-    <h1>ഇല്ലം ജ്യോതിഷം</h1>
-    <p class="subtitle">പാരമ്പര്യത്തിൻ്റെ വെളിച്ചം</p>
+    <header class="app-header">
+        <a href="index.html" class="logo-container">
+            <h1>ഇല്ലം ജ്യോതിഷം</h1>
+            <p>പാരമ്പര്യത്തിൻ്റെ വെളിച്ചം</p>
+        </a>
+        <div class="header-icon">🕉️</div>
+    </header>
 
-    <div class="month-header">
-        <button class="nav-btn" onclick="changeMonth(-1)">&#10094;</button>
-        <div class="month-info">
-            <span class="month-label" id="month-display">January 2026</span>
-            <span class="sub-month" id="malayalam-month">ധനു - മകരം</span>
+    <main class="content-wrapper">
+        <div class="calendar-controls">
+            <button class="nav-arrow" onclick="changeMonth(-1)" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">&#10094;</button>
+            <div style="text-align: center;">
+                <h2 id="monthDisplay" class="month-title"></h2>
+                <span id="eraDisplay" style="font-size: 0.8rem; color: #666;"></span>
+            </div>
+            <button class="nav-arrow" onclick="changeMonth(1)" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">&#10095;</button>
         </div>
-        <button class="nav-btn" onclick="changeMonth(1)">&#10095;</button>
-    </div>
 
-    <div class="calendar-grid" id="calendar-grid">
-        <div class="day-name sunday">ഞായർ</div>
-        <div class="day-name">തിങ്കൾ</div>
-        <div class="day-name">ചൊവ്വ</div>
-        <div class="day-name">ബുധൻ</div>
-        <div class="day-name">വ്യാഴം</div>
-        <div class="day-name">വെള്ളി</div>
-        <div class="day-name">ശനി</div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+
+        <div class="about-card" style="margin-top: 20px; text-align: center;">
+            <p style="font-size: 0.9rem;">നക്ഷത്രവും തിഥിയും കൃത്യമായി അറിയാൻ മെസ്സേജ് ചെയ്യുക.</p>
+            <button class="book-btn" onclick="contactWhatsApp('നമസ്കാരം, ഇന്നത്തെ നക്ഷത്രം അറിയണം')">ഇന്നത്തെ നക്ഷത്രം</button>
         </div>
-</div>
+    </main>
 
-<script>
-    // JavaScript: logic to fill the dates automatically
-    const monthDisplay = document.getElementById('month-display');
-    const grid = document.getElementById('calendar-grid');
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <span class="icon">🏠</span><span class="label">Home</span>
+        </a>
+        <a href="astrologers.html" class="nav-item">
+            <span class="icon">👨‍🎓</span><span class="label">Gurus</span>
+        </a>
+        <a href="calendar.html" class="nav-item active">
+            <span class="icon">📅</span><span class="label">Calendar</span>
+        </a>
+        <a href="rates.html" class="nav-item">
+            <span class="icon">₹</span><span class="label">Rates</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <span class="icon">ℹ️</span><span class="label">About</span>
+        </a>
+    </nav>
 
-    let currentDate = new Date(2026, 0, 1); // Starts Jan 2026
+    <script src="script.js"></script>
 
-    const malayalamMonths = [
-        "ജനുവരി", "ഫെബ്രുവരി", "മാർച്ച്", "ഏപ്രിൽ", "മെയ്", "ജൂൺ",
-        "ജൂലൈ", "ഓഗസ്റ്റ്", "സെപ്റ്റംബർ", "ഒക്ടോബർ", "നവംബർ", "ഡിസംബർ"
-    ];
+    <script>
+        let currentYear = new Date().getFullYear();
+        let currentMonth = new Date().getMonth();
 
-    function renderCalendar() {
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
+        const malayalamMonths = ["ജനുവരി", "ഫെബ്രുവരി", "മാർച്ച്", "ഏപ്രിൽ", "മെയ്", "ജൂൺ", "ജൂലൈ", "ഓഗസ്റ്റ്", "സെപ്റ്റംബർ", "ഒക്ടോബർ", "നവംബർ", "ഡിസംബർ"];
+        const weekDays = ["ഞായർ", "തിങ്കൾ", "ചൊവ്വ", "ബുധൻ", "വ്യാഴം", "വെള്ളി", "ശനി"];
 
-        // Update Header
-        monthDisplay.innerText = `${malayalamMonths[month]} ${year}`;
+        // Data for Solar Month Transitions (Approximate for 2025/2026)
+        // Format: [Cutoff Date, Month Name Before Cutoff, Month Name After Cutoff, Days Offset]
+        const sankrantiData = [
+            { cutoff: 14, before: "ധനു", after: "മകരം", offsetBefore: 17, offsetAfter: 1 },    // Jan
+            { cutoff: 13, before: "മകരം", after: "കുംഭം", offsetBefore: 0, offsetAfter: 1 },    // Feb
+            { cutoff: 14, before: "കുംഭം", after: "മീനം", offsetBefore: 0, offsetAfter: 1 },    // Mar
+            { cutoff: 14, before: "മീനം", after: "മേടം", offsetBefore: 0, offsetAfter: 1 },     // Apr (Vishu)
+            { cutoff: 15, before: "മേടം", after: "ഇടവം", offsetBefore: 0, offsetAfter: 1 },     // May
+            { cutoff: 15, before: "ഇടവം", after: "മിഥുനം", offsetBefore: 0, offsetAfter: 1 },   // Jun
+            { cutoff: 16, before: "മിഥുനം", after: "കർക്കടകം", offsetBefore: 0, offsetAfter: 1 }, // Jul
+            { cutoff: 17, before: "കർക്കടകം", after: "ചിങ്ങം", offsetBefore: 0, offsetAfter: 1 }, // Aug (New Year)
+            { cutoff: 17, before: "ചിങ്ങം", after: "കന്നി", offsetBefore: 0, offsetAfter: 1 },    // Sep
+            { cutoff: 17, before: "കന്നി", after: "തുലാം", offsetBefore: 0, offsetAfter: 1 },     // Oct
+            { cutoff: 16, before: "തുലാം", after: "വൃശ്ചികം", offsetBefore: 0, offsetAfter: 1 },  // Nov
+            { cutoff: 16, before: "വൃശ്ചികം", after: "ധനു", offsetBefore: 0, offsetAfter: 1 }     // Dec
+        ];
 
-        // Clear previous dates (keep the first 7 headers)
-        while (grid.children.length > 7) {
-            grid.removeChild(grid.lastChild);
+        function getMalayalamDate(engDate, monthIndex) {
+            const rule = sankrantiData[monthIndex];
+            
+            // Before the Sankranti date (Cutoff)
+            if (engDate < rule.cutoff) {
+                // Calculate remaining days of previous Malayalam month
+                // This is an approximation. A real Panchangam needs complex math.
+                // We use a simplified offset logic here for display purposes.
+                let malDate = rule.offsetBefore + engDate;
+                if(monthIndex === 0) malDate = 16 + engDate; // Specific fix for Dhanu in Jan
+                return `${rule.before} ${malDate}`;
+            } 
+            // After the Sankranti date
+            else {
+                let malDate = engDate - rule.cutoff + 1;
+                return `${rule.after} ${malDate}`;
+            }
         }
 
-        // Calculate first day of the month and total days
-        const firstDayIndex = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const display = document.getElementById('monthDisplay');
+            const eraDisplay = document.getElementById('eraDisplay');
+            
+            grid.innerHTML = "";
+            display.innerText = `${malayalamMonths[currentMonth]} ${currentYear}`;
+            
+            // Show the Era range (e.g. Makaram - Kumbham)
+            const rule = sankrantiData[currentMonth];
+            eraDisplay.innerText = `${rule.before} - ${rule.after}`;
 
-        // Add empty slots for days before the 1st
-        for (let i = 0; i < firstDayIndex; i++) {
-            const emptyCell = document.createElement('div');
-            grid.appendChild(emptyCell);
-        }
+            // Weekday Headers
+            weekDays.forEach(day => {
+                const div = document.createElement('div');
+                div.className = 'day-name';
+                div.innerText = day;
+                grid.appendChild(div);
+            });
 
-        // Add actual dates
-        for (let i = 1; i <= daysInMonth; i++) {
-            const dateDiv = document.createElement('div');
-            dateDiv.innerText = i;
-            dateDiv.classList.add('date-cell');
+            // Date Calculations
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-            // Check if it's Sunday (columns 0, 7, 14...)
-            // The logic: (empty slots + current date index) % 7 === 0 is Sunday
-            if ((firstDayIndex + i - 1) % 7 === 0) {
-                dateDiv.classList.add('sunday');
+            // Empty Slots
+            for (let i = 0; i < firstDay; i++) {
+                grid.appendChild(document.createElement('div'));
             }
 
-            // Highlight Today (optional logic)
-            const today = new Date();
-            if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
-                dateDiv.classList.add('today');
+            // Fill Dates
+            for (let d = 1; d <= daysInMonth; d++) {
+                const dateDiv = document.createElement('div');
+                dateDiv.className = 'calendar-date';
+                
+                // 1. English Date Number
+                const engSpan = document.createElement('span');
+                engSpan.className = 'eng-date';
+                engSpan.innerText = d;
+
+                // 2. Malayalam Date Logic
+                const malSpan = document.createElement('span');
+                malSpan.className = 'mal-date';
+                malSpan.innerText = getMalayalamDate(d, currentMonth);
+
+                dateDiv.appendChild(engSpan);
+                dateDiv.appendChild(malSpan);
+
+                // Highlight Sunday
+                const checkDay = new Date(currentYear, currentMonth, d).getDay();
+                if (checkDay === 0) dateDiv.classList.add('sunday');
+
+                // Highlight Today
+                const today = new Date();
+                if (d === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear()) {
+                    dateDiv.classList.add('today');
+                }
+
+                grid.appendChild(dateDiv);
             }
-
-            grid.appendChild(dateDiv);
         }
-    }
 
-    function changeMonth(step) {
-        currentDate.setMonth(currentDate.getMonth() + step);
+        function changeMonth(step) {
+            currentMonth += step;
+            if (currentMonth > 11) { currentMonth = 0; currentYear++; } 
+            else if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+            renderCalendar();
+        }
+
         renderCalendar();
-    }
-
-    // Initialize
-    renderCalendar();
-</script>
-
+    </script>
 </body>
 </html>
