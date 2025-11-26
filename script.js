@@ -1,5 +1,5 @@
 // Configuration: YOUR NUMBER
-const WHATSAPP_NUMBER = "91 9999999999"; 
+const WHATSAPP_NUMBER = "91999999999"; 
 
 function contactWhatsApp(customMessage) {
     let msgToSend = customMessage;
