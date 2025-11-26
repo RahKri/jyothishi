@@ -84,7 +84,7 @@ body {
 .today-date { font-size: 0.9rem; font-weight: bold; color: #800000; }
 .today-day { font-size: 1.1rem; font-weight: 700; color: #333; }
 
-/* Malayalam Date Box (Right Side) */
+/* Malayalam Date Box */
 .malayalam-date-box { text-align: right; }
 .mal-month { font-size: 1.1rem; font-weight: 700; color: #800000; font-family: 'Noto Serif Malayalam', serif; }
 .mal-year { font-size: 0.85rem; color: #666; margin-top: 2px; }
@@ -93,6 +93,20 @@ body {
 .time-label { color: #666; font-weight: 600; }
 .time-value { color: #333; font-weight: bold; font-family: sans-serif; }
 .rahu { color: #d32f2f; }
+
+/* --- MANTRA OF THE DAY (NEW) --- */
+.mantra-card {
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    border: 1px solid #ffca28;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+.mantra-title { font-size: 0.9rem; font-weight: bold; color: #d84315; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.mantra-text { font-size: 1.1rem; font-weight: 700; color: #333; line-height: 1.6; font-family: 'Noto Serif Malayalam', serif; }
+.mantra-meaning { font-size: 0.85rem; color: #666; margin-top: 10px; font-style: italic; }
 
 /* --- SERVICE GRID --- */
 .services-grid { display: grid; gap: 15px; }
@@ -122,7 +136,7 @@ body {
 /* --- ABOUT PAGE --- */
 .about-card { background: white; padding: 20px; border-radius: 10px; line-height: 1.8; }
 
-/* --- NAVIGATION & FLOATING BUTTON (FIXED SPACING) --- */
+/* --- NAVIGATION & FLOATING BUTTON --- */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -146,7 +160,7 @@ body {
     color: #999;
     cursor: pointer;
     font-family: sans-serif;
-    flex: 1; /* Forces equal width for all buttons */
+    flex: 1;
 }
 
 .nav-item.active { color: var(--primary); }
