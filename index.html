@@ -25,6 +25,28 @@
             <a href="astrologers.html" class="primary-btn">പണ്ഡിതരെ കാണുക</a>
         </div>
 
+        <div class="panchangam-card">
+            <div class="panchangam-header">
+                <div>
+                    <div id="p-day" class="today-day">...</div>
+                    <div id="p-date" class="today-date">...</div>
+                </div>
+                <div style="font-size: 2rem;">ക</div> </div>
+            
+            <div class="time-row">
+                <span class="time-label rahu">രാഹുകാലം:</span>
+                <span id="t-rahu" class="time-value rahu">...</span>
+            </div>
+            <div class="time-row">
+                <span class="time-label">ഗുളികകാലം:</span>
+                <span id="t-gulika" class="time-value">...</span>
+            </div>
+            <div class="time-row" style="border-top: 1px dashed #eee; margin-top:5px; padding-top:8px;">
+                <span class="time-label" style="color:green;">നല്ല സമയം:</span>
+                <span id="t-nalla" class="time-value">...</span>
+            </div>
+        </div>
+
         <div class="section-title">ഞങ്ങളുടെ സേവനങ്ങൾ</div>
 
         <div class="services-grid">
@@ -82,5 +104,41 @@
     </nav>
 
     <script src="script.js"></script>
+
+    <script>
+        const daysMalayalam = ["ഞായർ", "തിങ്കൾ", "ചൊവ്വ", "ബുധൻ", "വ്യാഴം", "വെള്ളി", "ശനി"];
+        
+        // Standard Kerala Rahu/Gulika Times (Approx)
+        const timeData = [
+            { day: 0, rahu: "04:30 PM - 06:00 PM", gulika: "03:00 PM - 04:30 PM", nalla: "09:30 AM - 12:00 PM" }, // Sun
+            { day: 1, rahu: "07:30 AM - 09:00 AM", gulika: "01:30 PM - 03:00 PM", nalla: "04:00 PM - 06:00 PM" }, // Mon
+            { day: 2, rahu: "03:00 PM - 04:30 PM", gulika: "12:00 PM - 01:30 PM", nalla: "07:30 AM - 10:00 AM" }, // Tue
+            { day: 3, rahu: "12:00 PM - 01:30 PM", gulika: "10:30 AM - 12:00 PM", nalla: "02:00 PM - 04:00 PM" }, // Wed
+            { day: 4, rahu: "01:30 PM - 03:00 PM", gulika: "09:00 AM - 10:30 AM", nalla: "10:00 AM - 12:00 PM" }, // Thu
+            { day: 5, rahu: "10:30 AM - 12:00 PM", gulika: "07:30 AM - 09:00 AM", nalla: "05:00 PM - 07:00 PM" }, // Fri
+            { day: 6, rahu: "09:00 AM - 10:30 AM", gulika: "06:00 AM - 07:30 AM", nalla: "08:30 AM - 11:00 AM" }  // Sat
+        ];
+
+        function setPanchangam() {
+            const date = new Date();
+            const dayIndex = date.getDay(); // 0 = Sunday, 1 = Monday...
+
+            // Set Day Name
+            document.getElementById("p-day").innerText = daysMalayalam[dayIndex];
+            
+            // Set Date (e.g., 20 Nov 2025)
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            document.getElementById("p-date").innerText = date.toLocaleDateString('en-GB', options);
+
+            // Set Times
+            const todayData = timeData[dayIndex];
+            document.getElementById("t-rahu").innerText = todayData.rahu;
+            document.getElementById("t-gulika").innerText = todayData.gulika;
+            document.getElementById("t-nalla").innerText = todayData.nalla;
+        }
+
+        // Run immediately
+        setPanchangam();
+    </script>
 </body>
 </html>
