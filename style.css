@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #fcf8f2;       /* Soft Cream Background */
+    --bg-color: #fcf8f2;      /* Soft Cream Background */
     --primary: #5d1916;        /* Deep Kerala Maroon */
     --gold: #d4af37;           /* Classic Gold */
     --text-dark: #2d2d2d;      /* Dark Grey */
@@ -42,12 +42,10 @@ body {
     text-decoration: none;
 }
 
-/* Updated Logo Style - Bigger and Appealing */
 .logo-img {
     width: 45px;  
     height: 45px; 
-    object-fit: contain; /* Ensures the leaf shape is preserved */
-    /* Removed border/radius to keep the natural leaf look */
+    object-fit: contain; 
 }
 
 .logo-text h1 {
@@ -67,20 +65,9 @@ body {
 
 /* --- MAIN CONTENT --- */
 .content-wrapper {
-    padding: 10px 20px;
+    padding: 10px 15px; /* Reduced side padding for more space on mobile */
     max-width: 600px;
     margin: 0 auto;
-}
-
-/* --- WELCOME TEXT (Updated) --- */
-.welcome-text {
-    margin-bottom: 20px;
-}
-.welcome-text h2 {
-    margin: 5px 0 0 0;
-    font-size: 1.1rem;
-    color: var(--primary);
-    font-weight: 700;
 }
 
 /* --- PARCHMENT CARD (Panchangam) --- */
@@ -106,21 +93,15 @@ body {
 .parchment-inner::before { content: '✦'; position: absolute; top: 8px; left: 8px; color: var(--gold); font-size: 1rem; }
 .parchment-inner::after { content: '✦'; position: absolute; bottom: 8px; right: 8px; color: var(--gold); font-size: 1rem; }
 
-.panchangam-title {
-    display: none; /* Hidden as requested */
-}
+.panchangam-title { display: none; }
 
-/* --- DATE STYLES (Updated) --- */
-.date-container {
-    margin-bottom: 15px;
-}
+.date-container { margin-bottom: 15px; }
 .panchangam-main-mal {
     font-size: 2rem;
     font-weight: 700;
     color: var(--primary);
     line-height: 1.2;
 }
-/* New style for English date below Malayalam date */
 .panchangam-sub-eng {
     font-size: 0.9rem;
     color: var(--text-light);
@@ -148,7 +129,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* --- COLORED GRID (2x2 Layout) --- */
+/* --- COLORED GRID --- */
 .service-grid-modern {
     display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;
 }
@@ -184,14 +165,6 @@ body {
 .match-btn, .book-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 14px; border-radius: 8px; margin-top: 15px; font-weight: bold; font-size: 1rem; }
 .star-select-group { margin-bottom: 15px; }
 .star-label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; }
-.calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: white; padding: 15px; border-radius: 12px; border: 1px solid var(--gold); }
-.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; background: white; padding: 10px; border-radius: 12px; }
-.calendar-date { min-height: 50px; background-color: #fcfcfc; border: 1px solid #eee; border-radius: 6px; padding: 4px; display: flex; flex-direction: column; justify-content: space-between; }
-.calendar-date.sunday { background-color: #fff0f0; border-color: #ffcccc; }
-.calendar-date.today { border: 2px solid var(--gold); background-color: #fffbea; }
-.day-name { text-align: center; font-size: 0.75rem; font-weight: bold; color: var(--primary); padding-bottom: 8px; }
-.eng-date { font-size: 0.9rem; font-weight: bold; }
-.mal-date { font-size: 0.6rem; text-align: right; color: var(--primary); font-weight: 600; }
 .tip-desc, .offering-desc, .time-details { font-size: 0.95rem; color: #444; line-height: 1.6; }
 .book-btn-small { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-top: 10px; width: 100%; font-family: 'Noto Serif Malayalam', serif; }
 .offering-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
@@ -221,4 +194,81 @@ body {
 .result-desc { font-size: 0.95rem; color: #444; margin-bottom: 15px; line-height: 1.6; text-align: justify; }
 .disclaimer-box { background: rgba(255,255,255,0.6); padding: 10px; border-radius: 5px; font-size: 0.8rem; color: #666; margin-bottom: 15px; font-style: italic; }
 
-@media (max-width: 400px) { .logo-container h1 { font-size: 1.3rem; } .panchangam-main-mal { font-size: 1.5rem; } }
+/* --- CALENDAR FIXES (Crucial) --- */
+.calendar-controls { 
+    display: flex; justify-content: space-between; align-items: center; 
+    margin-bottom: 15px; background: white; padding: 10px; 
+    border-radius: 12px; border: 1px solid var(--gold); 
+}
+.month-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin: 0; }
+
+.calendar-grid { 
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 2px; /* Tighter Gap */
+    background: white; 
+    padding: 5px; 
+    border-radius: 12px; 
+    overflow-x: auto; /* Allows scroll if absolutely needed */
+}
+
+/* Day Names (Sun, Mon, etc.) */
+.day-name { 
+    text-align: center; 
+    font-size: 0.75rem; 
+    font-weight: bold; 
+    color: var(--primary); 
+    padding-bottom: 8px; 
+    white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* Individual Date Cell */
+.calendar-date { 
+    min-height: 50px; /* Standard height */
+    background-color: #fcfcfc; 
+    border: 1px solid #eee; 
+    border-radius: 6px; 
+    padding: 2px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+}
+
+.calendar-date.sunday { background-color: #fff0f0; border-color: #ffcccc; }
+.calendar-date.today { border: 2px solid var(--gold); background-color: #fffbea; }
+.eng-date { font-size: 0.9rem; font-weight: bold; margin-left: 2px; }
+.mal-date { 
+    font-size: 0.6rem; 
+    text-align: right; 
+    color: var(--primary); 
+    font-weight: 600; 
+    line-height: 1.1; 
+    margin-right: 2px;
+}
+
+/* --- MOBILE SPECIFIC ADJUSTMENTS --- */
+@media (max-width: 400px) {
+    .content-wrapper { padding: 10px 5px; } /* Maximize width */
+    
+    .day-name { 
+        font-size: 0.6rem; /* Smaller day names */
+        padding: 4px 0;
+    }
+    
+    .calendar-date { 
+        min-height: 45px; 
+        padding: 1px;
+    }
+    
+    .eng-date { font-size: 0.8rem; }
+    
+    .mal-date { 
+        font-size: 0.5rem; /* Even smaller on mobile */
+        white-space: nowrap; /* Prevent wrap */
+        overflow: hidden; /* Hide overflow if too long */
+        text-overflow: ellipsis;
+    }
+    
+    .logo-container h1 { font-size: 1.3rem; }
+    .panchangam-main-mal { font-size: 1.5rem; }
+}
