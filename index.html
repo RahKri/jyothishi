@@ -82,7 +82,9 @@
     </main>
 
     <a href="javascript:void(0)" onclick="contactWhatsApp('Hello')" class="float-wa">
-        <svg viewBox="0 0 32 32" class="wa-icon"><path d="M16,2A13,13,0,0,0,8,25.23L2.93,27.3a1,1,0,0,0-.54,1.3,1,1,0,0,0,1,.54l5.63-1.63a13,13,0,1,0,7-25.5Z"></path></svg>
+        <svg viewBox="0 0 32 32" class="wa-icon">
+            <path d="M16.07,2.35c-7.38,0-13.38,6-13.38,13.38a13.3,13.3,0,0,0,2,7.15L2.42,29.6l6.89-2.2a13.31,13.31,0,0,0,6.76,1.84h0c7.38,0,13.38-6,13.38-13.38S23.45,2.35,16.07,2.35ZM9.9,8.29a2.13,2.13,0,0,1,1.55.72c.19.19,1.29,3.1,1.4,3.31s.16.49-.07.79-.42.69-.77,1c-.22.19-.46.35-.22.77s2.93,4.81,6.37,6.33c.4.18.7.16.93-.11s1-1.22,1.27-1.63.53-.36.91-.21,2.35,1.11,2.75,1.31.67.31.76.47.07,2.39-1.15,3.36-3.29,1.15-4.33.71-4.37-3.58-8.6-9.15A9.59,9.59,0,0,1,8.5,11.13C8.57,9.59,10.15,8.29,9.9,8.29Z"/>
+        </svg>
     </a>
 
     <nav class="bottom-nav">
@@ -92,16 +94,13 @@
         </a>
         <a href="astrologers.html" class="nav-item">
             <span class="icon">👨‍🎓</span>
-            <span class="label">Gurus</span>
-        </a>
+            <span class="label">ഗുരു</span> </a>
         <a href="calendar.html" class="nav-item">
             <span class="icon">📅</span>
-            <span class="label">Calendar</span>
-        </a>
+            <span class="label">കലണ്ടർ</span> </a>
         <a href="rates.html" class="nav-item">
             <span class="icon">₹</span>
-            <span class="label">Rates</span>
-        </a>
+            <span class="label">നിരക്കുകൾ</span> </a>
         <a href="about.html" class="nav-item">
             <span class="icon">ℹ️</span>
             <span class="label">About</span>
@@ -112,32 +111,18 @@
 
     <script>
         const daysMalayalam = ["ഞായർ", "തിങ്കൾ", "ചൊവ്വ", "ബുധൻ", "വ്യാഴം", "വെള്ളി", "ശനി"];
-
         const sunriseOffsets = [40, 35, 25, 10, 5, 5, 10, 15, 15, 15, 20, 35];
-
         const timingsMap = [
-            [10.5, 9.0, 3.5, 6.0],  // Sun
-            [1.5, 7.5, 10.0, 12.0], // Mon
-            [9.0, 6.0, 1.5, 4.0],   // Tue
-            [6.0, 4.5, 8.0, 10.0],  // Wed
-            [7.5, 3.0, 4.0, 6.0],   // Thu
-            [4.5, 1.5, 11.0, 13.0], // Fri
-            [3.0, 0.0, 2.5, 5.0]    // Sat
+            [10.5, 9.0, 3.5, 6.0], [1.5, 7.5, 10.0, 12.0], [9.0, 6.0, 1.5, 4.0],
+            [6.0, 4.5, 8.0, 10.0], [7.5, 3.0, 4.0, 6.0], [4.5, 1.5, 11.0, 13.0], [3.0, 0.0, 2.5, 5.0]
         ];
-
         const sankrantiData = [
-            { cutoff: 14, name: "ധനു", next: "മകരം", offset: 17 },     
-            { cutoff: 13, name: "മകരം", next: "കുംഭം", offset: 0 },     
-            { cutoff: 14, name: "കുംഭം", next: "മീനം", offset: 0 },     
-            { cutoff: 14, name: "മീനം", next: "മേടം", offset: 0 },      
-            { cutoff: 15, name: "മേടം", next: "ഇടവം", offset: 0 },      
-            { cutoff: 15, name: "ഇടവം", next: "മിഥുനം", offset: 0 },    
-            { cutoff: 16, name: "മിഥുനം", next: "കർക്കടകം", offset: 0 },
-            { cutoff: 17, name: "കർക്കടകം", next: "ചിങ്ങം", offset: 0 },
-            { cutoff: 17, name: "ചിങ്ങം", next: "കന്നി", offset: 0 },   
-            { cutoff: 17, name: "കന്നി", next: "തുലാം", offset: 0 },    
-            { cutoff: 16, name: "തുലാം", next: "വൃശ്ചികം", offset: 0 }, 
-            { cutoff: 16, name: "വൃശ്ചികം", next: "ധനു", offset: 0 }    
+            { cutoff: 14, name: "ധനു", next: "മകരം", offset: 17 }, { cutoff: 13, name: "മകരം", next: "കുംഭം", offset: 0 },
+            { cutoff: 14, name: "കുംഭം", next: "മീനം", offset: 0 }, { cutoff: 14, name: "മീനം", next: "മേടം", offset: 0 },
+            { cutoff: 15, name: "മേടം", next: "ഇടവം", offset: 0 }, { cutoff: 15, name: "ഇടവം", next: "മിഥുനം", offset: 0 },
+            { cutoff: 16, name: "മിഥുനം", next: "കർക്കടകം", offset: 0 }, { cutoff: 17, name: "കർക്കടകം", next: "ചിങ്ങം", offset: 0 },
+            { cutoff: 17, name: "ചിങ്ങം", next: "കന്നി", offset: 0 }, { cutoff: 17, name: "കന്നി", next: "തുലാം", offset: 0 },
+            { cutoff: 16, name: "തുലാം", next: "വൃശ്ചികം", offset: 0 }, { cutoff: 16, name: "വൃശ്ചികം", next: "ധനു", offset: 0 }
         ];
 
         function formatTime(decimalTime) {
@@ -151,8 +136,7 @@
         }
 
         function calculateTime(baseHour, offsetMinutes) {
-            let totalMinutes = (baseHour * 60) + offsetMinutes;
-            return totalMinutes / 60;
+            return ((baseHour * 60) + offsetMinutes) / 60;
         }
 
         function setPanchangam() {
