@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Illam Jyothisham | Calendar</title>
+    <title>Illam Jyothisham | Calendar 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -29,9 +29,14 @@
 
         <div class="calendar-grid" id="calendarGrid"></div>
 
+        <div id="eventListBox" class="event-list-box" style="display:none;">
+            <h4 style="margin:0 0 10px 0; color:#800000;">വിശേഷ ദിവസങ്ങൾ (Special Days)</h4>
+            <div id="eventListContent"></div>
+        </div>
+
         <div class="about-card" style="margin-top: 20px; text-align: center;">
-            <p style="font-size: 0.9rem;">നക്ഷത്രവും തിഥിയും കൃത്യമായി അറിയാൻ മെസ്സേജ് ചെയ്യുക.</p>
-            <button class="book-btn" onclick="contactWhatsApp('നമസ്കാരം, ഇന്നത്തെ നക്ഷത്രം അറിയണം')">ഇന്നത്തെ നക്ഷത്രം</button>
+            <p style="font-size: 0.9rem;">വിശേഷ ദിവസങ്ങളിലെ പൂജകൾ ബുക്ക് ചെയ്യാൻ മെസ്സേജ് ചെയ്യുക.</p>
+            <button class="book-btn" onclick="contactWhatsApp('നമസ്കാരം, വിശേഷ ദിവസത്തെ പൂജ ബുക്ക് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു')">പൂജ ബുക്ക് ചെയ്യാൻ</button>
         </div>
     </main>
 
@@ -56,43 +61,109 @@
     <script src="script.js"></script>
 
     <script>
-        let currentYear = new Date().getFullYear();
-        let currentMonth = new Date().getMonth();
+        let currentYear = 2026; 
+        let currentMonth = new Date().getFullYear() === 2026 ? new Date().getMonth() : 0; 
+
+        // --- COMPREHENSIVE KERALA FESTIVAL DATA 2026 ---
+        // Format: "MonthIndex-Date": "Event Name"
+        // Note: Month Index starts at 0 (Jan=0, Feb=1, ... Dec=11)
+        const festivalData = {
+            "2026": {
+                // JANUARY (0)
+                "0-1": "പുതുവത്സര ദിനം (New Year)",
+                "0-2": "മന്നം ജയന്തി",
+                "0-14": "മകര സംക്രാന്തി",
+                "0-26": "റിപ്പബ്ലിക് ദിനം",
+
+                // FEBRUARY (1)
+                "1-1": "തൈപ്പൂയം",
+                "1-16": "മഹാ ശിവരാത്രി",
+                "1-24": "ആറ്റുകാൽ പൊങ്കാല (Approx)",
+
+                // MARCH (2)
+                "2-8": "അന്താരാഷ്ട്ര വനിതാ ദിനം",
+                "2-20": "ഈദ് ഉൽ ഫിത്തർ (Subject to Moon)",
+                "2-29": "ഓശാന ഞായർ",
+
+                // APRIL (3)
+                "3-2": "പെസഹ വ്യാഴം",
+                "3-3": "ദുഃഖവെള്ളി (Good Friday)",
+                "3-5": "ഈസ്റ്റർ",
+                "3-14": "വിഷു (Vishu)",
+                "3-14": "അംബേദ്കർ ജയന്തി",
+                "3-28": "തൃശ്ശൂർ പൂരം (Approx)",
+
+                // MAY (4)
+                "4-1": "മെയ് ദിനം (May Day)",
+                "4-27": "ബക്രീദ് (Subject to Moon)",
+
+                // JUNE (5)
+                "5-21": "ലോക യോഗ ദിനം",
+
+                // JULY (6)
+                "6-17": "രാമായണ മാസാചരണം തുടക്കം (Karkidakam 1)",
+
+                // AUGUST (7)
+                "7-15": "സ്വാതന്ത്ര്യ ദിനം",
+                "7-16": "ചിങ്ങം 1 (Karshaka Dinam)",
+                "7-25": "ഉത്രാടം (First Onam)",
+                "7-26": "തിരുവോണം (Thiruvonam)",
+                "7-27": "അവിട്ടം (Third Onam)",
+                "7-28": "ചതയം (Fourth Onam)",
+                "7-28": "അയ്യങ്കാളി ജയന്തി",
+                "7-30": "ശ്രീനാരായണ ഗുരു ജയന്തി",
+
+                // SEPTEMBER (8)
+                "8-4": "ശ്രീകൃഷ്ണ ജയന്തി (Ashtami Rohini)",
+                "8-5": "അധ്യാപക ദിനം",
+                "8-21": "ശ്രീനാരായണ ഗുരു സമാധി",
+                "8-27": "നബി ദിനം (Subject to Moon)",
+
+                // OCTOBER (9)
+                "9-2": "ഗാന്ധി ജയന്തി",
+                "9-12": "നവരാത്രി തുടക്കം",
+                "9-18": "ദുർഗ്ഗാഷ്ടമി",
+                "9-19": "മഹാനവമി",
+                "9-20": "വിജയദശമി (Vidyarambham)",
+
+                // NOVEMBER (10)
+                "10-1": "കേരളപ്പിറവി",
+                "10-8": "ദീപാവലി (Deepavali)",
+                "10-14": "ശിശു ദിനം",
+                "10-17": "മണ്ഡലകാലം തുടക്കം",
+
+                // DECEMBER (11)
+                "11-21": "ഗുരുവായൂർ ഏകാദശി",
+                "11-25": "ക്രിസ്മസ് (Christmas)",
+                "11-26": "മണ്ഡല പൂജ"
+            }
+        };
 
         const malayalamMonths = ["ജനുവരി", "ഫെബ്രുവരി", "മാർച്ച്", "ഏപ്രിൽ", "മെയ്", "ജൂൺ", "ജൂലൈ", "ഓഗസ്റ്റ്", "സെപ്റ്റംബർ", "ഒക്ടോബർ", "നവംബർ", "ഡിസംബർ"];
         const weekDays = ["ഞായർ", "തിങ്കൾ", "ചൊവ്വ", "ബുധൻ", "വ്യാഴം", "വെള്ളി", "ശനി"];
-
-        // Data for Solar Month Transitions (Approximate for 2025/2026)
-        // Format: [Cutoff Date, Month Name Before Cutoff, Month Name After Cutoff, Days Offset]
+        
         const sankrantiData = [
-            { cutoff: 14, before: "ധനു", after: "മകരം", offsetBefore: 17, offsetAfter: 1 },    // Jan
-            { cutoff: 13, before: "മകരം", after: "കുംഭം", offsetBefore: 0, offsetAfter: 1 },    // Feb
-            { cutoff: 14, before: "കുംഭം", after: "മീനം", offsetBefore: 0, offsetAfter: 1 },    // Mar
-            { cutoff: 14, before: "മീനം", after: "മേടം", offsetBefore: 0, offsetAfter: 1 },     // Apr (Vishu)
-            { cutoff: 15, before: "മേടം", after: "ഇടവം", offsetBefore: 0, offsetAfter: 1 },     // May
-            { cutoff: 15, before: "ഇടവം", after: "മിഥുനം", offsetBefore: 0, offsetAfter: 1 },   // Jun
-            { cutoff: 16, before: "മിഥുനം", after: "കർക്കടകം", offsetBefore: 0, offsetAfter: 1 }, // Jul
-            { cutoff: 17, before: "കർക്കടകം", after: "ചിങ്ങം", offsetBefore: 0, offsetAfter: 1 }, // Aug (New Year)
-            { cutoff: 17, before: "ചിങ്ങം", after: "കന്നി", offsetBefore: 0, offsetAfter: 1 },    // Sep
-            { cutoff: 17, before: "കന്നി", after: "തുലാം", offsetBefore: 0, offsetAfter: 1 },     // Oct
-            { cutoff: 16, before: "തുലാം", after: "വൃശ്ചികം", offsetBefore: 0, offsetAfter: 1 },  // Nov
-            { cutoff: 16, before: "വൃശ്ചികം", after: "ധനു", offsetBefore: 0, offsetAfter: 1 }     // Dec
+            { cutoff: 14, before: "ധനു", after: "മകരം", offsetBefore: 17, offsetAfter: 1 },    
+            { cutoff: 13, before: "മകരം", after: "കുംഭം", offsetBefore: 0, offsetAfter: 1 },    
+            { cutoff: 14, before: "കുംഭം", after: "മീനം", offsetBefore: 0, offsetAfter: 1 },    
+            { cutoff: 14, before: "മീനം", after: "മേടം", offsetBefore: 0, offsetAfter: 1 },     
+            { cutoff: 15, before: "മേടം", after: "ഇടവം", offsetBefore: 0, offsetAfter: 1 },     
+            { cutoff: 15, before: "ഇടവം", after: "മിഥുനം", offsetBefore: 0, offsetAfter: 1 },   
+            { cutoff: 16, before: "മിഥുനം", after: "കർക്കടകം", offsetBefore: 0, offsetAfter: 1 }, 
+            { cutoff: 17, before: "കർക്കടകം", after: "ചിങ്ങം", offsetBefore: 0, offsetAfter: 1 }, 
+            { cutoff: 17, before: "ചിങ്ങം", after: "കന്നി", offsetBefore: 0, offsetAfter: 1 },    
+            { cutoff: 17, before: "കന്നി", after: "തുലാം", offsetBefore: 0, offsetAfter: 1 },     
+            { cutoff: 16, before: "തുലാം", after: "വൃശ്ചികം", offsetBefore: 0, offsetAfter: 1 },  
+            { cutoff: 16, before: "വൃശ്ചികം", after: "ധനു", offsetBefore: 0, offsetAfter: 1 }     
         ];
 
         function getMalayalamDate(engDate, monthIndex) {
             const rule = sankrantiData[monthIndex];
-            
-            // Before the Sankranti date (Cutoff)
             if (engDate < rule.cutoff) {
-                // Calculate remaining days of previous Malayalam month
-                // This is an approximation. A real Panchangam needs complex math.
-                // We use a simplified offset logic here for display purposes.
                 let malDate = rule.offsetBefore + engDate;
-                if(monthIndex === 0) malDate = 16 + engDate; // Specific fix for Dhanu in Jan
+                if(monthIndex === 0) malDate = 16 + engDate; 
                 return `${rule.before} ${malDate}`;
-            } 
-            // After the Sankranti date
-            else {
+            } else {
                 let malDate = engDate - rule.cutoff + 1;
                 return `${rule.after} ${malDate}`;
             }
@@ -102,11 +173,14 @@
             const grid = document.getElementById('calendarGrid');
             const display = document.getElementById('monthDisplay');
             const eraDisplay = document.getElementById('eraDisplay');
+            const eventBox = document.getElementById('eventListBox');
+            const eventContent = document.getElementById('eventListContent');
             
             grid.innerHTML = "";
+            eventContent.innerHTML = ""; 
+            let hasEvents = false;
+
             display.innerText = `${malayalamMonths[currentMonth]} ${currentYear}`;
-            
-            // Show the Era range (e.g. Makaram - Kumbham)
             const rule = sankrantiData[currentMonth];
             eraDisplay.innerText = `${rule.before} - ${rule.after}`;
 
@@ -132,12 +206,10 @@
                 const dateDiv = document.createElement('div');
                 dateDiv.className = 'calendar-date';
                 
-                // 1. English Date Number
                 const engSpan = document.createElement('span');
                 engSpan.className = 'eng-date';
                 engSpan.innerText = d;
 
-                // 2. Malayalam Date Logic
                 const malSpan = document.createElement('span');
                 malSpan.className = 'mal-date';
                 malSpan.innerText = getMalayalamDate(d, currentMonth);
@@ -145,17 +217,45 @@
                 dateDiv.appendChild(engSpan);
                 dateDiv.appendChild(malSpan);
 
-                // Highlight Sunday
+                // --- EVENT CHECKER ---
+                const dateKey = `${currentMonth}-${d}`;
+                const yearData = festivalData[currentYear];
+                
+                if (yearData && yearData[dateKey]) {
+                    // 1. Add Dot to Calendar
+                    const dot = document.createElement('div');
+                    dot.className = 'event-indicator';
+                    dateDiv.appendChild(dot);
+                    dateDiv.style.borderColor = "#d32f2f"; 
+                    dateDiv.style.backgroundColor = "#fff0f0";
+
+                    // 2. Add to List Below
+                    hasEvents = true;
+                    const eventItem = document.createElement('div');
+                    eventItem.className = 'event-item';
+                    eventItem.innerHTML = `
+                        <div class="event-date-badge">${d}</div>
+                        <div class="event-name">${yearData[dateKey]}</div>
+                    `;
+                    eventContent.appendChild(eventItem);
+                }
+
                 const checkDay = new Date(currentYear, currentMonth, d).getDay();
                 if (checkDay === 0) dateDiv.classList.add('sunday');
 
-                // Highlight Today
                 const today = new Date();
                 if (d === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear()) {
                     dateDiv.classList.add('today');
                 }
 
                 grid.appendChild(dateDiv);
+            }
+
+            // Show/Hide List Box
+            if(hasEvents) {
+                eventBox.style.display = 'block';
+            } else {
+                eventBox.style.display = 'none';
             }
         }
 
