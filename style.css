@@ -10,7 +10,7 @@
     --card-maroon: #6a2e2e;
     --card-green: #2e6a4f;
     --card-mustard: #e6a650;
-    --card-teal: #2c5e63;      /* New Color for Vasthu */
+    --card-teal: #2c5e63;
 
     --whatsapp: #25D366;
 }
@@ -43,8 +43,8 @@ body {
 }
 
 .logo-img {
-    width: 45px;
-    height: 45px;
+    width: 50px;  /* Increased size for better visibility */
+    height: 50px; 
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--primary);
@@ -72,29 +72,14 @@ body {
     margin: 0 auto;
 }
 
-/* --- WELCOME TEXT --- */
-.welcome-text {
-    margin-bottom: 20px;
-}
-.welcome-text p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: var(--text-light);
-}
-.welcome-text h2 {
-    margin: 5px 0 0 0;
-    font-size: 1.1rem;
-    color: var(--primary);
-    font-weight: 700;
-}
-
 /* --- PARCHMENT CARD (Panchangam) --- */
 .parchment-card {
     background-color: #fffbf0;
     border: 1px solid #eaddc5;
     border-radius: 16px;
-    padding: 6px; /* Space for double border effect */
+    padding: 6px;
     margin-bottom: 30px;
+    margin-top: 20px; /* Added margin top since welcome text is removed */
     box-shadow: 0 4px 15px rgba(165, 134, 88, 0.1);
 }
 
@@ -107,33 +92,30 @@ body {
     background: white;
 }
 
-/* Decorative Stars in Corners */
-.parchment-inner::before {
-    content: '✦';
-    position: absolute;
-    top: 8px; left: 8px;
-    color: var(--gold);
-    font-size: 1rem;
-}
-.parchment-inner::after {
-    content: '✦';
-    position: absolute;
-    bottom: 8px; right: 8px;
-    color: var(--gold);
-    font-size: 1rem;
-}
+/* Decorative Stars */
+.parchment-inner::before { content: '✦'; position: absolute; top: 8px; left: 8px; color: var(--gold); font-size: 1rem; }
+.parchment-inner::after { content: '✦'; position: absolute; bottom: 8px; right: 8px; color: var(--gold); font-size: 1rem; }
 
 .panchangam-title {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    margin-bottom: 5px;
+    display: none; /* Hiding title as requested */
 }
 
-.panchangam-main {
-    font-size: 1.8rem;
+/* --- NEW DATE STYLES --- */
+.date-container {
+    margin-bottom: 15px;
+}
+.panchangam-main-mal {
+    font-size: 2.2rem; /* Bigger Malayalam Date */
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 15px;
+    line-height: 1.2;
+}
+.panchangam-sub-eng {
+    font-size: 0.85rem; /* Smaller English Date */
+    color: var(--text-light);
+    font-weight: 500;
+    margin-top: 4px;
+    font-family: sans-serif;
 }
 
 .panchangam-row {
@@ -144,13 +126,8 @@ body {
     color: var(--text-dark);
     margin-bottom: 5px;
 }
-.time-highlight {
-    font-weight: 700;
-    font-family: sans-serif;
-}
-.nalla-neram {
-    color: var(--card-green);
-}
+.time-highlight { font-weight: 700; font-family: sans-serif; }
+.nalla-neram { color: var(--card-green); }
 
 /* --- SECTION TITLE --- */
 .section-heading {
@@ -162,106 +139,40 @@ body {
 
 /* --- COLORED GRID (2x2 Layout) --- */
 .service-grid-modern {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 Columns */
-    gap: 15px;
-    margin-bottom: 30px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;
 }
-
 .grid-card {
-    aspect-ratio: 1.1; /* Slightly wider than square */
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s;
-    color: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    aspect-ratio: 1.1; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; text-align: center; cursor: pointer; transition: transform 0.2s; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-
 .grid-card:active { transform: scale(0.95); }
-
 .grid-card.maroon { background-color: var(--card-maroon); }
 .grid-card.green { background-color: var(--card-green); }
 .grid-card.mustard { background-color: var(--card-mustard); }
 .grid-card.teal { background-color: var(--card-teal); }
-
-.grid-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.grid-label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    line-height: 1.4;
-}
+.grid-icon { font-size: 2rem; margin-bottom: 10px; }
+.grid-label { font-size: 0.85rem; font-weight: 600; line-height: 1.4; }
 
 /* --- BOTTOM NAV --- */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #fffbf0;
-    display: flex;
-    justify-content: space-around;
-    padding: 12px 0;
-    border-top: 1px solid #eaddc5;
-    z-index: 100;
-}
-
-.nav-item {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #999;
-    font-family: sans-serif;
-    background: none;
-    border: none;
-}
-
+.bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #fffbf0; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #eaddc5; z-index: 100; }
+.nav-item { text-decoration: none; display: flex; flex-direction: column; align-items: center; color: #999; font-family: sans-serif; background: none; border: none; }
 .nav-item.active { color: var(--card-mustard); }
 .nav-item .icon { font-size: 1.4rem; margin-bottom: 4px; }
 .nav-item .label { font-size: 0.65rem; font-weight: 600; }
 
 /* --- WHATSAPP FLOAT --- */
-.float-wa {
-    position: fixed; right: 20px; bottom: 90px; background: var(--whatsapp);
-    width: 55px; height: 55px; border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 90;
-}
+.float-wa { position: fixed; right: 20px; bottom: 90px; background: var(--whatsapp); width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 90; }
 .wa-icon { width: 30px; height: 30px; fill: white; }
 
 /* --- INNER PAGES --- */
-.profile-card, .matching-card, .tip-card, .offering-card, .time-card, .about-card {
-    background: white;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-}
+.profile-card, .matching-card, .tip-card, .offering-card, .time-card, .about-card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee; }
 .matching-card { border: 1px solid var(--gold); }
 .profile-header, .offering-header, .time-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
 .profile-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
-.section-title { 
-    font-size: 1.1rem; font-weight: 700; color: var(--primary); 
-    margin: 25px 0 15px 0; border-left: 4px solid var(--gold); padding-left: 10px; 
-}
-/* Dropdowns & Buttons */
+.section-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin: 25px 0 15px 0; border-left: 4px solid var(--gold); padding-left: 10px; }
 .star-select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; font-size: 1rem; color: var(--text-dark); }
 .match-btn, .book-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 14px; border-radius: 8px; margin-top: 15px; font-weight: bold; font-size: 1rem; }
 .star-select-group { margin-bottom: 15px; }
 .star-label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; }
-
-/* Calendar */
 .calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: white; padding: 15px; border-radius: 12px; border: 1px solid var(--gold); }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; background: white; padding: 10px; border-radius: 12px; }
 .calendar-date { min-height: 50px; background-color: #fcfcfc; border: 1px solid #eee; border-radius: 6px; padding: 4px; display: flex; flex-direction: column; justify-content: space-between; }
@@ -270,9 +181,36 @@ body {
 .day-name { text-align: center; font-size: 0.75rem; font-weight: bold; color: var(--primary); padding-bottom: 8px; }
 .eng-date { font-size: 0.9rem; font-weight: bold; }
 .mal-date { font-size: 0.6rem; text-align: right; color: var(--primary); font-weight: 600; }
+.tip-desc, .offering-desc, .time-details { font-size: 0.95rem; color: #444; line-height: 1.6; }
+.book-btn-small { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-top: 10px; width: 100%; font-family: 'Noto Serif Malayalam', serif; }
+.offering-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.price-tag { background: #fff8e1; color: #d84315; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; border: 1px solid #ffecb3; }
+.contact-box { background-color: #fff8e1; border: 1px dashed #d4af37; padding: 20px; text-align: center; border-radius: 10px; margin-top: 30px; }
+.time-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.time-icon { font-size: 1.5rem; }
+.best-days { font-weight: bold; color: #2e7d32; display: block; margin-top: 5px; }
+.avoid-days { font-weight: bold; color: #d32f2f; display: block; margin-top: 2px; }
+.reason-box { background-color: #f9f9f9; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 0.85rem; color: #666; font-style: italic; border-left: 3px solid var(--gold); }
+.designation { font-size: 0.85rem; color: #888; }
+.event-indicator { width: 6px; height: 6px; background-color: #d32f2f; border-radius: 50%; margin-top: 2px; }
+.event-list-box { margin-top: 20px; background: white; border-radius: 10px; padding: 15px; border: 1px solid #e0d0b0; }
+.event-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+.event-item:last-child { border-bottom: none; }
+.event-date-badge { background: var(--gold); color: var(--primary); font-weight: bold; padding: 5px 10px; border-radius: 5px; margin-right: 15px; font-family: sans-serif; min-width: 30px; text-align: center; }
+.event-name { font-size: 1rem; color: #333; font-weight: 600; }
+.rate-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.rate-row { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid #eee; align-items: center; }
+.rate-row.highlight { background-color: #fffbea; }
+.rate-row h4 { margin: 0 0 5px 0; font-weight: 700; }
+.price { font-weight: bold; color: var(--primary); font-size: 1.1rem; }
+.note { font-size: 0.85rem; color: #777; margin-top: 10px; padding: 10px; background: #eef; border-radius: 5px; }
+.result-card { display: none; margin-top: 20px; padding: 20px; border-radius: 10px; text-align: center; animation: fadeIn 0.5s ease; background-color: #fffbea; border: 1px solid #d4af37; }
+.result-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; }
+.result-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; font-family: 'Noto Serif Malayalam', serif; color: #800000; }
+.result-desc { font-size: 0.95rem; color: #444; margin-bottom: 15px; line-height: 1.6; text-align: justify; }
+.disclaimer-box { background: rgba(255,255,255,0.6); padding: 10px; border-radius: 5px; font-size: 0.8rem; color: #666; margin-bottom: 15px; font-style: italic; }
 
-/* Mobile Fixes */
 @media (max-width: 400px) {
     .logo-container h1 { font-size: 1.3rem; }
-    .panchangam-main { font-size: 1.5rem; }
+    .panchangam-main-mal { font-size: 1.5rem; }
 }
