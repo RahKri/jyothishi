@@ -10,11 +10,18 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header class="app-header">
         <a href="index.html" class="logo-row">
-            <!-- Use the leaf image provided -->
-            <img src="image_0.png" alt="Logo" class="logo-img">
+            <svg class="logo-img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#5d1916" d="M256,0C256,0,32,128,32,288c0,106,86,192,192,192h64c17.7,0,32,14.3,32,32v0c0-17.7-14.3-32-32-32h-64
+                c-56,0-107.7-24.3-143.7-63.7c-4.3-4.7-11.7-4.9-16.3-0.4c-4.5,4.3-4.6,11.4-0.2,15.9C104.7,477.6,163,507.2,228.4,511.4
+                c3.9,0.2,7.6,3.5,7.6,7.4v0c0-4.4-3.6-8-8-8C101.6,506.8,0,409.2,0,288C0,118,246,0,256,0z"/>
+                <path fill="#d4af37" d="M256,0c0,0,224,128,224,288c0,121.2-101.6,218.8-228.4,222.8c-4.4,0.1-8,3.7-8,8.2v-0.1
+                c0-3.9,3.7-7.1,7.6-7.4C316.4,507.2,374.7,477.6,415,431.8c4.4-4.5,4.3-11.6-0.2-15.9c-4.6-4.5-12-4.2-16.3,0.4
+                C362.5,455.7,311,480,256,480h-32c-17.7,0-32,14.3-32,32v0c0-17.7,14.3-32,32-32H256c106,0,192-86,192-192C448,128,256,0,256,0z"/>
+                <path fill="#5d1916" d="M256,0v480c0,0-50-60-50-150s50-180,50-180S256,0,256,0z"/>
+            </svg>
+            
             <div class="logo-text">
                 <h1 style="margin:0; font-size:1.5rem; color:#5d1916; font-weight:700;">താളിയോല</h1>
             </div>
@@ -24,18 +31,13 @@
 
     <main class="content-wrapper">
 
-        <!-- PARCHMENT CARD (Highlight) -->
         <div class="parchment-card">
             <div class="parchment-inner">
-                <!-- Date Section -->
                 <div class="date-container">
-                    <!-- Malayalam Date (Big) -->
                     <div id="m-date-main" class="panchangam-main-mal">...</div>
-                    <!-- English Date (Small, below) -->
                     <div id="e-date-sub" class="panchangam-sub-eng">...</div>
                 </div>
 
-                <!-- Daily Times -->
                 <div class="panchangam-row" style="margin-top: 15px;">
                     രാഹുകാലം: <span id="t-rahu" class="time-highlight">...</span>
                 </div>
@@ -45,34 +47,27 @@
             </div>
         </div>
 
-        <!-- SERVICES TITLE -->
         <div class="section-heading">സേവനങ്ങൾ</div>
 
-        <!-- COLORED GRID (2x2 Layout) -->
         <div class="service-grid-modern">
-            <!-- Card 1: Matchmaking -->
             <div class="grid-card maroon" onclick="window.location.href='matchmaking.html'">
                 <div class="grid-icon">📜</div>
                 <div class="grid-label">വിവാഹ<br>പൊരുത്തം</div>
             </div>
-            <!-- Card 2: Offerings -->
             <div class="grid-card green" onclick="window.location.href='offerings.html'">
                 <div class="grid-icon">🥥</div>
                 <div class="grid-label">വഴിപാടുകൾ<br>& പൂജകൾ</div>
             </div>
-            <!-- Card 3: Best Times -->
             <div class="grid-card mustard" onclick="window.location.href='best_times.html'">
                 <div class="grid-icon">⏱️</div>
                 <div class="grid-label">നല്ല<br>സമയം</div>
             </div>
-            <!-- Card 4: Vasthu -->
             <div class="grid-card teal" onclick="window.location.href='vasthu.html'">
                 <div class="grid-icon">🏠</div>
                 <div class="grid-label">വാസ്തു<br>അറിവുകൾ</div>
             </div>
         </div>
 
-        <!-- QUICK CONTACT -->
         <div class="about-card" style="margin-top: 20px; text-align: center;">
             <h3 style="color: var(--primary); margin-top: 0; font-size: 1rem;">സംശയങ്ങൾ ചോദിക്കാം</h3>
             <p style="font-size: 0.85rem; color: #666;">
@@ -85,7 +80,6 @@
 
     </main>
 
-    <!-- WhatsApp Float & Nav -->
     <a href="javascript:void(0)" onclick="contactWhatsApp('Hello')" class="float-wa">
         <svg viewBox="0 0 32 32" class="wa-icon"><path d="M16.07,2.35c-7.38,0-13.38,6-13.38,13.38a13.3,13.3,0,0,0,2,7.15L2.42,29.6l6.89-2.2a13.31,13.31,0,0,0,6.76,1.84h0c7.38,0,13.38-6,13.38-13.38S23.45,2.35,16.07,2.35ZM9.9,8.29a2.13,2.13,0,0,1,1.55.72c.19.19,1.29,3.1,1.4,3.31s.16.49-.07.79-.42.69-.77,1c-.22.19-.46.35-.22.77s2.93,4.81,6.37,6.33c.4.18.7.16.93-.11s1-1.22,1.27-1.63.53-.36.91-.21,2.35,1.11,2.75,1.31.67.31.76.47.07,2.39-1.15,3.36-3.29,1.15-4.33.71-4.37-3.58-8.6-9.15A9.59,9.59,0,0,1,8.5,11.13C8.57,9.59,10.15,8.29,9.9,8.29Z"/></svg>
     </a>
