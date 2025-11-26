@@ -18,7 +18,7 @@ body {
     padding-bottom: 80px; /* Space for bottom nav */
 }
 
-/* Header */
+/* --- HEADER --- */
 .app-header {
     background: var(--white);
     padding: 15px 20px;
@@ -36,10 +36,10 @@ body {
 .logo-container p { margin: 0; font-size: 0.8rem; color: #666; }
 .header-icon { font-size: 1.5rem; }
 
-/* Main Layout */
+/* --- MAIN LAYOUT --- */
 .content-wrapper { padding: 20px; max-width: 600px; margin: 0 auto; }
 
-/* Components */
+/* --- HERO CARD --- */
 .hero-card {
     background: linear-gradient(rgba(94, 90, 78, 0.7), rgba(94, 90, 78, 0.7)), url('https://images.unsplash.com/photo-1605218427368-35b0d06b86e4?auto=format&fit=crop&w=600&q=80');
     background-size: cover;
@@ -57,7 +57,7 @@ body {
 
 .section-title { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin-bottom: 15px; border-left: 4px solid var(--gold); padding-left: 10px; }
 
-/* Grid & Cards */
+/* --- SERVICE GRID --- */
 .services-grid { display: grid; gap: 15px; }
 .service-card { background: white; padding: 15px; border-radius: 10px; display: flex; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer; border: 1px solid #eee; transition: transform 0.2s; }
 .service-card:active { transform: scale(0.98); background-color: #f9f9f9; }
@@ -65,7 +65,7 @@ body {
 .service-card h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: var(--primary); font-weight: 700; }
 .service-card p { margin: 0; font-size: 0.9rem; color: #666; font-weight: 400; }
 
-/* Astrologers */
+/* --- ASTROLOGER CARDS --- */
 .profile-card { background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-top: 3px solid var(--primary); }
 .profile-header { display: flex; align-items: center; margin-bottom: 15px; }
 .profile-img { width: 60px; height: 60px; border-radius: 50%; background-color: #eee; background-size: cover; margin-right: 15px; }
@@ -74,7 +74,7 @@ body {
 .tags span { background: #f4f4f4; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; color: #555; }
 .book-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; margin-top: 15px; font-weight: bold; font-family: 'Noto Serif Malayalam', serif; cursor: pointer; }
 
-/* Rates Table */
+/* --- RATES TABLE --- */
 .rate-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 .rate-row { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid #eee; align-items: center; }
 .rate-row.highlight { background-color: #fffbea; }
@@ -82,10 +82,10 @@ body {
 .price { font-weight: bold; color: var(--primary); font-size: 1.1rem; }
 .note { font-size: 0.85rem; color: #777; margin-top: 10px; padding: 10px; background: #eef; border-radius: 5px; }
 
-/* About */
+/* --- ABOUT PAGE --- */
 .about-card { background: white; padding: 20px; border-radius: 10px; line-height: 1.8; }
 
-/* Nav & Float */
+/* --- NAVIGATION & FLOATING BUTTON --- */
 .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--nav-bg); display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 100; }
 .nav-item { text-decoration: none; background: none; border: none; display: flex; flex-direction: column; align-items: center; color: #999; cursor: pointer; font-family: sans-serif; }
 .nav-item.active { color: var(--primary); }
@@ -95,7 +95,7 @@ body {
 .float-wa { position: fixed; right: 20px; bottom: 85px; background: var(--whatsapp); width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 90; fill: white; width: 30px; }
 .wa-icon { width: 30px; height: 30px; fill: white; }
 
-/* --- ADVANCED CALENDAR STYLES (New) --- */
+/* --- ADVANCED CALENDAR STYLES --- */
 .calendar-controls {
     display: flex;
     justify-content: space-between;
@@ -128,7 +128,7 @@ body {
     font-family: 'Noto Serif Malayalam', serif;
 }
 
-/* This is the box for each day */
+/* The individual Date Box */
 .calendar-date {
     min-height: 60px; /* Taller to fit info */
     background-color: #fcfcfc;
@@ -159,5 +159,48 @@ body {
     text-align: right;
     color: #800000; /* Maroon */
     font-family: 'Noto Serif Malayalam', serif;
+    font-weight: 600;
+}
+
+/* --- FESTIVAL & EVENT STYLES --- */
+.event-indicator {
+    width: 6px;
+    height: 6px;
+    background-color: #d32f2f; /* Red */
+    border-radius: 50%;
+    margin-top: 2px;
+}
+
+.event-list-box {
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #e0d0b0;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+.event-item:last-child { border-bottom: none; }
+
+.event-date-badge {
+    background: var(--gold);
+    color: var(--primary);
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 15px;
+    font-family: sans-serif;
+    min-width: 30px;
+    text-align: center;
+}
+
+.event-name {
+    font-size: 1rem;
+    color: #333;
     font-weight: 600;
 }
