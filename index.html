@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Authentic Namboothiri Astrology from Kerala. Live Prasnam and Remedies.">
-    <title>Illam Jyothisham | Home</title>
+    <title>Jyothishi | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,10 +12,10 @@
 
     <header class="app-header">
         <a href="index.html" class="logo-container">
-            <h1>ഇല്ലം ജ്യോതിഷം</h1>
+            <h1>ജ്യോതിഷി</h1>
             <p>പാരമ്പര്യത്തിൻ്റെ വെളിച്ചം</p>
         </a>
-        <div class="header-icon">🕉️</div>
+        <div class="header-icon">ॐ</div>
     </header>
 
     <main class="content-wrapper">
@@ -113,23 +113,8 @@
     <script>
         const daysMalayalam = ["ഞായർ", "തിങ്കൾ", "ചൊവ്വ", "ബുധൻ", "വ്യാഴം", "വെള്ളി", "ശനി"];
 
-        // 1. Approximate Sunrise in Kerala (Kochi) Offset (Minutes added to 6:00 AM)
-        const sunriseOffsets = [
-            40, // Jan
-            35, // Feb
-            25, // Mar
-            10, // Apr
-            5,  // May
-            5,  // Jun
-            10, // Jul
-            15, // Aug
-            15, // Sep
-            15, // Oct
-            20, // Nov
-            35  // Dec
-        ];
+        const sunriseOffsets = [40, 35, 25, 10, 5, 5, 10, 15, 15, 15, 20, 35];
 
-        // 2. Hours after Sunrise for Start Time [Rahu, Gulika, Nalla Start, Nalla End]
         const timingsMap = [
             [10.5, 9.0, 3.5, 6.0],  // Sun
             [1.5, 7.5, 10.0, 12.0], // Mon
@@ -140,30 +125,26 @@
             [3.0, 0.0, 2.5, 5.0]    // Sat
         ];
 
-        // 3. Malayalam Month Logic (Sankranti Transitions)
         const sankrantiData = [
-            { cutoff: 14, name: "ധനു", next: "മകരം", offset: 17 },     // Jan
-            { cutoff: 13, name: "മകരം", next: "കുംഭം", offset: 0 },     // Feb
-            { cutoff: 14, name: "കുംഭം", next: "മീനം", offset: 0 },     // Mar
-            { cutoff: 14, name: "മീനം", next: "മേടം", offset: 0 },      // Apr
-            { cutoff: 15, name: "മേടം", next: "ഇടവം", offset: 0 },      // May
-            { cutoff: 15, name: "ഇടവം", next: "മിഥുനം", offset: 0 },    // Jun
-            { cutoff: 16, name: "മിഥുനം", next: "കർക്കടകം", offset: 0 },// Jul
-            { cutoff: 17, name: "കർക്കടകം", next: "ചിങ്ങം", offset: 0 },// Aug
-            { cutoff: 17, name: "ചിങ്ങം", next: "കന്നി", offset: 0 },   // Sep
-            { cutoff: 17, name: "കന്നി", next: "തുലാം", offset: 0 },    // Oct
-            { cutoff: 16, name: "തുലാം", next: "വൃശ്ചികം", offset: 0 }, // Nov
-            { cutoff: 16, name: "വൃശ്ചികം", next: "ധനു", offset: 0 }    // Dec
+            { cutoff: 14, name: "ധനു", next: "മകരം", offset: 17 },     
+            { cutoff: 13, name: "മകരം", next: "കുംഭം", offset: 0 },     
+            { cutoff: 14, name: "കുംഭം", next: "മീനം", offset: 0 },     
+            { cutoff: 14, name: "മീനം", next: "മേടം", offset: 0 },      
+            { cutoff: 15, name: "മേടം", next: "ഇടവം", offset: 0 },      
+            { cutoff: 15, name: "ഇടവം", next: "മിഥുനം", offset: 0 },    
+            { cutoff: 16, name: "മിഥുനം", next: "കർക്കടകം", offset: 0 },
+            { cutoff: 17, name: "കർക്കടകം", next: "ചിങ്ങം", offset: 0 },
+            { cutoff: 17, name: "ചിങ്ങം", next: "കന്നി", offset: 0 },   
+            { cutoff: 17, name: "കന്നി", next: "തുലാം", offset: 0 },    
+            { cutoff: 16, name: "തുലാം", next: "വൃശ്ചികം", offset: 0 }, 
+            { cutoff: 16, name: "വൃശ്ചികം", next: "ധനു", offset: 0 }    
         ];
 
         function formatTime(decimalTime) {
             let hours = Math.floor(decimalTime);
             let minutes = Math.floor((decimalTime - hours) * 60);
             let period = "AM";
-            if (hours >= 12) {
-                period = "PM";
-                if (hours > 12) hours -= 12;
-            }
+            if (hours >= 12) { period = "PM"; if (hours > 12) hours -= 12; }
             if (hours === 0) hours = 12;
             let minStr = minutes < 10 ? "0" + minutes : minutes;
             return `${hours}:${minStr} ${period}`;
@@ -181,26 +162,20 @@
             const m = date.getMonth();
             const y = date.getFullYear();
 
-            // --- 1. Header Info (English) ---
             document.getElementById("p-day").innerText = daysMalayalam[dayIndex];
             const options = { year: 'numeric', month: 'short', day: 'numeric' };
             document.getElementById("p-date").innerText = date.toLocaleDateString('en-GB', options);
 
-            // --- 2. Header Info (Malayalam Date) ---
             const malRule = sankrantiData[m];
             let malDateString = "";
             let malYear = y - 825; 
-            // Correction for Kollavarsham split (happens in Chingam/Aug)
-            if (m < 7 || (m === 7 && d < 17)) { malYear = y - 825; } 
-            else { malYear = y - 824; } // Approximate logic
+            if (m < 7 || (m === 7 && d < 17)) { malYear = y - 825; } else { malYear = y - 824; }
 
             if (d < malRule.cutoff) {
-                // Before Sankranti (Use previous month logic)
                 let dateNum = malRule.offset + d;
-                if(m === 0) dateNum = 16 + d; // Special logic for Jan/Dhanu
+                if(m === 0) dateNum = 16 + d;
                 malDateString = `${malRule.name} ${dateNum}`;
             } else {
-                // After Sankranti (Next month)
                 let dateNum = d - malRule.cutoff + 1;
                 malDateString = `${malRule.next} ${dateNum}`;
             }
@@ -208,16 +183,13 @@
             document.getElementById("m-date").innerText = malDateString;
             document.getElementById("m-year").innerText = `കൊല്ലവർഷം ${malYear}`;
 
-            // --- 3. Timings (Kerala Sunrise Logic) ---
             const dailyOffset = sunriseOffsets[m];
             const rule = timingsMap[dayIndex]; 
 
             let rahuStart = calculateTime(6.0 + rule[0], dailyOffset);
             let rahuEnd = rahuStart + 1.5;
-
             let gulikaStart = calculateTime(6.0 + rule[1], dailyOffset);
             let gulikaEnd = gulikaStart + 1.5;
-
             let nallaStart = calculateTime(6.0 + rule[2], dailyOffset);
             let nallaEnd = calculateTime(6.0 + rule[3], dailyOffset);
 
@@ -226,7 +198,6 @@
             document.getElementById("t-nalla").innerText = `${formatTime(nallaStart)} - ${formatTime(nallaEnd)}`;
         }
 
-        // Run on Load
         setPanchangam();
     </script>
 </body>
