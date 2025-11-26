@@ -1,17 +1,16 @@
 :root {
-    /* Exact Colors from your Reference Image */
     --bg-color: #fcf8f2;       /* Soft Cream Background */
     --primary: #5d1916;        /* Deep Kerala Maroon */
     --gold: #d4af37;           /* Classic Gold */
-    --text-dark: #2d2d2d;      /* Dark Grey Text */
-    --text-light: #666666;     /* Light Grey Text */
+    --text-dark: #2d2d2d;      /* Dark Grey */
+    --text-light: #666666;     /* Light Grey */
     --white: #ffffff;
     
     /* Service Card Colors */
     --card-maroon: #6a2e2e;
     --card-green: #2e6a4f;
     --card-mustard: #e6a650;
-    --card-blue: #4a6fa5;
+    --card-teal: #2c5e63;      /* New Color for Vasthu */
 
     --whatsapp: #25D366;
 }
@@ -22,7 +21,6 @@ body {
     background-color: var(--bg-color);
     color: var(--text-dark);
     padding-bottom: 90px; /* Space for bottom nav */
-    -webkit-font-smoothing: antialiased;
 }
 
 /* --- HEADER --- */
@@ -31,22 +29,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: transparent; /* Transparent header like image */
+    background: var(--bg-color);
     position: sticky;
     top: 0;
     z-index: 50;
-    backdrop-filter: blur(10px); /* Frosted glass effect */
 }
 
 .logo-row {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    text-decoration: none;
 }
 
 .logo-img {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--primary);
@@ -54,20 +52,17 @@ body {
 
 .logo-text h1 {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: var(--primary);
     font-weight: 700;
-    letter-spacing: -0.5px;
+    line-height: 1;
 }
 
-.profile-icon {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-color: #eee;
-    background-image: url('https://cdn-icons-png.flaticon.com/512/3135/3135715.png'); /* User Icon */
-    background-size: cover;
-    border: 1px solid #ddd;
+.header-om {
+    font-size: 2.2rem;
+    color: var(--text-dark);
+    font-weight: bold;
+    line-height: 1;
 }
 
 /* --- MAIN CONTENT --- */
@@ -97,51 +92,64 @@ body {
 .parchment-card {
     background-color: #fffbf0;
     border: 1px solid #eaddc5;
-    border-radius: 12px;
-    padding: 6px; /* Outer padding for the double border effect */
+    border-radius: 16px;
+    padding: 6px; /* Space for double border effect */
     margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(165, 134, 88, 0.15);
+    box-shadow: 0 4px 15px rgba(165, 134, 88, 0.1);
 }
 
 .parchment-inner {
-    border: 2px solid var(--gold); /* The Gold Border */
-    border-radius: 8px;
+    border: 1px solid var(--gold);
+    border-radius: 12px;
     padding: 20px;
     text-align: center;
     position: relative;
+    background: white;
 }
 
-/* Corner Decorations (CSS Shapes) */
-.parchment-inner::before, .parchment-inner::after {
+/* Decorative Stars in Corners */
+.parchment-inner::before {
     content: '✦';
     position: absolute;
+    top: 8px; left: 8px;
     color: var(--gold);
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
-.parchment-inner::before { top: 5px; left: 5px; }
-.parchment-inner::after { bottom: 5px; right: 5px; }
+.parchment-inner::after {
+    content: '✦';
+    position: absolute;
+    bottom: 8px; right: 8px;
+    color: var(--gold);
+    font-size: 1rem;
+}
 
 .panchangam-title {
-    font-size: 0.9rem;
-    font-weight: bold;
+    font-size: 0.85rem;
     color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .panchangam-main {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.panchangam-sub {
-    font-size: 0.95rem;
+.panchangam-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    font-size: 0.9rem;
     color: var(--text-dark);
-    line-height: 1.6;
-    font-weight: 500;
+    margin-bottom: 5px;
+}
+.time-highlight {
+    font-weight: 700;
+    font-family: sans-serif;
+}
+.nalla-neram {
+    color: var(--card-green);
 }
 
 /* --- SECTION TITLE --- */
@@ -152,22 +160,22 @@ body {
     margin-bottom: 15px;
 }
 
-/* --- COLORED GRID (The 3 Boxes) --- */
+/* --- COLORED GRID (2x2 Layout) --- */
 .service-grid-modern {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* 3 Equal Columns */
-    gap: 12px;
+    grid-template-columns: 1fr 1fr; /* 2 Columns */
+    gap: 15px;
     margin-bottom: 30px;
 }
 
 .grid-card {
-    aspect-ratio: 1; /* Makes them perfect squares */
-    border-radius: 12px;
+    aspect-ratio: 1.1; /* Slightly wider than square */
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s;
@@ -180,51 +188,26 @@ body {
 .grid-card.maroon { background-color: var(--card-maroon); }
 .grid-card.green { background-color: var(--card-green); }
 .grid-card.mustard { background-color: var(--card-mustard); }
-.grid-card.blue { background-color: var(--card-blue); }
+.grid-card.teal { background-color: var(--card-teal); }
 
 .grid-icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .grid-label {
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.4;
 }
 
-/* --- SECONDARY LIST (For extra items) --- */
-.list-card {
-    background: white;
-    padding: 15px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-    cursor: pointer;
-}
-.list-icon {
-    width: 40px;
-    height: 40px;
-    background: #f5f5f5;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    margin-right: 15px;
-}
-.list-info h4 { margin: 0; font-size: 1rem; color: var(--text-dark); }
-.list-info p { margin: 0; font-size: 0.8rem; color: var(--text-light); }
-
-/* --- BOTTOM NAV (Minimalist) --- */
+/* --- BOTTOM NAV --- */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #fffbf0; /* Light cream to match image footer */
+    background: #fffbf0;
     display: flex;
     justify-content: space-around;
     padding: 12px 0;
@@ -243,7 +226,7 @@ body {
     border: none;
 }
 
-.nav-item.active { color: var(--card-mustard); } /* Active color matches image */
+.nav-item.active { color: var(--card-mustard); }
 .nav-item .icon { font-size: 1.4rem; margin-bottom: 4px; }
 .nav-item .label { font-size: 0.65rem; font-weight: 600; }
 
@@ -256,19 +239,40 @@ body {
 }
 .wa-icon { width: 30px; height: 30px; fill: white; }
 
-/* --- OTHER PAGE STYLES (Keeping them compatible) --- */
-.profile-card, .time-card, .offering-card, .tip-card {
-    background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+/* --- INNER PAGES --- */
+.profile-card, .matching-card, .tip-card, .offering-card, .time-card, .about-card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
 }
-.profile-header, .time-header, .offering-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.profile-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-.profile-info h3, .time-title, .offering-header h3 { margin: 0; font-size: 1rem; font-weight: 700; color: var(--primary); }
-.book-btn { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 6px; width: 100%; font-weight: bold; margin-top: 10px; }
+.matching-card { border: 1px solid var(--gold); }
+.profile-header, .offering-header, .time-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.profile-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+.section-title { 
+    font-size: 1.1rem; font-weight: 700; color: var(--primary); 
+    margin: 25px 0 15px 0; border-left: 4px solid var(--gold); padding-left: 10px; 
+}
+/* Dropdowns & Buttons */
+.star-select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; font-size: 1rem; color: var(--text-dark); }
+.match-btn, .book-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 14px; border-radius: 8px; margin-top: 15px; font-weight: bold; font-size: 1rem; }
+.star-select-group { margin-bottom: 15px; }
+.star-label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; }
 
-/* Calendar Grid Fixes */
-.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; background: white; padding: 5px; border-radius: 10px; }
-.calendar-date { min-height: 50px; background-color: #fcfcfc; border: 1px solid #eee; border-radius: 4px; padding: 2px; display: flex; flex-direction: column; justify-content: space-between; }
-.day-name { font-size: 0.65rem; text-align: center; font-weight: bold; color: var(--primary); }
-.eng-date { font-size: 0.85rem; font-weight: bold; }
-.mal-date { font-size: 0.5rem; text-align: right; color: var(--primary); font-weight: 600; }
+/* Calendar */
+.calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: white; padding: 15px; border-radius: 12px; border: 1px solid var(--gold); }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; background: white; padding: 10px; border-radius: 12px; }
+.calendar-date { min-height: 50px; background-color: #fcfcfc; border: 1px solid #eee; border-radius: 6px; padding: 4px; display: flex; flex-direction: column; justify-content: space-between; }
+.calendar-date.sunday { background-color: #fff0f0; border-color: #ffcccc; }
+.calendar-date.today { border: 2px solid var(--gold); background-color: #fffbea; }
+.day-name { text-align: center; font-size: 0.75rem; font-weight: bold; color: var(--primary); padding-bottom: 8px; }
+.eng-date { font-size: 0.9rem; font-weight: bold; }
+.mal-date { font-size: 0.6rem; text-align: right; color: var(--primary); font-weight: 600; }
+
+/* Mobile Fixes */
+@media (max-width: 400px) {
+    .logo-container h1 { font-size: 1.3rem; }
+    .panchangam-main { font-size: 1.5rem; }
+}
