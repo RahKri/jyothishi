@@ -25,6 +25,7 @@
             <a href="astrologers.html" class="primary-btn">പണ്ഡിതരെ കാണുക</a>
         </div>
 
+        <!-- 1. DAILY PANCHANGAM WIDGET -->
         <div class="panchangam-card">
             <div class="panchangam-header">
                 <div>
@@ -50,36 +51,19 @@
             </div>
         </div>
 
+        <!-- 2. MANTRA OF THE DAY -->
         <div class="mantra-card">
             <div class="mantra-title">ഇന്നത്തെ മന്ത്രം (Mantra of the Day)</div>
             <div id="daily-mantra" class="mantra-text">...</div>
             <div id="mantra-desc" class="mantra-meaning">...</div>
         </div>
 
-        <div id="match-widget" class="matching-card">
-            <div class="matching-title">💍 വിവാഹ പൊരുത്തം (Matching)</div>
-            
-            <div class="star-select-group">
-                <label class="star-label">ആൺ നക്ഷത്രം (Boy's Star)</label>
-                <select id="boyStar" class="star-select">
-                    <option value="" disabled selected>Select Star</option>
-                    </select>
-            </div>
-
-            <div class="star-select-group">
-                <label class="star-label">പെൺ നക്ഷത്രം (Girl's Star)</label>
-                <select id="girlStar" class="star-select">
-                    <option value="" disabled selected>Select Star</option>
-                    </select>
-            </div>
-
-            <button class="match-btn" onclick="sendMatchingRequest()">പൊരുത്തം പരിശോധിക്കാൻ</button>
-        </div>
-
         <div class="section-title">ഞങ്ങളുടെ സേവനങ്ങൾ</div>
 
+        <!-- SERVICES GRID -->
         <div class="services-grid">
             
+            <!-- Service 1 -->
             <div class="service-card" onclick="window.location.href='prasnam.html'">
                 <div class="icon">🐚</div>
                 <div>
@@ -88,6 +72,7 @@
                 </div>
             </div>
 
+            <!-- Service 2 -->
             <div class="service-card" onclick="window.location.href='horoscope.html'">
                 <div class="icon">📜</div>
                 <div>
@@ -96,6 +81,7 @@
                 </div>
             </div>
 
+            <!-- Service 3 -->
             <div class="service-card" onclick="window.location.href='muhurtham.html'">
                 <div class="icon">💍</div>
                 <div>
@@ -104,8 +90,9 @@
                 </div>
             </div>
 
-            <div class="service-card" onclick="document.getElementById('match-widget').scrollIntoView({behavior: 'smooth'})">
-                <div class="icon">❤️</div>
+            <!-- Service 4: MATCHING (Now links to new page) -->
+            <div class="service-card" onclick="window.location.href='matchmaking.html'">
+                <div class="icon">🤝</div> <!-- Handshake/Knot icon -->
                 <div>
                     <h3>വിവാഹ പൊരുത്തം</h3>
                     <p>നക്ഷത്ര പൊരുത്തം നോക്കാൻ</p>
@@ -139,6 +126,7 @@
 
     <script src="script.js"></script>
 
+    <!-- PAGE LOGIC -->
     <script>
         // 1. PANCHANGAM LOGIC
         const daysMalayalam = ["ഞായർ", "തിങ്കൾ", "ചൊവ്വ", "ബുധൻ", "വ്യാഴം", "വെള്ളി", "ശനി"];
@@ -186,39 +174,10 @@
             document.getElementById("mantra-desc").innerText = mantras[i].desc;
         }
 
-        // 3. STAR MATCHING LOGIC
-        const nakshatras = [
-            "അശ്വതി (Aswathy)", "ഭരണി (Bharani)", "കാർത്തിക (Karthika)", "രോഹിണി (Rohini)", 
-            "മകയിരം (Makayiram)", "തിരുവാതിര (Thiruvathira)", "പുണർതം (Punartham)", "പൂയം (Pooyam)", "ആയില്യം (Ayilyam)",
-            "മകം (Makam)", "പൂരം (Pooram)", "ഉത്രം (Uthram)", "അത്തം (Atham)", 
-            "ചിത്തിര (Chithira)", "ചോതി (Chothi)", "വിശാഖം (Vishakham)", "അനിഴം (Anizham)", "തൃക്കേട്ട (Thrikketta)",
-            "മൂലം (Moolam)", "പൂരാടം (Pooradam)", "ഉത്രാടം (Uthradam)", "തിരുവോണം (Thiruvonam)", 
-            "അവിട്ടം (Avittam)", "ചതയം (Chathayam)", "പൂരുരുട്ടാതി (Pooruruttathi)", "ഉത്രട്ടാതി (Uthrattathi)", "രേവതി (Revathi)"
-        ];
-
-        function populateStars() {
-            const boySelect = document.getElementById("boyStar");
-            const girlSelect = document.getElementById("girlStar");
-            nakshatras.forEach(star => {
-                let option1 = document.createElement("option");
-                option1.text = star; option1.value = star; boySelect.add(option1);
-                let option2 = document.createElement("option");
-                option2.text = star; option2.value = star; girlSelect.add(option2);
-            });
-        }
-
-        function sendMatchingRequest() {
-            const boy = document.getElementById("boyStar").value;
-            const girl = document.getElementById("girlStar").value;
-            if(boy === "" || girl === "") { alert("Please select both stars"); return; }
-            const msg = `നമസ്കാരം, വിവാഹ പൊരുത്തം അറിയാൻ ആഗ്രഹിക്കുന്നു.\nആൺ നക്ഷത്രം: ${boy}\nപെൺ നക്ഷത്രം: ${girl}`;
-            contactWhatsApp(msg);
-        }
-
         // Initialize
         setPanchangam();
         setMantra();
-        populateStars();
     </script>
 </body>
 </html>
+
