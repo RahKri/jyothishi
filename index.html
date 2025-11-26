@@ -31,13 +31,11 @@
                     <div id="p-day" class="today-day">...</div>
                     <div id="p-date" class="today-date">...</div>
                 </div>
-                
                 <div class="malayalam-date-box">
                     <div id="m-date" class="mal-month">...</div>
                     <div id="m-year" class="mal-year">...</div>
                 </div>
             </div>
-            
             <div class="time-row">
                 <span class="time-label rahu">രാഹുകാലം:</span>
                 <span id="t-rahu" class="time-value rahu">...</span>
@@ -58,9 +56,30 @@
             <div id="mantra-desc" class="mantra-meaning">...</div>
         </div>
 
+        <div id="match-widget" class="matching-card">
+            <div class="matching-title">💍 വിവാഹ പൊരുത്തം (Matching)</div>
+            
+            <div class="star-select-group">
+                <label class="star-label">ആൺ നക്ഷത്രം (Boy's Star)</label>
+                <select id="boyStar" class="star-select">
+                    <option value="" disabled selected>Select Star</option>
+                    </select>
+            </div>
+
+            <div class="star-select-group">
+                <label class="star-label">പെൺ നക്ഷത്രം (Girl's Star)</label>
+                <select id="girlStar" class="star-select">
+                    <option value="" disabled selected>Select Star</option>
+                    </select>
+            </div>
+
+            <button class="match-btn" onclick="sendMatchingRequest()">പൊരുത്തം പരിശോധിക്കാൻ</button>
+        </div>
+
         <div class="section-title">ഞങ്ങളുടെ സേവനങ്ങൾ</div>
 
         <div class="services-grid">
+            
             <div class="service-card" onclick="window.location.href='prasnam.html'">
                 <div class="icon">🐚</div>
                 <div>
@@ -84,6 +103,15 @@
                     <p>വിവാഹം, ഗൃഹപ്രവേശം</p>
                 </div>
             </div>
+
+            <div class="service-card" onclick="document.getElementById('match-widget').scrollIntoView({behavior: 'smooth'})">
+                <div class="icon">❤️</div>
+                <div>
+                    <h3>വിവാഹ പൊരുത്തം</h3>
+                    <p>നക്ഷത്ര പൊരുത്തം നോക്കാൻ</p>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -93,104 +121,56 @@
 
     <nav class="bottom-nav">
         <a href="index.html" class="nav-item active">
-            <span class="icon">🏠</span>
-            <span class="label">Home</span>
+            <span class="icon">🏠</span><span class="label">Home</span>
         </a>
         <a href="astrologers.html" class="nav-item">
-            <span class="icon">👨‍🎓</span>
-            <span class="label">ഗുരു</span>
+            <span class="icon">👨‍🎓</span><span class="label">ഗുരു</span>
         </a>
         <a href="calendar.html" class="nav-item">
-            <span class="icon">📅</span>
-            <span class="label">കലണ്ടർ</span>
+            <span class="icon">📅</span><span class="label">കലണ്ടർ</span>
         </a>
         <a href="rates.html" class="nav-item">
-            <span class="icon">₹</span>
-            <span class="label">നിരക്കുകൾ</span>
+            <span class="icon">₹</span><span class="label">നിരക്കുകൾ</span>
         </a>
         <a href="about.html" class="nav-item">
-            <span class="icon">ℹ️</span>
-            <span class="label">About</span>
+            <span class="icon">ℹ️</span><span class="label">About</span>
         </a>
     </nav>
 
     <script src="script.js"></script>
 
     <script>
-        // --- PANCHANGAM LOGIC ---
+        // 1. PANCHANGAM LOGIC
         const daysMalayalam = ["ഞായർ", "തിങ്കൾ", "ചൊവ്വ", "ബുധൻ", "വ്യാഴം", "വെള്ളി", "ശനി"];
         const sunriseOffsets = [40, 35, 25, 10, 5, 5, 10, 15, 15, 15, 20, 35];
-        const timingsMap = [
-            [10.5, 9.0, 3.5, 6.0], [1.5, 7.5, 10.0, 12.0], [9.0, 6.0, 1.5, 4.0],
-            [6.0, 4.5, 8.0, 10.0], [7.5, 3.0, 4.0, 6.0], [4.5, 1.5, 11.0, 13.0], [3.0, 0.0, 2.5, 5.0]
-        ];
-        const sankrantiData = [
-            { cutoff: 14, name: "ധനു", next: "മകരം", offset: 17 }, { cutoff: 13, name: "മകരം", next: "കുംഭം", offset: 0 },
-            { cutoff: 14, name: "കുംഭം", next: "മീനം", offset: 0 }, { cutoff: 14, name: "മീനം", next: "മേടം", offset: 0 },
-            { cutoff: 15, name: "മേടം", next: "ഇടവം", offset: 0 }, { cutoff: 15, name: "ഇടവം", next: "മിഥുനം", offset: 0 },
-            { cutoff: 16, name: "മിഥുനം", next: "കർക്കടകം", offset: 0 }, { cutoff: 17, name: "കർക്കടകം", next: "ചിങ്ങം", offset: 0 },
-            { cutoff: 17, name: "ചിങ്ങം", next: "കന്നി", offset: 0 }, { cutoff: 17, name: "കന്നി", next: "തുലാം", offset: 0 },
-            { cutoff: 16, name: "തുലാം", next: "വൃശ്ചികം", offset: 0 }, { cutoff: 16, name: "വൃശ്ചികം", next: "ധനു", offset: 0 }
-        ];
+        const timingsMap = [[10.5, 9.0, 3.5, 6.0], [1.5, 7.5, 10.0, 12.0], [9.0, 6.0, 1.5, 4.0], [6.0, 4.5, 8.0, 10.0], [7.5, 3.0, 4.0, 6.0], [4.5, 1.5, 11.0, 13.0], [3.0, 0.0, 2.5, 5.0]];
+        const sankrantiData = [{cutoff: 14, name: "ധനു", next: "മകരം", offset: 17}, {cutoff: 13, name: "മകരം", next: "കുംഭം", offset: 0}, {cutoff: 14, name: "കുംഭം", next: "മീനം", offset: 0}, {cutoff: 14, name: "മീനം", next: "മേടം", offset: 0}, {cutoff: 15, name: "മേടം", next: "ഇടവം", offset: 0}, {cutoff: 15, name: "ഇടവം", next: "മിഥുനം", offset: 0}, {cutoff: 16, name: "മിഥുനം", next: "കർക്കടകം", offset: 0}, {cutoff: 17, name: "കർക്കടകം", next: "ചിങ്ങം", offset: 0}, {cutoff: 17, name: "ചിങ്ങം", next: "കന്നി", offset: 0}, {cutoff: 17, name: "കന്നി", next: "തുലാം", offset: 0}, {cutoff: 16, name: "തുലാം", next: "വൃശ്ചികം", offset: 0}, {cutoff: 16, name: "വൃശ്ചികം", next: "ധനു", offset: 0}];
 
-        function formatTime(decimalTime) {
-            let hours = Math.floor(decimalTime);
-            let minutes = Math.floor((decimalTime - hours) * 60);
-            let period = "AM";
-            if (hours >= 12) { period = "PM"; if (hours > 12) hours -= 12; }
-            if (hours === 0) hours = 12;
-            let minStr = minutes < 10 ? "0" + minutes : minutes;
-            return `${hours}:${minStr} ${period}`;
-        }
-
-        function calculateTime(baseHour, offsetMinutes) {
-            return ((baseHour * 60) + offsetMinutes) / 60;
-        }
+        function formatTime(d) { let h=Math.floor(d), m=Math.floor((d-h)*60), p="AM"; if(h>=12){p="PM";if(h>12)h-=12;} if(h===0)h=12; return `${h}:${m<10?"0"+m:m} ${p}`; }
+        function calculateTime(b,o) { return ((b*60)+o)/60; }
 
         function setPanchangam() {
             const date = new Date();
-            const dayIndex = date.getDay(); 
-            const d = date.getDate();
-            const m = date.getMonth();
-            const y = date.getFullYear();
-
+            const d = date.getDate(), m = date.getMonth(), y = date.getFullYear(), dayIndex = date.getDay();
             document.getElementById("p-day").innerText = daysMalayalam[dayIndex];
-            const options = { year: 'numeric', month: 'short', day: 'numeric' };
-            document.getElementById("p-date").innerText = date.toLocaleDateString('en-GB', options);
+            document.getElementById("p-date").innerText = date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
 
             const malRule = sankrantiData[m];
-            let malDateString = "";
-            let malYear = y - 825; 
-            if (m < 7 || (m === 7 && d < 17)) { malYear = y - 825; } else { malYear = y - 824; }
-
-            if (d < malRule.cutoff) {
-                let dateNum = malRule.offset + d;
-                if(m === 0) dateNum = 16 + d;
-                malDateString = `${malRule.name} ${dateNum}`;
-            } else {
-                let dateNum = d - malRule.cutoff + 1;
-                malDateString = `${malRule.next} ${dateNum}`;
-            }
+            let malYear = (m < 7 || (m === 7 && d < 17)) ? y - 825 : y - 824;
+            let malDateString = (d < malRule.cutoff) ? `${malRule.name} ${malRule.offset + d}` : `${malRule.next} ${d - malRule.cutoff + 1}`;
+            if(m===0 && d < 14) malDateString = `ധനു ${16+d}`; 
 
             document.getElementById("m-date").innerText = malDateString;
             document.getElementById("m-year").innerText = `കൊല്ലവർഷം ${malYear}`;
 
-            const dailyOffset = sunriseOffsets[m];
-            const rule = timingsMap[dayIndex]; 
-
-            let rahuStart = calculateTime(6.0 + rule[0], dailyOffset);
-            let rahuEnd = rahuStart + 1.5;
-            let gulikaStart = calculateTime(6.0 + rule[1], dailyOffset);
-            let gulikaEnd = gulikaStart + 1.5;
-            let nallaStart = calculateTime(6.0 + rule[2], dailyOffset);
-            let nallaEnd = calculateTime(6.0 + rule[3], dailyOffset);
-
-            document.getElementById("t-rahu").innerText = `${formatTime(rahuStart)} - ${formatTime(rahuEnd)}`;
-            document.getElementById("t-gulika").innerText = `${formatTime(gulikaStart)} - ${formatTime(gulikaEnd)}`;
-            document.getElementById("t-nalla").innerText = `${formatTime(nallaStart)} - ${formatTime(nallaEnd)}`;
+            const offset = sunriseOffsets[m];
+            const r = timingsMap[dayIndex];
+            document.getElementById("t-rahu").innerText = `${formatTime(calculateTime(6.0+r[0], offset))} - ${formatTime(calculateTime(6.0+r[0], offset)+1.5)}`;
+            document.getElementById("t-gulika").innerText = `${formatTime(calculateTime(6.0+r[1], offset))} - ${formatTime(calculateTime(6.0+r[1], offset)+1.5)}`;
+            document.getElementById("t-nalla").innerText = `${formatTime(calculateTime(6.0+r[2], offset))} - ${formatTime(calculateTime(6.0+r[3], offset))}`;
         }
 
-        // --- MANTRA LOGIC ---
+        // 2. MANTRA LOGIC
         const mantras = [
             { text: "ഓം ആദിത്യായ നമ:", desc: "സൂര്യദേവനെ പ്രാർത്ഥിക്കാൻ" },
             { text: "ഓം നമ: ശിവായ", desc: "ശിവപ്രീതിക്കായി" },
@@ -200,17 +180,45 @@
             { text: "ഓം മഹാലക്ഷ്മ്യൈ ച വിദ്മഹേ", desc: "ഐശ്വര്യലബ്ധിക്ക്" },
             { text: "സ്വാമിയേ ശരണമയ്യപ്പാ", desc: "ശാസ്താവ് / ശനി ദോഷ പരിഹാരം" }
         ];
-
         function setMantra() {
-            const dayIndex = new Date().getDay();
-            const todayMantra = mantras[dayIndex];
-            document.getElementById("daily-mantra").innerText = todayMantra.text;
-            document.getElementById("mantra-desc").innerText = todayMantra.desc;
+            const i = new Date().getDay();
+            document.getElementById("daily-mantra").innerText = mantras[i].text;
+            document.getElementById("mantra-desc").innerText = mantras[i].desc;
         }
 
-        // Run both
+        // 3. STAR MATCHING LOGIC
+        const nakshatras = [
+            "അശ്വതി (Aswathy)", "ഭരണി (Bharani)", "കാർത്തിക (Karthika)", "രോഹിണി (Rohini)", 
+            "മകയിരം (Makayiram)", "തിരുവാതിര (Thiruvathira)", "പുണർതം (Punartham)", "പൂയം (Pooyam)", "ആയില്യം (Ayilyam)",
+            "മകം (Makam)", "പൂരം (Pooram)", "ഉത്രം (Uthram)", "അത്തം (Atham)", 
+            "ചിത്തിര (Chithira)", "ചോതി (Chothi)", "വിശാഖം (Vishakham)", "അനിഴം (Anizham)", "തൃക്കേട്ട (Thrikketta)",
+            "മൂലം (Moolam)", "പൂരാടം (Pooradam)", "ഉത്രാടം (Uthradam)", "തിരുവോണം (Thiruvonam)", 
+            "അവിട്ടം (Avittam)", "ചതയം (Chathayam)", "പൂരുരുട്ടാതി (Pooruruttathi)", "ഉത്രട്ടാതി (Uthrattathi)", "രേവതി (Revathi)"
+        ];
+
+        function populateStars() {
+            const boySelect = document.getElementById("boyStar");
+            const girlSelect = document.getElementById("girlStar");
+            nakshatras.forEach(star => {
+                let option1 = document.createElement("option");
+                option1.text = star; option1.value = star; boySelect.add(option1);
+                let option2 = document.createElement("option");
+                option2.text = star; option2.value = star; girlSelect.add(option2);
+            });
+        }
+
+        function sendMatchingRequest() {
+            const boy = document.getElementById("boyStar").value;
+            const girl = document.getElementById("girlStar").value;
+            if(boy === "" || girl === "") { alert("Please select both stars"); return; }
+            const msg = `നമസ്കാരം, വിവാഹ പൊരുത്തം അറിയാൻ ആഗ്രഹിക്കുന്നു.\nആൺ നക്ഷത്രം: ${boy}\nപെൺ നക്ഷത്രം: ${girl}`;
+            contactWhatsApp(msg);
+        }
+
+        // Initialize
         setPanchangam();
         setMantra();
+        populateStars();
     </script>
 </body>
 </html>
