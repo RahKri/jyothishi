@@ -31,9 +31,34 @@ body {
     top: 0;
     z-index: 50;
 }
-.logo-container { text-decoration: none; }
-.logo-container h1 { margin: 0; font-size: 1.8rem; color: var(--primary); font-weight: 700; }
-.logo-container p { margin: 0; font-size: 0.8rem; color: #666; }
+.logo-container { 
+    text-decoration: none; 
+    display: flex;
+    flex-direction: column;
+}
+.logo-row {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between leaf and text */
+}
+.logo-leaf {
+    width: 24px;
+    height: 24px;
+    fill: var(--primary); /* Matches the text color */
+}
+.logo-container h1 { 
+    margin: 0; 
+    font-size: 1.8rem; 
+    color: var(--primary); 
+    font-weight: 700; 
+    line-height: 1;
+}
+.logo-container p { 
+    margin: 0; 
+    font-size: 0.8rem; 
+    color: #666; 
+    margin-top: 4px;
+}
 
 /* Black Om Symbol */
 .header-icon { 
@@ -46,23 +71,16 @@ body {
 /* --- MAIN LAYOUT --- */
 .content-wrapper { padding: 20px; max-width: 600px; margin: 0 auto; }
 
-/* --- HERO CARD --- */
-.hero-card {
-    background: linear-gradient(rgba(94, 90, 78, 0.7), rgba(94, 90, 78, 0.7)), url('https://images.unsplash.com/photo-1605218427368-35b0d06b86e4?auto=format&fit=crop&w=600&q=80');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 40px 20px;
-    border-radius: 12px;
-    text-align: center;
-    margin-bottom: 25px;
-    border: 1px solid var(--gold);
+/* --- SECTION TITLES --- */
+.section-title { 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: var(--primary); 
+    margin-bottom: 15px; 
+    border-left: 4px solid var(--gold); 
+    padding-left: 10px; 
+    margin-top: 20px;
 }
-.hero-card h2 { margin-top: 0; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-.hero-card p { font-weight: 400; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-.primary-btn { display: inline-block; text-decoration: none; background: var(--gold); border: none; padding: 10px 20px; color: var(--primary); font-weight: bold; border-radius: 20px; cursor: pointer; margin-top: 10px; font-family: 'Noto Serif Malayalam', serif; }
-
-.section-title { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin-bottom: 15px; border-left: 4px solid var(--gold); padding-left: 10px; }
 
 /* --- DAILY PANCHANGAM WIDGET --- */
 .panchangam-card {
@@ -70,7 +88,7 @@ body {
     border: 1px solid #d4af37; /* Gold border */
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 .panchangam-header {
@@ -149,6 +167,7 @@ body {
 
 /* --- ABOUT PAGE --- */
 .about-card { background: white; padding: 20px; border-radius: 10px; line-height: 1.8; }
+.book-btn-small { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-top: 10px; width: 100%; font-family: 'Noto Serif Malayalam', serif; }
 
 /* --- NAVIGATION & FLOATING BUTTON --- */
 .bottom-nav {
@@ -174,7 +193,7 @@ body {
     color: #999;
     cursor: pointer;
     font-family: sans-serif;
-    flex: 1; /* Forces equal width */
+    flex: 1; 
 }
 
 .nav-item.active { color: var(--primary); }
@@ -200,7 +219,7 @@ body {
 
 .wa-icon { width: 30px; height: 30px; fill: white; }
 
-/* --- CALENDAR STYLES --- */
+/* --- CALENDAR & OTHER CARD STYLES --- */
 .calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e0d0b0; }
 .month-title { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 0; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
@@ -217,16 +236,13 @@ body {
 .event-date-badge { background: var(--gold); color: var(--primary); font-weight: bold; padding: 5px 10px; border-radius: 5px; margin-right: 15px; font-family: sans-serif; min-width: 30px; text-align: center; }
 .event-name { font-size: 1rem; color: #333; font-weight: 600; }
 
-/* --- VASTHU, OFFERINGS, BEST TIMES STYLES --- */
 .tip-card, .offering-card, .time-card { background: white; border-left: 4px solid var(--primary); padding: 15px; margin-bottom: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
 .tip-title, .offering-header h3, .time-title { font-size: 1.1rem; font-weight: 700; color: #800000; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
 .tip-desc, .offering-desc, .time-details { font-size: 0.95rem; color: #444; line-height: 1.6; }
-.book-btn-small { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-top: 10px; width: 100%; font-family: 'Noto Serif Malayalam', serif; }
 .offering-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
 .price-tag { background: #fff8e1; color: #d84315; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; border: 1px solid #ffecb3; }
 .contact-box { background-color: #fff8e1; border: 1px dashed #d4af37; padding: 20px; text-align: center; border-radius: 10px; margin-top: 30px; }
 
-/* Best Times specific */
 .time-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .time-icon { font-size: 1.5rem; }
 .best-days { font-weight: bold; color: #2e7d32; display: block; margin-top: 5px; }
