@@ -39,12 +39,12 @@ body {
 .logo-row {
     display: flex;
     align-items: center;
-    gap: 8px; /* Space between leaf and text */
+    gap: 8px; 
 }
 .logo-leaf {
     width: 24px;
     height: 24px;
-    fill: var(--primary); /* Matches the text color */
+    fill: var(--primary); 
 }
 .logo-container h1 { 
     margin: 0; 
@@ -60,7 +60,6 @@ body {
     margin-top: 4px;
 }
 
-/* Black Om Symbol */
 .header-icon { 
     font-size: 2rem; 
     color: #000000; 
@@ -85,7 +84,7 @@ body {
 /* --- DAILY PANCHANGAM WIDGET --- */
 .panchangam-card {
     background: white;
-    border: 1px solid #d4af37; /* Gold border */
+    border: 1px solid #d4af37; 
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 20px;
@@ -101,17 +100,15 @@ body {
 }
 .today-date { font-size: 0.9rem; font-weight: bold; color: #800000; }
 .today-day { font-size: 1.1rem; font-weight: 700; color: #333; }
-
 .malayalam-date-box { text-align: right; }
 .mal-month { font-size: 1.1rem; font-weight: 700; color: #800000; font-family: 'Noto Serif Malayalam', serif; }
 .mal-year { font-size: 0.85rem; color: #666; margin-top: 2px; }
-
 .time-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.95rem; }
 .time-label { color: #666; font-weight: 600; }
 .time-value { color: #333; font-weight: bold; font-family: sans-serif; }
 .rahu { color: #d32f2f; }
 
-/* --- MANTRA OF THE DAY --- */
+/* --- MANTRA & CARDS --- */
 .mantra-card {
     background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
     border: 1px solid #ffca28;
@@ -125,7 +122,7 @@ body {
 .mantra-text { font-size: 1.1rem; font-weight: 700; color: #333; line-height: 1.6; font-family: 'Noto Serif Malayalam', serif; }
 .mantra-meaning { font-size: 0.85rem; color: #666; margin-top: 10px; font-style: italic; }
 
-/* --- STAR MATCHING WIDGET --- */
+/* --- MATCHING WIDGET --- */
 .matching-card {
     background: white;
     border: 1px solid #e0d0b0;
@@ -169,7 +166,7 @@ body {
 .about-card { background: white; padding: 20px; border-radius: 10px; line-height: 1.8; }
 .book-btn-small { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-top: 10px; width: 100%; font-family: 'Noto Serif Malayalam', serif; }
 
-/* --- NAVIGATION & FLOATING BUTTON --- */
+/* --- NAVIGATION --- */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -182,7 +179,6 @@ body {
     box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
     z-index: 100;
 }
-
 .nav-item {
     text-decoration: none;
     background: none;
@@ -193,13 +189,11 @@ body {
     color: #999;
     cursor: pointer;
     font-family: sans-serif;
-    flex: 1; 
+    flex: 1;
 }
-
 .nav-item.active { color: var(--primary); }
 .nav-item .icon { font-size: 1.3rem; margin-bottom: 4px; }
 .nav-item .label { font-size: 0.7rem; font-weight: 600; }
-
 .float-wa {
     position: fixed;
     right: 20px;
@@ -216,19 +210,58 @@ body {
     fill: white;
     width: 30px;
 }
-
 .wa-icon { width: 30px; height: 30px; fill: white; }
 
-/* --- CALENDAR & OTHER CARD STYLES --- */
-.calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e0d0b0; }
+/* --- CALENDAR STYLES --- */
+.calendar-controls { 
+    display: flex; justify-content: space-between; align-items: center; 
+    margin-bottom: 10px; background: white; padding: 10px; 
+    border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e0d0b0; 
+}
 .month-title { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 0; }
-.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.day-name { text-align: center; font-weight: bold; font-size: 0.8rem; color: #800000; padding-bottom: 10px; font-family: 'Noto Serif Malayalam', serif; }
-.calendar-date { min-height: 60px; background-color: #fcfcfc; border: 1px solid #eee; border-radius: 5px; padding: 4px; display: flex; flex-direction: column; justify-content: space-between; position: relative; cursor: pointer; }
+.calendar-grid { 
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 4px; /* Reduced gap */
+    background: white; 
+    padding: 5px; /* Reduced padding */
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+}
+.day-name { 
+    text-align: center; font-weight: bold; 
+    font-size: 0.7rem; /* Smaller weekday names */
+    color: #800000; padding-bottom: 5px; 
+    font-family: 'Noto Serif Malayalam', serif; 
+}
+.calendar-date { 
+    min-height: 50px; /* Reduced height */
+    background-color: #fcfcfc; 
+    border: 1px solid #eee; 
+    border-radius: 5px; 
+    padding: 2px; /* Reduced padding */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    position: relative; 
+    cursor: pointer; 
+}
 .calendar-date.sunday { background-color: #fff0f0; border-color: #ffcccc; }
 .calendar-date.today { border: 2px solid var(--gold); background-color: #fffbea; }
-.eng-date { font-size: 1rem; font-weight: bold; color: #333; font-family: sans-serif; }
-.mal-date { font-size: 0.7rem; text-align: right; color: #800000; font-family: 'Noto Serif Malayalam', serif; font-weight: 600; }
+.eng-date { 
+    font-size: 0.9rem; /* Smaller English Date */
+    font-weight: bold; 
+    color: #333; 
+    font-family: sans-serif; 
+}
+.mal-date { 
+    font-size: 0.6rem; /* Smaller Malayalam Date */
+    text-align: right; 
+    color: #800000; 
+    font-family: 'Noto Serif Malayalam', serif; 
+    font-weight: 600; 
+    line-height: 1.1;
+}
 .event-indicator { width: 6px; height: 6px; background-color: #d32f2f; border-radius: 50%; margin-top: 2px; }
 .event-list-box { margin-top: 20px; background: white; border-radius: 10px; padding: 15px; border: 1px solid #e0d0b0; }
 .event-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
@@ -248,3 +281,24 @@ body {
 .best-days { font-weight: bold; color: #2e7d32; display: block; margin-top: 5px; }
 .avoid-days { font-weight: bold; color: #d32f2f; display: block; margin-top: 2px; }
 .reason-box { background-color: #f9f9f9; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 0.85rem; color: #666; font-style: italic; border-left: 3px solid var(--gold); }
+
+/* --- MOBILE ADJUSTMENTS (Crucial Fix) --- */
+@media (max-width: 400px) {
+    .calendar-grid {
+        gap: 2px; /* Even tighter gap on small screens */
+        padding: 5px;
+    }
+    .day-name {
+        font-size: 0.65rem; /* Tiny text for days */
+    }
+    .calendar-date {
+        min-height: 45px;
+        padding: 2px;
+    }
+    .mal-date {
+        font-size: 0.5rem; /* Smaller Malayalam Date */
+    }
+    .eng-date {
+        font-size: 0.85rem;
+    }
+}
