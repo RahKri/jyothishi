@@ -4,22 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Authentic Namboothiri Astrology from Kerala.">
-    <title>Thaliyola</title>
+    <title>Thaliyola | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons (Optional, using Emoji fallback for now) -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Header -->
     <header class="app-header">
-        <div class="logo-row">
+        <a href="index.html" class="logo-row">
             <img src="1000224288.jpg" alt="Logo" class="logo-img">
             <div class="logo-text">
-                <h1>താളിയോല</h1>
+                <h1 style="margin:0; font-size:1.5rem; color:#5d1916; font-weight:700;">താളിയോല</h1>
             </div>
-        </div>
-        <div class="profile-icon"></div>
+        </a>
+        <div class="header-om">ॐ</div>
     </header>
 
     <main class="content-wrapper">
@@ -39,9 +38,11 @@
                 <div id="m-full-date" class="panchangam-main">...</div>
 
                 <!-- Daily Times -->
-                <div class="panchangam-sub">
-                    രാഹുകാലം: <span id="t-rahu" style="font-weight:bold;">...</span><br>
-                    നല്ല സമയം: <span id="t-nalla" style="color:green; font-weight:bold;">...</span>
+                <div class="panchangam-row">
+                    രാഹുകാലം: <span id="t-rahu" class="time-highlight">...</span>
+                </div>
+                <div class="panchangam-row nalla-neram">
+                    നല്ല സമയം: <span id="t-nalla" class="time-highlight">...</span>
                 </div>
             </div>
         </div>
@@ -49,36 +50,44 @@
         <!-- SERVICES TITLE -->
         <div class="section-heading">എന്താണ് സേവനം? (Services)</div>
 
-        <!-- COLORED GRID (The 3 Boxes) -->
+        <!-- COLORED GRID (2x2 Layout) -->
         <div class="service-grid-modern">
             
             <!-- Card 1: Matchmaking (Maroon) -->
             <div class="grid-card maroon" onclick="window.location.href='matchmaking.html'">
-                <div class="grid-icon">📜</div> <!-- Scroll Icon -->
+                <div class="grid-icon">📜</div>
                 <div class="grid-label">വിവാഹ<br>പൊരുത്തം</div>
             </div>
 
-            <!-- Card 2: Offerings/Remedies (Green) -->
+            <!-- Card 2: Offerings (Green) -->
             <div class="grid-card green" onclick="window.location.href='offerings.html'">
-                <div class="grid-icon">🥥</div> <!-- Coconut/Offering Icon -->
+                <div class="grid-icon">🥥</div>
                 <div class="grid-label">വഴിപാടുകൾ<br>& പൂജകൾ</div>
             </div>
 
             <!-- Card 3: Best Times (Mustard) -->
             <div class="grid-card mustard" onclick="window.location.href='best_times.html'">
-                <div class="grid-icon">⏱️</div> <!-- Clock Icon -->
+                <div class="grid-icon">⏱️</div>
                 <div class="grid-label">നല്ല<br>സമയം</div>
+            </div>
+
+            <!-- Card 4: Vasthu (Teal) - MOVED HERE -->
+            <div class="grid-card teal" onclick="window.location.href='vasthu.html'">
+                <div class="grid-icon">🏠</div>
+                <div class="grid-label">വാസ്തു<br>അറിവുകൾ</div>
             </div>
 
         </div>
 
-        <!-- SECONDARY LIST (For Vasthu, etc.) -->
-        <div class="list-card" onclick="window.location.href='vasthu.html'">
-            <div class="list-icon">🏠</div>
-            <div class="list-info">
-                <h4>വാസ്തു അറിവുകൾ</h4>
-                <p>ഐശ്വര്യമുള്ള വീടിന്</p>
-            </div>
+        <!-- QUICK CONTACT -->
+        <div class="about-card" style="margin-top: 20px; text-align: center;">
+            <h3 style="color: var(--primary); margin-top: 0; font-size: 1rem;">സംശയങ്ങൾ ചോദിക്കാം</h3>
+            <p style="font-size: 0.85rem; color: #666;">
+                ജാതകം, മുഹൂർത്തം, പ്രശ്നം എന്നിവയെക്കുറിച്ച് നേരിട്ട് സംസാരിക്കാൻ.
+            </p>
+            <button class="book-btn" onclick="contactWhatsApp('നമസ്കാരം, എനിക്ക് ജ്യോതിഷപരമായ ചില സംശയങ്ങൾ ചോദിക്കാനുണ്ട്.')" style="padding: 10px; font-size: 0.9rem;">
+                വാട്സാപ്പിൽ സംസാരിക്കൂ
+            </button>
         </div>
 
     </main>
@@ -104,13 +113,15 @@
             <span class="icon">₹</span>
             <span class="label">നിരക്കുകൾ</span>
         </a>
+        <a href="about.html" class="nav-item">
+            <span class="icon">ℹ️</span><span class="label">About</span>
+        </a>
     </nav>
 
     <script src="script.js"></script>
 
+    <!-- LOGIC FOR PARCHMENT CARD -->
     <script>
-        // --- LOGIC FOR PARCHMENT CARD ---
-        // 1. PANCHANGAM LOGIC
         const daysMalayalam = ["ഞായർ", "തിങ്കൾ", "ചൊവ്വ", "ബുധൻ", "വ്യാഴം", "വെള്ളി", "ശനി"];
         const sunriseOffsets = [40, 35, 25, 10, 5, 5, 10, 15, 15, 15, 20, 35];
         const timingsMap = [[10.5, 9.0, 3.5, 6.0], [1.5, 7.5, 10.0, 12.0], [9.0, 6.0, 1.5, 4.0], [6.0, 4.5, 8.0, 10.0], [7.5, 3.0, 4.0, 6.0], [4.5, 1.5, 11.0, 13.0], [3.0, 0.0, 2.5, 5.0]];
@@ -131,7 +142,6 @@
             let malDateString = (d < malRule.cutoff) ? `${malRule.name} ${malRule.offset + d}` : `${malRule.next} ${d - malRule.cutoff + 1}`;
             if(m===0 && d < 14) malDateString = `ധനു ${16+d}`; 
             
-            // Update Parchment Center Text
             document.getElementById("m-full-date").innerText = malDateString;
 
             // Times
