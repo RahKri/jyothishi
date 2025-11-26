@@ -51,46 +51,12 @@
             </div>
         </div>
 
-        <!-- 2. MANTRA OF THE DAY -->
-        <div class="mantra-card">
-            <div class="mantra-title">ഇന്നത്തെ മന്ത്രം (Mantra of the Day)</div>
-            <div id="daily-mantra" class="mantra-text">...</div>
-            <div id="mantra-desc" class="mantra-meaning">...</div>
-        </div>
-
         <div class="section-title">ഞങ്ങളുടെ സേവനങ്ങൾ</div>
 
-        <!-- SERVICES GRID -->
+        <!-- SERVICES GRID (Reduced to 3) -->
         <div class="services-grid">
             
-            <!-- Service 1 -->
-            <div class="service-card" onclick="window.location.href='prasnam.html'">
-                <div class="icon">🐚</div>
-                <div>
-                    <h3>പ്രശ്നചിന്ത</h3>
-                    <p>തൊഴിൽ, വിവാഹ തടസ്സങ്ങൾ മാറാൻ</p>
-                </div>
-            </div>
-
-            <!-- Service 2 -->
-            <div class="service-card" onclick="window.location.href='horoscope.html'">
-                <div class="icon">📜</div>
-                <div>
-                    <h3>ജാതകം</h3>
-                    <p>ദശാസന്ധികൾ, കണ്ടകശനി പരിഹാരം</p>
-                </div>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="service-card" onclick="window.location.href='muhurtham.html'">
-                <div class="icon">💍</div>
-                <div>
-                    <h3>മുഹൂർത്തം</h3>
-                    <p>വിവാഹം, ഗൃഹപ്രവേശം</p>
-                </div>
-            </div>
-
-            <!-- Service 4: MATCHING -->
+            <!-- Service 1: MATCHING -->
             <div class="service-card" onclick="window.location.href='matchmaking.html'">
                 <div class="icon">🤝</div>
                 <div>
@@ -99,7 +65,7 @@
                 </div>
             </div>
 
-            <!-- Service 5: VASTHU -->
+            <!-- Service 2: VASTHU -->
             <div class="service-card" onclick="window.location.href='vasthu.html'">
                 <div class="icon">🏠</div>
                 <div>
@@ -108,7 +74,7 @@
                 </div>
             </div>
 
-            <!-- Service 6: OFFERINGS (NEW) -->
+            <!-- Service 3: OFFERINGS -->
             <div class="service-card" onclick="window.location.href='offerings.html'">
                 <div class="icon">🥥</div>
                 <div>
@@ -118,6 +84,18 @@
             </div>
 
         </div>
+
+        <!-- QUICK CONTACT CARD -->
+        <div class="about-card" style="margin-top: 25px; text-align: center; background-color: #fff8e1; border: 1px solid #d4af37;">
+            <h3 style="color: var(--primary); margin-top: 0;">സംശയങ്ങൾ ചോദിക്കാം</h3>
+            <p style="font-size: 0.9rem; color: #555;">
+                ജാതകം, മുഹൂർത്തം, പ്രശ്നം എന്നിവയെക്കുറിച്ച് അറിയാൻ നേരിട്ട് ബന്ധപ്പെടുക.
+            </p>
+            <button class="book-btn" onclick="contactWhatsApp('നമസ്കാരം, എനിക്ക് ജ്യോതിഷപരമായ ചില സംശയങ്ങൾ ചോദിക്കാനുണ്ട്.')" style="width: auto; padding: 10px 25px;">
+                വാട്സാപ്പിൽ സംസാരിക്കൂ
+            </button>
+        </div>
+
     </main>
 
     <a href="javascript:void(0)" onclick="contactWhatsApp('Hello')" class="float-wa">
@@ -176,25 +154,8 @@
             document.getElementById("t-nalla").innerText = `${formatTime(calculateTime(6.0+r[2], offset))} - ${formatTime(calculateTime(6.0+r[3], offset))}`;
         }
 
-        // 2. MANTRA LOGIC
-        const mantras = [
-            { text: "ഓം ആദിത്യായ നമ:", desc: "സൂര്യദേവനെ പ്രാർത്ഥിക്കാൻ" },
-            { text: "ഓം നമ: ശിവായ", desc: "ശിവപ്രീതിക്കായി" },
-            { text: "ഓം ഡും ദുർഗ്ഗായൈ നമ:", desc: "ദുർഗ്ഗാദേവി പ്രാർത്ഥന" },
-            { text: "ഓം നമോ നാരായണായ", desc: "വിഷ്ണു മന്ത്രം" },
-            { text: "ഗുരുർ ബ്രഹ്മാ ഗുരുർ വിഷ്ണു:", desc: "ഗുരു വന്ദനം" },
-            { text: "ഓം മഹാലക്ഷ്മ്യൈ ച വിദ്മഹേ", desc: "ഐശ്വര്യലബ്ധിക്ക്" },
-            { text: "സ്വാമിയേ ശരണമയ്യപ്പാ", desc: "ശാസ്താവ് / ശനി ദോഷ പരിഹാരം" }
-        ];
-        function setMantra() {
-            const i = new Date().getDay();
-            document.getElementById("daily-mantra").innerText = mantras[i].text;
-            document.getElementById("mantra-desc").innerText = mantras[i].desc;
-        }
-
         // Initialize
         setPanchangam();
-        setMantra();
     </script>
 </body>
 </html>
