@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Authentic Namboothiri Astrology from Kerala. Live Prasnam and Remedies.">
-    <title>Jyothishi | Home</title>
+    <title>Thaliyola | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,20 +12,21 @@
 
     <header class="app-header">
         <a href="index.html" class="logo-container">
-            <h1>ജ്യോതിഷി</h1>
+            <div class="logo-row">
+                <!-- SVG Leaf Icon -->
+                <svg class="logo-leaf" viewBox="0 0 24 24">
+                    <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
+                </svg>
+                <h1>താളിയോല</h1>
+            </div>
             <p>പാരമ്പര്യത്തിൻ്റെ വെളിച്ചം</p>
         </a>
         <div class="header-icon">ॐ</div>
     </header>
 
     <main class="content-wrapper">
-        <div class="hero-card">
-            <h2>വിശ്വസ്തരായ നമ്പൂതിരി ജ്യോതിഷ പണ്ഡിതർ</h2>
-            <p>താന്ത്രിക വിധിപ്രകാരമുള്ള പരിഹാരങ്ങൾ</p>
-            <a href="astrologers.html" class="primary-btn">പണ്ഡിതരെ കാണുക</a>
-        </div>
-
-        <!-- DAILY PANCHANGAM WIDGET -->
+        
+        <!-- DAILY PANCHANGAM WIDGET (Now at the Top) -->
         <div class="panchangam-card">
             <div class="panchangam-header">
                 <div>
@@ -51,7 +52,15 @@
             </div>
         </div>
 
-        <div class="section-title">ഞങ്ങളുടെ സേവനങ്ങൾ</div>
+        <!-- MANTRA OF THE DAY -->
+        <div class="mantra-card">
+            <div class="mantra-title">ഇന്നത്തെ മന്ത്രം (Mantra of the Day)</div>
+            <div id="daily-mantra" class="mantra-text">...</div>
+            <div id="mantra-desc" class="mantra-meaning">...</div>
+        </div>
+
+        <!-- SECTION TITLE CHANGED: Just "Sevanangal" -->
+        <div class="section-title">സേവനങ്ങൾ</div>
 
         <!-- SERVICES GRID -->
         <div class="services-grid">
@@ -83,7 +92,7 @@
                 </div>
             </div>
             
-            <!-- Service 4: BEST TIMES (NEW) -->
+            <!-- Service 4: BEST TIMES -->
             <div class="service-card" onclick="window.location.href='best_times.html'">
                 <div class="icon">⏳</div>
                 <div>
@@ -163,8 +172,25 @@
             document.getElementById("t-nalla").innerText = `${formatTime(calculateTime(6.0+r[2], offset))} - ${formatTime(calculateTime(6.0+r[3], offset))}`;
         }
 
+        // 2. MANTRA LOGIC
+        const mantras = [
+            { text: "ഓം ആദിത്യായ നമ:", desc: "സൂര്യദേവനെ പ്രാർത്ഥിക്കാൻ" },
+            { text: "ഓം നമ: ശിവായ", desc: "ശിവപ്രീതിക്കായി" },
+            { text: "ഓം ഡും ദുർഗ്ഗായൈ നമ:", desc: "ദുർഗ്ഗാദേവി പ്രാർത്ഥന" },
+            { text: "ഓം നമോ നാരായണായ", desc: "വിഷ്ണു മന്ത്രം" },
+            { text: "ഗുരുർ ബ്രഹ്മാ ഗുരുർ വിഷ്ണു:", desc: "ഗുരു വന്ദനം" },
+            { text: "ഓം മഹാലക്ഷ്മ്യൈ ച വിദ്മഹേ", desc: "ഐശ്വര്യലബ്ധിക്ക്" },
+            { text: "സ്വാമിയേ ശരണമയ്യപ്പാ", desc: "ശാസ്താവ് / ശനി ദോഷ പരിഹാരം" }
+        ];
+        function setMantra() {
+            const i = new Date().getDay();
+            document.getElementById("daily-mantra").innerText = mantras[i].text;
+            document.getElementById("mantra-desc").innerText = mantras[i].desc;
+        }
+
         // Initialize
         setPanchangam();
+        setMantra();
     </script>
 </body>
 </html>
