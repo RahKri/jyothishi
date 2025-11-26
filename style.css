@@ -94,7 +94,7 @@ body {
 .time-value { color: #333; font-weight: bold; font-family: sans-serif; }
 .rahu { color: #d32f2f; }
 
-/* --- MANTRA OF THE DAY (NEW) --- */
+/* --- MANTRA OF THE DAY --- */
 .mantra-card {
     background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
     border: 1px solid #ffca28;
@@ -107,6 +107,21 @@ body {
 .mantra-title { font-size: 0.9rem; font-weight: bold; color: #d84315; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
 .mantra-text { font-size: 1.1rem; font-weight: 700; color: #333; line-height: 1.6; font-family: 'Noto Serif Malayalam', serif; }
 .mantra-meaning { font-size: 0.85rem; color: #666; margin-top: 10px; font-style: italic; }
+
+/* --- STAR MATCHING WIDGET --- */
+.matching-card {
+    background: white;
+    border: 1px solid #e0d0b0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+.matching-title { font-size: 1.1rem; font-weight: 700; color: #800000; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+.star-select-group { margin-bottom: 15px; }
+.star-label { display: block; font-size: 0.85rem; color: #666; margin-bottom: 5px; font-weight: 600; }
+.star-select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background: #fcfcfc; font-family: 'Noto Serif Malayalam', serif; font-size: 1rem; color: #333; }
+.match-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-top: 5px; }
 
 /* --- SERVICE GRID --- */
 .services-grid { display: grid; gap: 15px; }
@@ -160,7 +175,7 @@ body {
     color: #999;
     cursor: pointer;
     font-family: sans-serif;
-    flex: 1;
+    flex: 1; /* Forces equal width */
 }
 
 .nav-item.active { color: var(--primary); }
@@ -186,7 +201,7 @@ body {
 
 .wa-icon { width: 30px; height: 30px; fill: white; }
 
-/* --- ADVANCED CALENDAR STYLES --- */
+/* --- CALENDAR PAGE STYLES --- */
 .calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e0d0b0; }
 .month-title { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 0; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
