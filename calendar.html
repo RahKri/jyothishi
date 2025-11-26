@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Illam Jyothisham | Calendar 2026</title>
+    <title>Illam Jyothisham | Calendar</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -64,46 +64,37 @@
         let currentYear = 2026; 
         let currentMonth = new Date().getFullYear() === 2026 ? new Date().getMonth() : 0; 
 
-        // --- COMPREHENSIVE KERALA FESTIVAL DATA 2026 ---
-        // Format: "MonthIndex-Date": "Event Name"
-        // Note: Month Index starts at 0 (Jan=0, Feb=1, ... Dec=11)
+        // --- HINDU VEDIC CALENDAR DATA 2026 ---
         const festivalData = {
             "2026": {
-                // JANUARY (0)
-                "0-1": "പുതുവത്സര ദിനം (New Year)",
+                // JANUARY (Dhanu - Makaram)
                 "0-2": "മന്നം ജയന്തി",
-                "0-14": "മകര സംക്രാന്തി",
+                "0-14": "മകര സംക്രാന്തി (Makara Sankranti)",
                 "0-26": "റിപ്പബ്ലിക് ദിനം",
 
-                // FEBRUARY (1)
-                "1-1": "തൈപ്പൂയം",
-                "1-16": "മഹാ ശിവരാത്രി",
-                "1-24": "ആറ്റുകാൽ പൊങ്കാല (Approx)",
+                // FEBRUARY (Makaram - Kumbham)
+                "1-1": "തൈപ്പൂയം (Thaipooyam)",
+                "1-16": "മഹാ ശിവരാത്രി (Maha Shivaratri)",
+                "1-24": "ആറ്റുകാൽ പൊങ്കാല (Attukal Pongala)", 
 
-                // MARCH (2)
-                "2-8": "അന്താരാഷ്ട്ര വനിതാ ദിനം",
-                "2-20": "ഈദ് ഉൽ ഫിത്തർ (Subject to Moon)",
-                "2-29": "ഓശാന ഞായർ",
+                // MARCH (Kumbham - Meenum)
+                // (Mostly temple festivals based on stars)
 
-                // APRIL (3)
-                "3-2": "പെസഹ വ്യാഴം",
-                "3-3": "ദുഃഖവെള്ളി (Good Friday)",
-                "3-5": "ഈസ്റ്റർ",
+                // APRIL (Meenum - Medam)
                 "3-14": "വിഷു (Vishu)",
-                "3-14": "അംബേദ്കർ ജയന്തി",
-                "3-28": "തൃശ്ശൂർ പൂരം (Approx)",
+                "3-28": "തൃശ്ശൂർ പൂരം (Thrissur Pooram)",
 
-                // MAY (4)
-                "4-1": "മെയ് ദിനം (May Day)",
-                "4-27": "ബക്രീദ് (Subject to Moon)",
-
-                // JUNE (5)
+                // MAY (Medam - Edavam)
+                "4-1": "മെയ് ദിനം",
+                "4-21": "ശങ്കരാചാര്യ ജയന്തി",
+                
+                // JUNE (Edavam - Mithunam)
                 "5-21": "ലോക യോഗ ദിനം",
 
-                // JULY (6)
-                "6-17": "രാമായണ മാസാചരണം തുടക്കം (Karkidakam 1)",
-
-                // AUGUST (7)
+                // JULY (Mithunam - Karkidakam)
+                "6-17": "രാമായണ മാസാചരണം (Ramayana Masam)",
+                
+                // AUGUST (Karkidakam - Chingam)
                 "7-15": "സ്വാതന്ത്ര്യ ദിനം",
                 "7-16": "ചിങ്ങം 1 (Karshaka Dinam)",
                 "7-25": "ഉത്രാടം (First Onam)",
@@ -113,29 +104,28 @@
                 "7-28": "അയ്യങ്കാളി ജയന്തി",
                 "7-30": "ശ്രീനാരായണ ഗുരു ജയന്തി",
 
-                // SEPTEMBER (8)
+                // SEPTEMBER (Chingam - Kanni)
                 "8-4": "ശ്രീകൃഷ്ണ ജയന്തി (Ashtami Rohini)",
-                "8-5": "അധ്യാപക ദിനം",
+                "8-16": "വിശ്വകർമ്മ ദിനം",
                 "8-21": "ശ്രീനാരായണ ഗുരു സമാധി",
-                "8-27": "നബി ദിനം (Subject to Moon)",
 
-                // OCTOBER (9)
+                // OCTOBER (Kanni - Thulam)
                 "9-2": "ഗാന്ധി ജയന്തി",
                 "9-12": "നവരാത്രി തുടക്കം",
-                "9-18": "ദുർഗ്ഗാഷ്ടമി",
-                "9-19": "മഹാനവമി",
+                "9-18": "ദുർഗ്ഗാഷ്ടമി (Durgashtami)",
+                "9-19": "മഹാനവമി (Mahanavami)",
                 "9-20": "വിജയദശമി (Vidyarambham)",
 
-                // NOVEMBER (10)
+                // NOVEMBER (Thulam - Vrischikam)
                 "10-1": "കേരളപ്പിറവി",
                 "10-8": "ദീപാവലി (Deepavali)",
-                "10-14": "ശിശു ദിനം",
-                "10-17": "മണ്ഡലകാലം തുടക്കം",
+                "10-17": "മണ്ഡലകാലം തുടക്കം (Mandala Kalam Starts)",
+                "10-24": "തൃക്കാർത്തിക (Thrikkarthika)",
 
-                // DECEMBER (11)
-                "11-21": "ഗുരുവായൂർ ഏകാദശി",
-                "11-25": "ക്രിസ്മസ് (Christmas)",
-                "11-26": "മണ്ഡല പൂജ"
+                // DECEMBER (Vrischikam - Dhanu)
+                "11-20": "കുചേല ദിനം",
+                "11-21": "ഗുരുവായൂർ ഏകാദശി (Guruvayur Ekadashi)", 
+                "11-26": "മണ്ഡല പൂജ (Mandala Pooja)"
             }
         };
 
