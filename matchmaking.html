@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyothishi | Matchmaking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="index.html" class="logo-container">
+            <h1>ജ്യോതിഷി</h1>
+            <p>പാരമ്പര്യത്തിൻ്റെ വെളിച്ചം</p>
+        </a>
+        <div class="header-icon">ॐ</div>
+    </header>
+
+    <main class="content-wrapper">
+        <a href="index.html" style="text-decoration: none; color: #666; font-size: 0.9rem;">← Back to Home</a>
+        
+        <div class="hero-card" style="margin-top: 15px;">
+            <div style="font-size: 3rem;">🤝</div> <!-- Changed to Handshake/Knot symbol -->
+            <h2>വിവാഹ പൊരുത്തം (Matching)</h2>
+            <p>നക്ഷത്ര പൊരുത്തം കൃത്യമായി അറിയാൻ</p>
+        </div>
+
+        <div class="about-card">
+            <h3>പൊരുത്തം പരിശോധിക്കാം</h3>
+            <p>വിവാഹ ജീവിതത്തിലെ ചേർച്ച അറിയാൻ നക്ഷത്ര പൊരുത്തം നോക്കാവുന്നതാണ്. താഴെ ആൺ നക്ഷത്രവും പെൺ നക്ഷത്രവും തിരഞ്ഞെടുക്കുക.</p>
+            
+            <!-- STAR MATCHING WIDGET MOVED HERE -->
+            <div class="matching-card" style="box-shadow: none; border: none; padding: 0;">
+                <div class="star-select-group">
+                    <label class="star-label">ആൺ നക്ഷത്രം (Boy's Star)</label>
+                    <select id="boyStar" class="star-select">
+                        <option value="" disabled selected>Select Star</option>
+                        <!-- JS will fill this -->
+                    </select>
+                </div>
+
+                <div class="star-select-group">
+                    <label class="star-label">പെൺ നക്ഷത്രം (Girl's Star)</label>
+                    <select id="girlStar" class="star-select">
+                        <option value="" disabled selected>Select Star</option>
+                        <!-- JS will fill this -->
+                    </select>
+                </div>
+
+                <button class="match-btn" onclick="sendMatchingRequest()">പൊരുത്തം പരിശോധിക്കാൻ</button>
+            </div>
+            
+            <hr style="margin: 20px 0; border-top: 1px dashed #ccc;">
+            
+            <h4>ശ്രദ്ധിക്കുക:</h4>
+            <p style="font-size: 0.9rem; color: #666;">കേവലം നക്ഷത്രപ്പൊരുത്തം മാത്രമല്ല, ജാതകപ്പൊരുത്തവും (പാപസാമ്യം, ദശാസന്ധി) നോക്കേണ്ടത് അത്യാവശ്യമാണ്.</p>
+        </div>
+    </main>
+
+    <a href="javascript:void(0)" onclick="contactWhatsApp('Hello')" class="float-wa">
+        <svg viewBox="0 0 32 32" class="wa-icon">
+            <path d="M16.07,2.35c-7.38,0-13.38,6-13.38,13.38a13.3,13.3,0,0,0,2,7.15L2.42,29.6l6.89-2.2a13.31,13.31,0,0,0,6.76,1.84h0c7.38,0,13.38-6,13.38-13.38S23.45,2.35,16.07,2.35ZM9.9,8.29a2.13,2.13,0,0,1,1.55.72c.19.19,1.29,3.1,1.4,3.31s.16.49-.07.79-.42.69-.77,1c-.22.19-.46.35-.22.77s2.93,4.81,6.37,6.33c.4.18.7.16.93-.11s1-1.22,1.27-1.63.53-.36.91-.21,2.35,1.11,2.75,1.31.67.31.76.47.07,2.39-1.15,3.36-3.29,1.15-4.33.71-4.37-3.58-8.6-9.15A9.59,9.59,0,0,1,8.5,11.13C8.57,9.59,10.15,8.29,9.9,8.29Z"/>
+        </svg>
+    </a>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <span class="icon">🏠</span><span class="label">Home</span>
+        </a>
+        <a href="astrologers.html" class="nav-item">
+            <span class="icon">👨‍🎓</span><span class="label">ഗുരു</span>
+        </a>
+        <a href="calendar.html" class="nav-item">
+            <span class="icon">📅</span><span class="label">കലണ്ടർ</span>
+        </a>
+        <a href="rates.html" class="nav-item">
+            <span class="icon">₹</span><span class="label">നിരക്കുകൾ</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <span class="icon">ℹ️</span><span class="label">About</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+
+    <script>
+        // STAR MATCHING LOGIC
+        const nakshatras = [
+            "അശ്വതി (Aswathy)", "ഭരണി (Bharani)", "കാർത്തിക (Karthika)", "രോഹിണി (Rohini)", 
+            "മകയിരം (Makayiram)", "തിരുവാതിര (Thiruvathira)", "പുണർതം (Punartham)", "പൂയം (Pooyam)", "ആയില്യം (Ayilyam)",
+            "മകം (Makam)", "പൂരം (Pooram)", "ഉത്രം (Uthram)", "അത്തം (Atham)", 
+            "ചിത്തിര (Chithira)", "ചോതി (Chothi)", "വിശാഖം (Vishakham)", "അനിഴം (Anizham)", "തൃക്കേട്ട (Thrikketta)",
+            "മൂലം (Moolam)", "പൂരാടം (Pooradam)", "ഉത്രാടം (Uthradam)", "തിരുവോണം (Thiruvonam)", 
+            "അവിട്ടം (Avittam)", "ചതയം (Chathayam)", "പൂരുരുട്ടാതി (Pooruruttathi)", "ഉത്രട്ടാതി (Uthrattathi)", "രേവതി (Revathi)"
+        ];
+
+        function populateStars() {
+            const boySelect = document.getElementById("boyStar");
+            const girlSelect = document.getElementById("girlStar");
+            
+            nakshatras.forEach(star => {
+                let option1 = document.createElement("option");
+                option1.text = star;
+                option1.value = star;
+                boySelect.add(option1);
+
+                let option2 = document.createElement("option");
+                option2.text = star;
+                option2.value = star;
+                girlSelect.add(option2);
+            });
+        }
+
+        function sendMatchingRequest() {
+            const boy = document.getElementById("boyStar").value;
+            const girl = document.getElementById("girlStar").value;
+
+            if(boy === "" || girl === "") {
+                alert("ദയവായി ആൺ നക്ഷത്രവും പെൺ നക്ഷത്രവും തിരഞ്ഞെടുക്കുക (Please select both stars)");
+                return;
+            }
+
+            const msg = `നമസ്കാരം, വിവാഹ പൊരുത്തം അറിയാൻ ആഗ്രഹിക്കുന്നു.\nആൺ നക്ഷത്രം: ${boy}\nപെൺ നക്ഷത്രം: ${girl}`;
+            contactWhatsApp(msg);
+        }
+
+        // Initialize
+        populateStars();
+    </script>
+</body>
+</html>
+
