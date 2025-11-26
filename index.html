@@ -13,8 +13,8 @@
     <!-- Header -->
     <header class="app-header">
         <a href="index.html" class="logo-row">
-            <!-- Using the new leaf logo -->
-            <img src="1000224294.jpg" alt="Logo" class="logo-img">
+            <!-- Use the leaf image provided -->
+            <img src="image_0.png" alt="Logo" class="logo-img">
             <div class="logo-text">
                 <h1 style="margin:0; font-size:1.5rem; color:#5d1916; font-weight:700;">താളിയോല</h1>
             </div>
@@ -27,8 +27,6 @@
         <!-- PARCHMENT CARD (Highlight) -->
         <div class="parchment-card">
             <div class="parchment-inner">
-                <!-- Removed "Innathe Prathyekatha" Title -->
-                
                 <!-- Date Section -->
                 <div class="date-container">
                     <!-- Malayalam Date (Big) -->
@@ -48,7 +46,7 @@
         </div>
 
         <!-- SERVICES TITLE -->
-        <div class="section-heading">സേവനങ്ങൾ (Services)</div>
+        <div class="section-heading">സേവനങ്ങൾ</div>
 
         <!-- COLORED GRID (2x2 Layout) -->
         <div class="service-grid-modern">
@@ -101,7 +99,6 @@
 
     <script src="script.js"></script>
 
-    <!-- LOGIC -->
     <script>
         const daysMalayalam = ["ഞായർ", "തിങ്കൾ", "ചൊവ്വ", "ബുധൻ", "വ്യാഴം", "വെള്ളി", "ശനി"];
         const sunriseOffsets = [40, 35, 25, 10, 5, 5, 10, 15, 15, 15, 20, 35];
@@ -115,16 +112,14 @@
             const date = new Date();
             const d = date.getDate(), m = date.getMonth(), y = date.getFullYear(), dayIndex = date.getDay();
             
-            // Malayalam Date Logic
             const malRule = sankrantiData[m];
             let malDateString = (d < malRule.cutoff) ? `${malRule.name} ${malRule.offset + d}` : `${malRule.next} ${d - malRule.cutoff + 1}`;
             if(m===0 && d < 14) malDateString = `ധനു ${16+d}`; 
             
-            // Set Malayalam and English Dates
+            // Date Setup
             document.getElementById("m-date-main").innerText = malDateString;
             document.getElementById("e-date-sub").innerText = `${daysMalayalam[dayIndex]}, ${d}/${m+1}/${y}`;
 
-            // Times
             const offset = sunriseOffsets[m];
             const r = timingsMap[dayIndex];
             document.getElementById("t-rahu").innerText = `${formatTime(calculateTime(6.0+r[0], offset))} - ${formatTime(calculateTime(6.0+r[0], offset)+1.5)}`;
