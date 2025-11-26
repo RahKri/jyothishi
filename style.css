@@ -1,27 +1,37 @@
 :root {
-    --bg-color: #fcf9f2;      /* Cream */
-    --primary: #800000;       /* Maroon */
-    --gold: #d4af37;          /* Gold */
-    --text: #333333;
+    /* --- NEW PALETTE (Based on your design doc) --- */
+    --bg-color: #FDF5E6;       /* Sandalwood: Warm, Traditional */
+    --primary: #8B0000;        /* Kerala Maroon: Main Headings */
+    --gold: #D4AF37;           /* Kerala Gold: Borders/Accents */
+    --saffron: #FFB74D;        /* Saffron: Highlights */
+    --green: #006400;          /* Kerala Green: Success/Nature */
+    --text: #4A4A4A;           /* Stone Grey: Softer Body Text */
     --white: #ffffff;
     --nav-bg: #ffffff;
     --whatsapp: #25D366;
+    
+    /* Subtle Pattern for Background (CSS Only) */
+    --pattern: radial-gradient(#d4af37 0.5px, transparent 0.5px), radial-gradient(#d4af37 0.5px, #FDF5E6 0.5px);
 }
 
 body {
     margin: 0;
     font-family: 'Noto Serif Malayalam', serif;
     font-style: normal;
-    font-weight: 400; 
+    font-weight: 500; /* Slightly bolder for readability */
     background-color: var(--bg-color);
+    /* Creates a very subtle traditional dot pattern */
+    background-image: var(--pattern);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
     color: var(--text);
     padding-bottom: 80px; /* Space for bottom nav */
 }
 
-/* --- HEADER (FIXED UI) --- */
+/* --- HEADER (Fixed Layout) --- */
 .app-header {
     background: var(--white);
-    padding: 12px 20px; /* Reduced padding */
+    padding: 12px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,216 +41,169 @@ body {
     top: 0;
     z-index: 50;
 }
-
 .logo-container { 
     text-decoration: none; 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex; 
+    flex-direction: column; 
 }
-
-.logo-row {
-    display: flex;
-    align-items: center; /* Vertically centers leaf and text */
-    gap: 8px; 
-}
-
-/* Force SVG size so it doesn't get huge */
-.logo-leaf {
-    width: 28px; 
-    height: 28px;
-    min-width: 28px; /* Prevents shrinking */
-    fill: var(--primary); 
-}
-
-.logo-container h1 { 
-    margin: 0; 
-    font-size: 1.5rem; /* Reduced from 1.8rem to look better */
-    color: var(--primary); 
-    font-weight: 700; 
-    line-height: 1;
-}
-
-.logo-container p { 
-    margin: 4px 0 0 0; 
-    font-size: 0.75rem; 
-    color: #666; 
-}
-
-.header-icon { 
-    font-size: 1.8rem; 
-    color: #000000; 
-    font-weight: bold;
-    line-height: 1;
-}
+.logo-row { display: flex; align-items: center; gap: 8px; }
+.logo-leaf { width: 26px; height: 26px; min-width: 26px; fill: var(--primary); }
+.logo-container h1 { margin: 0; font-size: 1.6rem; color: var(--primary); font-weight: 700; line-height: 1; }
+.logo-container p { margin: 4px 0 0 0; font-size: 0.75rem; color: var(--text); }
+.header-icon { font-size: 1.8rem; color: #000; font-weight: bold; line-height: 1; }
 
 /* --- MAIN LAYOUT --- */
 .content-wrapper { padding: 20px; max-width: 600px; margin: 0 auto; }
 
-/* --- HERO CARD --- */
-.hero-card {
-    background: linear-gradient(rgba(94, 90, 78, 0.7), rgba(94, 90, 78, 0.7)), url('https://images.unsplash.com/photo-1605218427368-35b0d06b86e4?auto=format&fit=crop&w=600&q=80');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 40px 20px;
+/* --- SECTION TITLES --- */
+.section-title { 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: var(--primary); 
+    margin-bottom: 15px; 
+    border-left: 5px solid var(--gold); 
+    padding-left: 12px; 
+    margin-top: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- CARDS (Unified "Traditional Border" Style) --- */
+.panchangam-card, .mantra-card, .service-card, 
+.profile-card, .matching-card, .tip-card, .offering-card, .time-card, .about-card {
+    background: var(--white);
     border-radius: 12px;
-    text-align: center;
-    margin-bottom: 25px;
-    border: 1px solid var(--gold);
-}
-.hero-card h2 { margin-top: 0; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-.hero-card p { font-weight: 400; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-.primary-btn { display: inline-block; text-decoration: none; background: var(--gold); border: none; padding: 10px 20px; color: var(--primary); font-weight: bold; border-radius: 20px; cursor: pointer; margin-top: 10px; font-family: 'Noto Serif Malayalam', serif; }
-
-.section-title { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin-bottom: 15px; border-left: 4px solid var(--gold); padding-left: 10px; }
-
-/* --- DAILY PANCHANGAM WIDGET --- */
-.panchangam-card {
-    background: white;
-    border: 1px solid #d4af37; /* Gold border */
-    border-radius: 10px;
-    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Softer shadow */
     margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
 }
-.panchangam-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-.today-date { font-size: 0.9rem; font-weight: bold; color: #800000; }
-.today-day { font-size: 1.1rem; font-weight: 700; color: #333; }
+
+/* Interactive cards hover effect */
+.service-card:active, .book-btn:active { transform: scale(0.98); }
+
+/* --- DAILY PANCHANGAM --- */
+.panchangam-card { border: 1px solid var(--gold); padding: 15px; }
+.panchangam-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px dashed var(--gold); padding-bottom: 10px; margin-bottom: 10px; }
+.today-date { font-size: 0.9rem; font-weight: bold; color: var(--primary); }
+.today-day { font-size: 1.1rem; font-weight: 700; color: var(--text); }
 .malayalam-date-box { text-align: right; }
-.mal-month { font-size: 1.1rem; font-weight: 700; color: #800000; font-family: 'Noto Serif Malayalam', serif; }
-.mal-year { font-size: 0.85rem; color: #666; margin-top: 2px; }
+.mal-month { font-size: 1.1rem; font-weight: 700; color: var(--primary); font-family: 'Noto Serif Malayalam', serif; }
+.mal-year { font-size: 0.85rem; color: var(--text); margin-top: 2px; }
 .time-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.95rem; }
 .time-label { color: #666; font-weight: 600; }
-.time-value { color: #333; font-weight: bold; font-family: sans-serif; }
+.time-value { color: var(--text); font-weight: 700; font-family: sans-serif; }
 .rahu { color: #d32f2f; }
 
 /* --- SERVICE GRID --- */
 .services-grid { display: grid; gap: 15px; }
-.service-card { background: white; padding: 15px; border-radius: 10px; display: flex; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer; border: 1px solid #eee; transition: transform 0.2s; }
-.service-card:active { transform: scale(0.98); background-color: #f9f9f9; }
+.service-card { padding: 15px; display: flex; align-items: center; border-left: 5px solid var(--gold); cursor: pointer; }
 .service-card .icon { font-size: 2rem; margin-right: 15px; }
-.service-card h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: var(--primary); font-weight: 700; }
-.service-card p { margin: 0; font-size: 0.9rem; color: #666; font-weight: 400; }
+.service-card h3 { margin: 0 0 4px 0; font-size: 1.1rem; color: var(--primary); font-weight: 700; }
+.service-card p { margin: 0; font-size: 0.9rem; color: var(--text); font-weight: 400; }
 
-/* --- CARDS (ASTRO, OFFERINGS, ETC) --- */
-.profile-card, .matching-card, .tip-card, .offering-card, .time-card { 
-    background: white; 
-    padding: 15px; 
-    margin-bottom: 15px; 
-    border-radius: 10px; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+/* --- BUTTONS (Gradient Style) --- */
+.primary-btn, .book-btn, .match-btn, .book-btn-small { 
+    width: 100%; 
+    background: linear-gradient(to right, var(--primary), #a00000); /* Subtle Gradient */
+    color: var(--white); 
+    border: none; 
+    padding: 12px; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    font-family: 'Noto Serif Malayalam', serif; 
+    cursor: pointer; 
+    margin-top: 10px;
+    font-size: 1rem;
 }
-.profile-card, .tip-card, .offering-card, .time-card { border-left: 4px solid var(--primary); }
-.matching-card { border: 1px solid #e0d0b0; padding: 20px; }
+.book-btn-small { padding: 8px 15px; font-size: 0.9rem; }
 
-.profile-header, .offering-header, .time-header { display: flex; align-items: center; margin-bottom: 10px; }
-.offering-header { justify-content: space-between; align-items: flex-start; }
-
-.profile-img { width: 60px; height: 60px; border-radius: 50%; background-color: #eee; background-size: cover; margin-right: 15px; }
-.profile-info h3, .tip-title, .offering-header h3, .time-title, .matching-title { 
-    margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--primary); 
-}
-.matching-title { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-.designation, .tip-desc, .offering-desc, .time-details { font-size: 0.95rem; color: #444; line-height: 1.6; }
-.tags span { background: #f4f4f4; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; color: #555; }
-
-/* Buttons */
-.book-btn, .match-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; margin-top: 15px; font-weight: bold; font-family: 'Noto Serif Malayalam', serif; cursor: pointer; }
-.book-btn-small { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-top: 10px; width: 100%; font-family: 'Noto Serif Malayalam', serif; }
-
-/* Misc */
+/* --- MATCHING WIDGET --- */
+.matching-card { border: 1px solid var(--gold); padding: 20px; }
+.matching-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 .star-select-group { margin-bottom: 15px; }
-.star-label { display: block; font-size: 0.85rem; color: #666; margin-bottom: 5px; font-weight: 600; }
-.star-select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background: #fcfcfc; font-family: 'Noto Serif Malayalam', serif; font-size: 1rem; color: #333; }
-.price-tag { background: #fff8e1; color: #d84315; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; border: 1px solid #ffecb3; }
-.contact-box { background-color: #fff8e1; border: 1px dashed #d4af37; padding: 20px; text-align: center; border-radius: 10px; margin-top: 30px; }
+.star-label { display: block; font-size: 0.85rem; color: var(--text); margin-bottom: 5px; font-weight: 600; }
+.star-select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; background: #fafafa; font-family: 'Noto Serif Malayalam', serif; font-size: 1rem; color: var(--text); }
 
-/* Best Times specific */
-.time-icon { font-size: 1.5rem; margin-right: 10px; }
-.best-days { font-weight: bold; color: #2e7d32; display: block; margin-top: 5px; }
+/* Result Card (Neutral) */
+.result-card {
+    display: none; margin-top: 20px; padding: 20px; border-radius: 10px; text-align: center; animation: fadeIn 0.5s ease;
+    background-color: #fffbf0; /* Very light gold/cream */
+    border: 1px solid var(--gold);
+}
+.result-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; }
+.result-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; font-family: 'Noto Serif Malayalam', serif; color: var(--primary); }
+.result-desc { font-size: 0.95rem; color: var(--text); margin-bottom: 15px; line-height: 1.6; text-align: justify; }
+.disclaimer-box { background: rgba(0,0,0,0.03); padding: 10px; border-radius: 5px; font-size: 0.8rem; color: #666; margin-bottom: 15px; font-style: italic; }
+
+/* --- INNER PAGES (Tips, Offerings, Times) --- */
+.tip-card, .offering-card, .time-card { border-left: 4px solid var(--primary); padding: 15px; }
+.tip-title, .offering-header h3, .time-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+.tip-desc, .offering-desc, .time-details { font-size: 0.95rem; color: var(--text); line-height: 1.6; }
+.offering-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+
+/* Best Times Specifics */
+.time-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.time-icon { font-size: 1.5rem; }
+.best-days { font-weight: bold; color: var(--green); display: block; margin-top: 5px; } /* Using Kerala Green */
 .avoid-days { font-weight: bold; color: #d32f2f; display: block; margin-top: 2px; }
-.reason-box { background-color: #f9f9f9; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 0.85rem; color: #666; font-style: italic; border-left: 3px solid var(--gold); }
+.reason-box { background-color: #fffbf0; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 0.85rem; color: var(--text); font-style: italic; border-left: 3px solid var(--gold); }
+
+/* --- ASTROLOGER CARDS --- */
+.profile-card { border-left: 4px solid var(--primary); padding: 20px; }
+.profile-header { display: flex; align-items: center; margin-bottom: 15px; }
+.profile-img { width: 60px; height: 60px; border-radius: 50%; background-color: #eee; background-size: cover; margin-right: 15px; border: 2px solid var(--gold); }
+.profile-info h3 { margin: 0 0 5px 0; font-weight: 700; color: var(--primary); }
+.designation { font-size: 0.85rem; color: #666; }
+.tags span { background: #f0f0f0; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; color: #555; }
+
+/* --- ABOUT & CONTACT --- */
+.about-card { padding: 20px; border: 1px solid var(--gold); }
+.contact-box { background-color: #fffbf0; border: 1px dashed var(--gold); padding: 20px; text-align: center; border-radius: 10px; margin-top: 30px; }
 
 /* --- RATES TABLE --- */
-.rate-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.rate-card { overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 .rate-row { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid #eee; align-items: center; }
-.rate-row.highlight { background-color: #fffbea; }
-.rate-row h4 { margin: 0 0 5px 0; font-weight: 700; }
-.price { font-weight: bold; color: var(--primary); font-size: 1.1rem; }
-.note { font-size: 0.85rem; color: #777; margin-top: 10px; padding: 10px; background: #eef; border-radius: 5px; }
-
-/* --- ABOUT PAGE --- */
-.about-card { background: white; padding: 20px; border-radius: 10px; line-height: 1.8; }
+.rate-row.highlight { background-color: #fffbf0; }
+.rate-row h4 { margin: 0 0 5px 0; font-weight: 700; color: var(--primary); }
+.price { font-weight: bold; color: var(--green); font-size: 1.1rem; } /* Green for price */
+.note { font-size: 0.85rem; color: #666; margin-top: 10px; padding: 10px; background: #eef; border-radius: 5px; }
 
 /* --- NAVIGATION --- */
 .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: var(--nav-bg);
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-    z-index: 100;
+    position: fixed; bottom: 0; left: 0; width: 100%; background: var(--nav-bg);
+    display: flex; justify-content: space-between; padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 100;
 }
-.nav-item {
-    text-decoration: none;
-    background: none;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #999;
-    cursor: pointer;
-    font-family: sans-serif;
-    flex: 1;
-}
+.nav-item { text-decoration: none; background: none; border: none; display: flex; flex-direction: column; align-items: center; color: #999; cursor: pointer; font-family: sans-serif; flex: 1; }
 .nav-item.active { color: var(--primary); }
 .nav-item .icon { font-size: 1.3rem; margin-bottom: 4px; }
 .nav-item .label { font-size: 0.7rem; font-weight: 600; }
+
+/* WhatsApp Float */
 .float-wa {
-    position: fixed;
-    right: 20px;
-    bottom: 85px;
-    background: var(--whatsapp);
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 90;
-    fill: white;
-    width: 30px;
+    position: fixed; right: 20px; bottom: 85px; background: var(--whatsapp);
+    width: 55px; height: 55px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 90;
 }
 .wa-icon { width: 30px; height: 30px; fill: white; }
 
-/* --- CALENDAR STYLES --- */
-.calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e0d0b0; }
+/* --- CALENDAR --- */
+.calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid var(--gold); }
+.month-title { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 0; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.day-name { text-align: center; font-weight: bold; font-size: 0.8rem; color: #800000; padding-bottom: 10px; font-family: 'Noto Serif Malayalam', serif; }
+.day-name { text-align: center; font-weight: bold; font-size: 0.8rem; color: var(--primary); padding-bottom: 10px; font-family: 'Noto Serif Malayalam', serif; }
 .calendar-date { min-height: 60px; background-color: #fcfcfc; border: 1px solid #eee; border-radius: 5px; padding: 4px; display: flex; flex-direction: column; justify-content: space-between; position: relative; cursor: pointer; }
 .calendar-date.sunday { background-color: #fff0f0; border-color: #ffcccc; }
 .calendar-date.today { border: 2px solid var(--gold); background-color: #fffbea; }
-.eng-date { font-size: 1rem; font-weight: bold; color: #333; font-family: sans-serif; }
-.mal-date { font-size: 0.7rem; text-align: right; color: #800000; font-family: 'Noto Serif Malayalam', serif; font-weight: 600; }
+.eng-date { font-size: 1rem; font-weight: bold; color: var(--text); font-family: sans-serif; }
+.mal-date { font-size: 0.7rem; text-align: right; color: var(--primary); font-family: 'Noto Serif Malayalam', serif; font-weight: 600; }
 .event-indicator { width: 6px; height: 6px; background-color: #d32f2f; border-radius: 50%; margin-top: 2px; }
 .event-list-box { margin-top: 20px; background: white; border-radius: 10px; padding: 15px; border: 1px solid #e0d0b0; }
 .event-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
 .event-item:last-child { border-bottom: none; }
 .event-date-badge { background: var(--gold); color: var(--primary); font-weight: bold; padding: 5px 10px; border-radius: 5px; margin-right: 15px; font-family: sans-serif; min-width: 30px; text-align: center; }
-.event-name { font-size: 1rem; color: #333; font-weight: 600; }
+.event-name { font-size: 1rem; color: var(--text); font-weight: 600; }
 
 /* --- MOBILE ADJUSTMENTS --- */
 @media (max-width: 400px) {
@@ -250,3 +213,4 @@ body {
     .mal-date { font-size: 0.5rem; }
     .eng-date { font-size: 0.85rem; }
 }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
