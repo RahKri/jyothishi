@@ -38,21 +38,21 @@ body {
 .logo-row {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     text-decoration: none;
 }
 
+/* Updated Logo Style - Bigger and Appealing */
 .logo-img {
-    width: 50px;  /* Increased size for better visibility */
-    height: 50px; 
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--primary);
+    width: 45px;  
+    height: 45px; 
+    object-fit: contain; /* Ensures the leaf shape is preserved */
+    /* Removed border/radius to keep the natural leaf look */
 }
 
 .logo-text h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: var(--primary);
     font-weight: 700;
     line-height: 1;
@@ -72,6 +72,17 @@ body {
     margin: 0 auto;
 }
 
+/* --- WELCOME TEXT (Updated) --- */
+.welcome-text {
+    margin-bottom: 20px;
+}
+.welcome-text h2 {
+    margin: 5px 0 0 0;
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
 /* --- PARCHMENT CARD (Panchangam) --- */
 .parchment-card {
     background-color: #fffbf0;
@@ -79,7 +90,7 @@ body {
     border-radius: 16px;
     padding: 6px;
     margin-bottom: 30px;
-    margin-top: 20px; /* Added margin top since welcome text is removed */
+    margin-top: 10px;
     box-shadow: 0 4px 15px rgba(165, 134, 88, 0.1);
 }
 
@@ -92,29 +103,29 @@ body {
     background: white;
 }
 
-/* Decorative Stars */
 .parchment-inner::before { content: '✦'; position: absolute; top: 8px; left: 8px; color: var(--gold); font-size: 1rem; }
 .parchment-inner::after { content: '✦'; position: absolute; bottom: 8px; right: 8px; color: var(--gold); font-size: 1rem; }
 
 .panchangam-title {
-    display: none; /* Hiding title as requested */
+    display: none; /* Hidden as requested */
 }
 
-/* --- NEW DATE STYLES --- */
+/* --- DATE STYLES (Updated) --- */
 .date-container {
     margin-bottom: 15px;
 }
 .panchangam-main-mal {
-    font-size: 2.2rem; /* Bigger Malayalam Date */
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary);
     line-height: 1.2;
 }
+/* New style for English date below Malayalam date */
 .panchangam-sub-eng {
-    font-size: 0.85rem; /* Smaller English Date */
+    font-size: 0.9rem;
     color: var(--text-light);
-    font-weight: 500;
-    margin-top: 4px;
+    font-weight: 600;
+    margin-top: 5px;
     font-family: sans-serif;
 }
 
@@ -210,7 +221,4 @@ body {
 .result-desc { font-size: 0.95rem; color: #444; margin-bottom: 15px; line-height: 1.6; text-align: justify; }
 .disclaimer-box { background: rgba(255,255,255,0.6); padding: 10px; border-radius: 5px; font-size: 0.8rem; color: #666; margin-bottom: 15px; font-style: italic; }
 
-@media (max-width: 400px) {
-    .logo-container h1 { font-size: 1.3rem; }
-    .panchangam-main-mal { font-size: 1.5rem; }
-}
+@media (max-width: 400px) { .logo-container h1 { font-size: 1.3rem; } .panchangam-main-mal { font-size: 1.5rem; } }
