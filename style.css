@@ -1,3 +1,8 @@
+/* 1. GLOBAL RESET (Fixes width calculations) */
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --bg-color: #fcf8f2;      /* Soft Cream Background */
     --primary: #5d1916;        /* Deep Kerala Maroon */
@@ -144,9 +149,34 @@ body {
 .grid-icon { font-size: 2rem; margin-bottom: 10px; }
 .grid-label { font-size: 0.85rem; font-weight: 600; line-height: 1.4; }
 
-/* --- BOTTOM NAV --- */
-.bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #fffbf0; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #eaddc5; z-index: 100; }
-.nav-item { text-decoration: none; display: flex; flex-direction: column; align-items: center; color: #999; font-family: sans-serif; background: none; border: none; }
+/* --- BOTTOM NAV (UPDATED) --- */
+.bottom-nav { 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    background: #fffbf0; 
+    display: flex; 
+    /* removed justify-content: space-around; */
+    padding: 12px 0; 
+    border-top: 1px solid #eaddc5; 
+    z-index: 100; 
+}
+
+.nav-item { 
+    flex: 1; /* Forces equal width */
+    text-decoration: none; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    color: #999; 
+    font-family: sans-serif; 
+    background: none; 
+    border: none; 
+    padding: 0; /* Ensures exact centering */
+}
+
 .nav-item.active { color: var(--card-mustard); }
 .nav-item .icon { font-size: 1.4rem; margin-bottom: 4px; }
 .nav-item .label { font-size: 0.65rem; font-weight: 600; }
@@ -194,7 +224,7 @@ body {
 .result-desc { font-size: 0.95rem; color: #444; margin-bottom: 15px; line-height: 1.6; text-align: justify; }
 .disclaimer-box { background: rgba(255,255,255,0.6); padding: 10px; border-radius: 5px; font-size: 0.8rem; color: #666; margin-bottom: 15px; font-style: italic; }
 
-/* --- CALENDAR FIXES (Crucial) --- */
+/* --- CALENDAR FIXES --- */
 .calendar-controls { 
     display: flex; justify-content: space-between; align-items: center; 
     margin-bottom: 15px; background: white; padding: 10px; 
@@ -207,7 +237,7 @@ body {
     grid-template-columns: repeat(7, 1fr); 
     gap: 2px; /* Tighter Gap */
     background: white; 
-    padding: 5px; 
+    padding: 10px; /* MATCHED TO CONTROLS */
     border-radius: 12px; 
     overflow-x: auto; /* Allows scroll if absolutely needed */
 }
