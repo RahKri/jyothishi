@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jyothishi | Muhurtham</title>
+    <title>Jyothishi | Matchmaking</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -21,25 +21,83 @@
         <a href="index.html" style="text-decoration: none; color: #666; font-size: 0.9rem;">← Back to Home</a>
         
         <div class="hero-card" style="margin-top: 15px;">
-            <div style="font-size: 3rem;">💍</div>
-            <h2>മുഹൂർത്തം (Muhurtham)</h2>
-            <p>ശുഭ കാര്യങ്ങൾക്കുള്ള നല്ല സമയം</p>
+            <div style="font-size: 3rem;">🤝</div>
+            <h2>വിവാഹ പൊരുത്തം (Matching)</h2>
+            <p>നക്ഷത്ര പൊരുത്തം കൃത്യമായി അറിയാൻ</p>
         </div>
 
         <div class="about-card">
-            <h3>എന്തിനൊക്കെ മുഹൂർത്തം നോക്കാം?</h3>
-            <p>ഏതൊരു കാര്യവും നല്ല സമയത്ത് തുടങ്ങിയാൽ അതിന് വിജയസാധ്യത കൂടുതലാണ്. നക്ഷത്രവും തിഥിയും നോക്കി ഏറ്റവും ഉത്തമമായ സമയം ഞങ്ങൾ കുറിച്ചു നൽകുന്നു.</p>
+            <h3>പൊരുത്തം പരിശോധിക്കാം</h3>
+            <p>വിവാഹ ജീവിതത്തിലെ ചേർച്ച അറിയാൻ നക്ഷത്ര പൊരുത്തം നോക്കാവുന്നതാണ്. താഴെ ആൺ നക്ഷത്രവും പെൺ നക്ഷത്രവും തിരഞ്ഞെടുക്കുക.</p>
             
-            <h4>സേവനങ്ങൾ:</h4>
-            <ul style="padding-left: 20px; line-height: 1.8;">
-                <li><strong>വിവാഹ മുഹൂർത്തം:</strong> മംഗല്യത്തിന് ഏറ്റവും നല്ല സമയം.</li>
-                <li><strong>ഗൃഹപ്രവേശം:</strong> വീടുപണി തുടങ്ങാനും താമസം മാറാനും.</li>
-                <li><strong>പേരിടൽ:</strong> കുട്ടികൾക്ക് പേരിടാനും ചോറൂണിനും.</li>
-                <li><strong>വാഹനം വാങ്ങാൻ:</strong> നല്ല ദിവസം നോക്കാൻ.</li>
-            </ul>
+            <!-- STAR MATCHING WIDGET -->
+            <div class="matching-card" style="box-shadow: none; border: none; padding: 0;">
+                <div class="star-select-group">
+                    <label class="star-label">ആൺ നക്ഷത്രം (Boy's Star)</label>
+                    <select id="boyStar" class="star-select">
+                        <option value="" disabled selected>Select Star</option>
+                        <!-- JS will fill this -->
+                    </select>
+                </div>
 
-            <button class="book-btn" onclick="contactWhatsApp('നമസ്കാരം, എനിക്ക് ഒരു മുഹൂർത്തം കുറിക്കണം (Booking for Muhurtham)')">ബുക്ക് ചെയ്യാൻ ക്ലിക്ക് ചെയ്യൂ</button>
+                <div class="star-select-group">
+                    <label class="star-label">പെൺ നക്ഷത്രം (Girl's Star)</label>
+                    <select id="girlStar" class="star-select">
+                        <option value="" disabled selected>Select Star</option>
+                        <!-- JS will fill this -->
+                    </select>
+                </div>
+
+                <button class="match-btn" onclick="sendMatchingRequest()">പൊരുത്തം പരിശോധിക്കാൻ</button>
+            </div>
         </div>
+
+        <!-- NEW EDUCATIONAL SECTION -->
+        <div class="section-title" style="margin-top: 30px;">പ്രധാന പൊരുത്തങ്ങൾ (Key Matches)</div>
+
+        <!-- Tip 1: Dasaporutham -->
+        <div class="tip-card">
+            <div class="tip-title">ദശപ്പൊരുത്തം (The 10 Matches)</div>
+            <p class="tip-desc">
+                വിവാഹത്തിന് പ്രധാനമായും 10 പൊരുത്തങ്ങളാണ് നോക്കുന്നത്. ഇതിൽ രാശി, ഗണം, യോനി, രജ്ജു എന്നിവ അതീവ പ്രധാനമാണ്. 10-ൽ 6 പൊരുത്തമെങ്കിലും ഉണ്ടെങ്കിൽ അത് ഉത്തമമായി കണക്കാക്കുന്നു.
+            </p>
+        </div>
+
+        <!-- Tip 2: Ganam -->
+        <div class="tip-card">
+            <div class="tip-title">ഗണം (Temperament)</div>
+            <p class="tip-desc">
+                നക്ഷത്രങ്ങളെ ദേവം, മനുഷ്യം, അസുരം എന്നിങ്ങനെ മൂന്നായി തിരിച്ചിരിക്കുന്നു. ഒരേ ഗണത്തിൽപ്പെട്ടവർ തമ്മിലുള്ള വിവാഹം മാനസിക ഐക്യത്തിന് നല്ലതാണ്. ദേവഗണവും അസുരഗണവും തമ്മിലുള്ള വിവാഹം ഒഴിവാക്കാറുണ്ട്.
+            </p>
+        </div>
+
+        <!-- Tip 3: Rajju -->
+        <div class="tip-card">
+            <div class="tip-title">രജ്ജു (Mangalya Dosha)</div>
+            <p class="tip-desc">
+                സ്ത്രീയുടെ ദീർഘമംഗല്യത്തിന് രജ്ജു പൊരുത്തം നിർബന്ധമാണ്. നക്ഷത്രങ്ങൾ ഒരേ രജ്ജുവിൽ വന്നാൽ ദോഷമാണ്. ശിരോരജ്ജു, കണ്ഠരജ്ജു എന്നിവ പ്രത്യേകം ശ്രദ്ധിക്കണം.
+            </p>
+        </div>
+
+        <!-- Tip 4: Dosha Samyam -->
+        <div class="tip-card">
+            <div class="tip-title">പാപസാമ്യം (Dosha Check)</div>
+            <p class="tip-desc">
+                നക്ഷത്രപ്പൊരുത്തം മാത്രം നോക്കിയാൽ പോരാ, ജാതകത്തിലെ ഗ്രഹനില കൂടി പരിശോധിക്കണം. ചൊവ്വാ ദോഷം, ശനി ദോഷം എന്നിവ രണ്ടുപേർക്കും തുല്യമായിരിക്കണം (പാപസാമ്യം).
+            </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="contact-box" style="margin-top: 25px;">
+            <h3 style="color: var(--primary); margin-top: 0;">ജാതകം പരിശോധിക്കാൻ</h3>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">
+                പൊരുത്തങ്ങൾ ഉണ്ടെങ്കിലും ജാതകത്തിൽ മറ്റ് തടസ്സങ്ങൾ ഉണ്ടോ എന്ന് അറിയാൻ ജാതകം വിശദമായി പരിശോധിക്കുന്നത് നന്നായിരിക്കും.
+            </p>
+            <button class="book-btn" onclick="contactWhatsApp('നമസ്കാരം, ജാതകപ്പൊരുത്തം വിശദമായി അറിയാൻ ആഗ്രഹിക്കുന്നു')">
+                വിശദമായി പരിശോധിക്കാൻ
+            </button>
+        </div>
+
     </main>
 
     <a href="javascript:void(0)" onclick="contactWhatsApp('Hello')" class="float-wa">
@@ -65,6 +123,54 @@
             <span class="icon">ℹ️</span><span class="label">About</span>
         </a>
     </nav>
+
     <script src="script.js"></script>
+
+    <script>
+        // STAR MATCHING LOGIC
+        const nakshatras = [
+            "അശ്വതി (Aswathy)", "ഭരണി (Bharani)", "കാർത്തിക (Karthika)", "രോഹിണി (Rohini)", 
+            "മകയിരം (Makayiram)", "തിരുവാതിര (Thiruvathira)", "പുണർതം (Punartham)", "പൂയം (Pooyam)", "ആയില്യം (Ayilyam)",
+            "മകം (Makam)", "പൂരം (Pooram)", "ഉത്രം (Uthram)", "അത്തം (Atham)", 
+            "ചിത്തിര (Chithira)", "ചോതി (Chothi)", "വിശാഖം (Vishakham)", "അനിഴം (Anizham)", "തൃക്കേട്ട (Thrikketta)",
+            "മൂലം (Moolam)", "പൂരാടം (Pooradam)", "ഉത്രാടം (Uthradam)", "തിരുവോണം (Thiruvonam)", 
+            "അവിട്ടം (Avittam)", "ചതയം (Chathayam)", "പൂരുരുട്ടാതി (Pooruruttathi)", "ഉത്രട്ടാതി (Uthrattathi)", "രേവതി (Revathi)"
+        ];
+
+        function populateStars() {
+            const boySelect = document.getElementById("boyStar");
+            const girlSelect = document.getElementById("girlStar");
+            
+            nakshatras.forEach(star => {
+                let option1 = document.createElement("option");
+                option1.text = star;
+                option1.value = star;
+                boySelect.add(option1);
+
+                let option2 = document.createElement("option");
+                option2.text = star;
+                option2.value = star;
+                girlSelect.add(option2);
+            });
+        }
+
+        function sendMatchingRequest() {
+            const boy = document.getElementById("boyStar").value;
+            const girl = document.getElementById("girlStar").value;
+
+            if(boy === "" || girl === "") {
+                alert("ദയവായി ആൺ നക്ഷത്രവും പെൺ നക്ഷത്രവും തിരഞ്ഞെടുക്കുക (Please select both stars)");
+                return;
+            }
+
+            const msg = `നമസ്കാരം, വിവാഹ പൊരുത്തം അറിയാൻ ആഗ്രഹിക്കുന്നു.\nആൺ നക്ഷത്രം: ${boy}\nപെൺ നക്ഷത്രം: ${girl}`;
+            contactWhatsApp(msg);
+        }
+
+        // Initialize
+        populateStars();
+    </script>
 </body>
 </html>
+
+
