@@ -57,7 +57,7 @@ body {
 
 .section-title { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin-bottom: 15px; border-left: 4px solid var(--gold); padding-left: 10px; }
 
-/* --- DAILY PANCHANGAM WIDGET (NEW) --- */
+/* --- DAILY PANCHANGAM WIDGET (HOME PAGE) --- */
 .panchangam-card {
     background: white;
     border: 1px solid #d4af37; /* Gold border */
@@ -69,13 +69,20 @@ body {
 .panchangam-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; /* Aligns items to the top */
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
 .today-date { font-size: 0.9rem; font-weight: bold; color: #800000; }
 .today-day { font-size: 1.1rem; font-weight: 700; color: #333; }
+
+/* New Malayalam Date Box (Right Side of Widget) */
+.malayalam-date-box { text-align: right; }
+.mal-month { font-size: 1.1rem; font-weight: 700; color: #800000; font-family: 'Noto Serif Malayalam', serif; }
+.mal-year { font-size: 0.85rem; color: #666; margin-top: 2px; }
+
+/* Time Rows */
 .time-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.95rem; }
 .time-label { color: #666; font-weight: 600; }
 .time-value { color: #333; font-weight: bold; font-family: sans-serif; }
@@ -119,7 +126,7 @@ body {
 .float-wa { position: fixed; right: 20px; bottom: 85px; background: var(--whatsapp); width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 90; fill: white; width: 30px; }
 .wa-icon { width: 30px; height: 30px; fill: white; }
 
-/* --- ADVANCED CALENDAR STYLES --- */
+/* --- ADVANCED CALENDAR STYLES (CALENDAR PAGE) --- */
 .calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e0d0b0; }
 .month-title { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 0; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
