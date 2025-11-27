@@ -11,12 +11,13 @@
     --text-light: #666666;     
     --white: #ffffff;
     
+    /* Card Colors */
     --card-maroon: #6a2e2e;
     --card-green: #2e6a4f;
     --card-mustard: #e6a650;
     --card-teal: #2c5e63;
-    /* NEW COLOR for Sahasranamam */
     --card-purple: #6a2c70; 
+    --card-ayyappa: #1a237e; /* Deep Indigo/Black for Ayyappa */
 
     --whatsapp: #25D366;
 }
@@ -78,7 +79,7 @@ body {
     margin: 0 auto;
 }
 
-/* --- SIGNIFICANCE BOX --- */
+/* --- SPECIAL BOXES --- */
 .significance-box {
     margin-top: 15px;
     padding: 12px;
@@ -164,7 +165,7 @@ body {
 .nav-item .icon { font-size: 1.4rem; margin-bottom: 4px; }
 .nav-item .label { font-size: 0.65rem; font-weight: 600; }
 
-/* --- OTHER STYLES --- */
+/* --- CARD STYLES --- */
 .parchment-card { background-color: #fffbf0; border: 1px solid #eaddc5; border-radius: 16px; padding: 6px; margin-bottom: 30px; margin-top: 10px; box-shadow: 0 4px 15px rgba(165, 134, 88, 0.1); }
 .parchment-inner { border: 1px solid var(--gold); border-radius: 12px; padding: 20px; text-align: center; position: relative; background: white; }
 .parchment-inner::before { content: '✦'; position: absolute; top: 8px; left: 8px; color: var(--gold); font-size: 1rem; }
@@ -178,14 +179,15 @@ body {
 .section-heading { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 15px; }
 .service-grid-modern { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
 
-/* Grid Card Colors */
+/* CARD COLORS */
 .grid-card { aspect-ratio: 1.1; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; text-align: center; cursor: pointer; transition: transform 0.2s; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .grid-card:active { transform: scale(0.95); }
 .grid-card.maroon { background-color: var(--card-maroon); }
 .grid-card.green { background-color: var(--card-green); }
 .grid-card.mustard { background-color: var(--card-mustard); }
 .grid-card.teal { background-color: var(--card-teal); }
-.grid-card.purple { background-color: var(--card-purple); } /* NEW */
+.grid-card.purple { background-color: var(--card-purple); }
+.grid-card.ayyappa { background-color: var(--card-ayyappa); } /* New for Sabarimala */
 
 .grid-icon { font-size: 2rem; margin-bottom: 10px; }
 .grid-label { font-size: 0.85rem; font-weight: 600; line-height: 1.4; }
