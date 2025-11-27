@@ -15,6 +15,8 @@
     --card-green: #2e6a4f;
     --card-mustard: #e6a650;
     --card-teal: #2c5e63;
+    /* NEW COLOR for Sahasranamam */
+    --card-purple: #6a2c70; 
 
     --whatsapp: #25D366;
 }
@@ -76,11 +78,11 @@ body {
     margin: 0 auto;
 }
 
-/* --- NEW FEATURE: SIGNIFICANCE BOX --- */
+/* --- SIGNIFICANCE BOX --- */
 .significance-box {
     margin-top: 15px;
     padding: 12px;
-    background-color: #fff8e1; /* Light Parchment Yellow */
+    background-color: #fff8e1;
     border-top: 1px dashed #d4af37;
     border-bottom: 1px dashed #d4af37;
     font-size: 0.9rem;
@@ -175,12 +177,16 @@ body {
 .nalla-neram { color: var(--card-green); }
 .section-heading { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 15px; }
 .service-grid-modern { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+
+/* Grid Card Colors */
 .grid-card { aspect-ratio: 1.1; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; text-align: center; cursor: pointer; transition: transform 0.2s; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .grid-card:active { transform: scale(0.95); }
 .grid-card.maroon { background-color: var(--card-maroon); }
 .grid-card.green { background-color: var(--card-green); }
 .grid-card.mustard { background-color: var(--card-mustard); }
 .grid-card.teal { background-color: var(--card-teal); }
+.grid-card.purple { background-color: var(--card-purple); } /* NEW */
+
 .grid-icon { font-size: 2rem; margin-bottom: 10px; }
 .grid-label { font-size: 0.85rem; font-weight: 600; line-height: 1.4; }
 .float-wa { position: fixed; right: 20px; bottom: 90px; background: var(--whatsapp); width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 90; }
