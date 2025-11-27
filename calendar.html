@@ -9,10 +9,9 @@
 </head>
 <body>
 
-    <!-- HEADER -->
     <header class="app-header">
         <a href="index.html" class="logo-row">
-            <img src="image_0.png" alt="Logo" class="logo-img">
+            <img src="thaliyola1.png" alt="Thaliyola Logo" class="logo-img">
             <div class="logo-text">
                 <h1 style="margin:0; font-size:1.5rem; color:#5d1916; font-weight:700;">താളിയോല</h1>
             </div>
@@ -21,7 +20,6 @@
     </header>
 
     <main class="content-wrapper">
-        <!-- CONTROLS -->
         <div class="calendar-controls">
             <button class="nav-arrow" onclick="changeMonth(-1)" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">&#10094;</button>
             <div style="text-align: center;">
@@ -31,23 +29,19 @@
             <button class="nav-arrow" onclick="changeMonth(1)" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">&#10095;</button>
         </div>
 
-        <!-- GRID -->
         <div class="calendar-grid" id="calendarGrid"></div>
 
-        <!-- EVENT LIST -->
         <div id="eventListBox" class="event-list-box" style="display:none;">
             <h4 style="margin:0 0 10px 0; color:#800000;">വിശേഷ ദിവസങ്ങൾ (Special Days)</h4>
             <div id="eventListContent"></div>
         </div>
 
-        <!-- CTA -->
         <div class="about-card" style="margin-top: 20px; text-align: center;">
             <p style="font-size: 0.9rem;">വിശേഷ ദിവസങ്ങളിലെ പൂജകൾ ബുക്ക് ചെയ്യാൻ മെസ്സേജ് ചെയ്യുക.</p>
             <button class="book-btn" onclick="contactWhatsApp('നമസ്കാരം, വിശേഷ ദിവസത്തെ പൂജ ബുക്ക് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു')">പൂജ ബുക്ക് ചെയ്യാൻ</button>
         </div>
     </main>
 
-    <!-- NAVIGATION -->
     <nav class="bottom-nav">
         <a href="index.html" class="nav-item">
             <span class="icon">🏠</span><span class="label">Home</span>
@@ -68,14 +62,13 @@
 
     <script src="script.js"></script>
 
-    <!-- LOGIC -->
     <script>
-        // --- CHANGED: Get Current Date from User's Device ---
+        // --- Get Current Date from User's Device ---
         let today = new Date();
         let currentYear = today.getFullYear(); 
         let currentMonth = today.getMonth();   
 
-        // --- FESTIVAL DATA (2025 & 2026) ---
+        // --- FESTIVAL DATA ---
         const festivalData = {
             "2025": {
                 "0-14": "മകര സംക്രാന്തി",
@@ -204,20 +197,16 @@
                 dateDiv.appendChild(engSpan);
                 dateDiv.appendChild(malSpan);
 
-                // --- EVENT CHECKER (Safety Check Added) ---
                 const dateKey = `${currentMonth}-${d}`;
                 const yearData = festivalData[currentYear]; 
                 
-                // Check if yearData exists (in case we scroll to 2027 with no data)
                 if (yearData && yearData[dateKey]) {
-                    // 1. Add Dot
                     const dot = document.createElement('div');
                     dot.className = 'event-indicator';
                     dateDiv.appendChild(dot);
                     dateDiv.style.borderColor = "#d32f2f"; 
                     dateDiv.style.backgroundColor = "#fff0f0";
 
-                    // 2. Add to List
                     hasEvents = true;
                     const eventItem = document.createElement('div');
                     eventItem.className = 'event-item';
@@ -231,7 +220,6 @@
                 const checkDay = new Date(currentYear, currentMonth, d).getDay();
                 if (checkDay === 0) dateDiv.classList.add('sunday');
 
-                // Highlight Today
                 const now = new Date();
                 if (d === now.getDate() && currentMonth === now.getMonth() && currentYear === now.getFullYear()) {
                     dateDiv.classList.add('today');
@@ -240,7 +228,6 @@
                 grid.appendChild(dateDiv);
             }
 
-            // Show/Hide List Box
             if(hasEvents) {
                 eventBox.style.display = 'block';
             } else {
