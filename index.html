@@ -35,6 +35,10 @@
                 <div class="panchangam-row nalla-neram">
                     നല്ല സമയം: <span id="t-nalla" class="time-highlight">...</span>
                 </div>
+
+                <div id="day-features" class="significance-box">
+                    ...
+                </div>
             </div>
         </div>
 
@@ -90,6 +94,17 @@
         const timingsMap = [[10.5, 9.0, 3.5, 6.0], [1.5, 7.5, 10.0, 12.0], [9.0, 6.0, 1.5, 4.0], [6.0, 4.5, 8.0, 10.0], [7.5, 3.0, 4.0, 6.0], [4.5, 1.5, 11.0, 13.0], [3.0, 0.0, 2.5, 5.0]];
         const sankrantiData = [{cutoff: 14, name: "ധനു", next: "മകരം", offset: 17}, {cutoff: 13, name: "മകരം", next: "കുംഭം", offset: 0}, {cutoff: 14, name: "കുംഭം", next: "മീനം", offset: 0}, {cutoff: 14, name: "മീനം", next: "മേടം", offset: 0}, {cutoff: 15, name: "മേടം", next: "ഇടവം", offset: 0}, {cutoff: 15, name: "ഇടവം", next: "മിഥുനം", offset: 0}, {cutoff: 16, name: "മിഥുനം", next: "കർക്കടകം", offset: 0}, {cutoff: 17, name: "കർക്കടകം", next: "ചിങ്ങം", offset: 0}, {cutoff: 17, name: "ചിങ്ങം", next: "കന്നി", offset: 0}, {cutoff: 17, name: "കന്നി", next: "തുലാം", offset: 0}, {cutoff: 16, name: "തുലാം", next: "വൃശ്ചികം", offset: 0}, {cutoff: 16, name: "വൃശ്ചികം", next: "ധനു", offset: 0}];
 
+        // Daily Significance Data (0=Sunday to 6=Saturday)
+        const daySignificances = [
+            "ഞായറാഴ്ച സൂര്യപ്രീതിക്ക് ഉത്തമം. ക്ഷേത്രദർശനം, ശിവപൂജ എന്നിവയ്ക്ക് നല്ല ദിവസം. ആരോഗ്യം, പിതൃപുണ്യം എന്നിവയാണ് ഫലം.",
+            "തിങ്കളാഴ്ച ശിവഭജനത്തിന് ഏറ്റവും വിശേഷം. 'ഓം നമ ശിവായ' ജപിക്കുന്നത് മനഃസമാധാനം നൽകും. ഉമാമഹേശ്വര പ്രീതികരമായ ദിവസം.",
+            "ചൊവ്വാഴ്ച ദേവീപ്രീതിക്കും മുരുകഭജനത്തിനും നന്ന്. ഗണപതിഹോമം, ഭഗവതിസേവ എന്നിവയ്ക്ക് ഉത്തമം. തടസ്സങ്ങൾ മാറിക്കിട്ടും.",
+            "ബുധനാഴ്ച വിദ്യയ്ക്കും ബുദ്ധിക്കും പ്രാധാന്യം. ശ്രീകൃഷ്ണനെയും അയ്യപ്പനെയും ഭജിക്കാം. വിദ്യാരംഭത്തിനും പുതിയ കാര്യങ്ങൾക്കും നല്ലത്.",
+            "വ്യാഴാഴ്ച മഹാവിഷ്ണുവിനും ഗുരുവായൂരപ്പനും പ്രധാനം. വിഷ്ണു സഹസ്രനാമം ജപിക്കുന്നത് ഐശ്വര്യം നൽകും. ധനനേട്ടത്തിന് ഉത്തമം.",
+            "വെള്ളിയാഴ്ച മഹാലക്ഷ്മി പ്രീതിക്ക് ഏറ്റവും നല്ല ദിവസം. അന്നദാനം, ദേവീക്ഷേത്ര ദർശനം എന്നിവ കുടുംബത്തിൽ ഐശ്വര്യം നിറയ്ക്കും.",
+            "ശനിയാഴ്ച ശാസ്താവിനെ (അയ്യപ്പനെ) ഭജിക്കാൻ ഉത്തമം. നീരാജനം കത്തിക്കുന്നതും ശനീശ്വര പൂജയും ദോഷങ്ങൾ അകറ്റാൻ സഹായിക്കും."
+        ];
+
         function formatTime(d) { let h=Math.floor(d), m=Math.floor((d-h)*60), p="AM"; if(h>=12){p="PM";if(h>12)h-=12;} if(h===0)h=12; return `${h}:${m<10?"0"+m:m} ${p}`; }
         function calculateTime(b,o) { return ((b*60)+o)/60; }
 
@@ -104,6 +119,9 @@
             // Date Setup
             document.getElementById("m-date-main").innerText = malDateString;
             document.getElementById("e-date-sub").innerText = `${daysMalayalam[dayIndex]}, ${d}/${m+1}/${y}`;
+
+            // Set Daily Significance
+            document.getElementById("day-features").innerText = daySignificances[dayIndex];
 
             const offset = sunriseOffsets[m];
             const r = timingsMap[dayIndex];
