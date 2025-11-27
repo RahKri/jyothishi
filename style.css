@@ -76,7 +76,22 @@ body {
     margin: 0 auto;
 }
 
-/* --- CALENDAR STYLES (FIXED: WRAPPING TEXT) --- */
+/* --- NEW FEATURE: SIGNIFICANCE BOX --- */
+.significance-box {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: #fff8e1; /* Light Parchment Yellow */
+    border-top: 1px dashed #d4af37;
+    border-bottom: 1px dashed #d4af37;
+    font-size: 0.9rem;
+    color: #5d1916;
+    font-style: italic;
+    line-height: 1.6;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* --- CALENDAR STYLES --- */
 .calendar-controls { 
     display: flex; justify-content: space-between; align-items: center; 
     margin-bottom: 15px; background: white; padding: 10px; 
@@ -86,7 +101,6 @@ body {
 
 .calendar-grid { 
     display: grid; 
-    /* Keeps columns equal width */
     grid-template-columns: repeat(7, minmax(0, 1fr)); 
     gap: 2px;
     background: white; 
@@ -99,15 +113,7 @@ body {
 }
 
 .calendar-date { 
-    min-height: 50px; 
-    background-color: #fcfcfc; 
-    border: 1px solid #eee; 
-    border-radius: 6px; 
-    padding: 2px; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between; 
-    overflow: hidden;
+    min-height: 50px; background-color: #fcfcfc; border: 1px solid #eee; border-radius: 6px; padding: 2px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
 }
 
 .calendar-date.sunday { background-color: #fff0f0; border-color: #ffcccc; }
@@ -115,16 +121,13 @@ body {
 
 .eng-date { font-size: 0.9rem; font-weight: bold; margin-left: 2px; }
 
-/* UPDATED: Allows text to wrap so full month name is visible */
 .mal-date { 
-    font-size: 0.55rem; /* Slightly smaller to fit better */
+    font-size: 0.55rem; 
     text-align: right; 
     color: var(--primary); 
     font-weight: 600; 
     line-height: 1.1; 
     margin-right: 2px;
-    
-    /* Allow text to wrap to next line */
     white-space: normal; 
     overflow: visible; 
 }
@@ -225,6 +228,5 @@ body {
     .day-name { font-size: 0.6rem; padding: 4px 0; }
     .calendar-date { min-height: 45px; padding: 1px; }
     .eng-date { font-size: 0.8rem; }
-    /* FIXED: Allow wrap on mobile too */
     .mal-date { font-size: 0.5rem; white-space: normal; overflow: visible; }
 }
