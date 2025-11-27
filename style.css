@@ -1,4 +1,4 @@
-/* 1. GLOBAL RESET (Fixes alignment issues) */
+/* 1. GLOBAL RESET */
 * {
     box-sizing: border-box;
 }
@@ -11,7 +11,6 @@
     --text-light: #666666;     /* Light Grey */
     --white: #ffffff;
     
-    /* Service Card Colors */
     --card-maroon: #6a2e2e;
     --card-green: #2e6a4f;
     --card-mustard: #e6a650;
@@ -25,7 +24,7 @@ body {
     font-family: 'Noto Serif Malayalam', serif;
     background-color: var(--bg-color);
     color: var(--text-dark);
-    padding-bottom: 90px; /* Space for bottom nav */
+    padding-bottom: 90px; 
 }
 
 /* --- HEADER --- */
@@ -38,18 +37,18 @@ body {
     position: sticky;
     top: 0;
     z-index: 50;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Slight shadow for depth */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .logo-row {
     display: flex;
     align-items: center;
-    gap: 12px; /* Increased gap for better look */
+    gap: 12px;
     text-decoration: none;
 }
 
 .logo-img {
-    width: 50px;  /* Slightly larger for the new leaf logo */
+    width: 50px;  
     height: 50px; 
     object-fit: contain; 
 }
@@ -77,78 +76,53 @@ body {
     margin: 0 auto;
 }
 
-/* --- PARCHMENT CARD --- */
-.parchment-card {
-    background-color: #fffbf0;
-    border: 1px solid #eaddc5;
-    border-radius: 16px;
-    padding: 6px;
-    margin-bottom: 30px;
-    margin-top: 10px;
-    box-shadow: 0 4px 15px rgba(165, 134, 88, 0.1);
+/* --- CALENDAR STYLES (FIXED ALIGNMENT) --- */
+.calendar-controls { 
+    display: flex; justify-content: space-between; align-items: center; 
+    margin-bottom: 15px; background: white; padding: 10px; 
+    border-radius: 12px; border: 1px solid var(--gold); 
+}
+.month-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin: 0; }
+
+.calendar-grid { 
+    display: grid; 
+    /* THIS IS THE FIX: minmax(0, 1fr) prevents overflowing */
+    grid-template-columns: repeat(7, minmax(0, 1fr)); 
+    gap: 2px;
+    background: white; 
+    padding: 5px; 
+    border-radius: 12px; 
 }
 
-.parchment-inner {
-    border: 1px solid var(--gold);
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    background: white;
+.day-name { 
+    text-align: center; font-size: 0.75rem; font-weight: bold; color: var(--primary); padding-bottom: 8px; white-space: nowrap; 
 }
 
-.parchment-inner::before { content: '✦'; position: absolute; top: 8px; left: 8px; color: var(--gold); font-size: 1rem; }
-.parchment-inner::after { content: '✦'; position: absolute; bottom: 8px; right: 8px; color: var(--gold); font-size: 1rem; }
-
-.date-container { margin-bottom: 15px; }
-.panchangam-main-mal {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary);
-    line-height: 1.2;
-}
-.panchangam-sub-eng {
-    font-size: 0.9rem;
-    color: var(--text-light);
-    font-weight: 600;
-    margin-top: 5px;
-    font-family: sans-serif;
+.calendar-date { 
+    min-height: 50px; background-color: #fcfcfc; border: 1px solid #eee; border-radius: 6px; padding: 2px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
 }
 
-.panchangam-row {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    font-size: 0.9rem;
-    color: var(--text-dark);
-    margin-bottom: 5px;
-}
-.time-highlight { font-weight: 700; font-family: sans-serif; }
-.nalla-neram { color: var(--card-green); }
+.calendar-date.sunday { background-color: #fff0f0; border-color: #ffcccc; }
+.calendar-date.today { border: 2px solid var(--gold); background-color: #fffbea; }
 
-/* --- SECTIONS & GRIDS --- */
-.section-heading {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 15px;
+.eng-date { font-size: 0.9rem; font-weight: bold; margin-left: 2px; }
+
+.mal-date { 
+    font-size: 0.6rem; 
+    text-align: right; 
+    color: var(--primary); 
+    font-weight: 600; 
+    line-height: 1.1; 
+    margin-right: 2px;
+    
+    /* Ensures text doesn't push width out */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    display: block; 
 }
 
-.service-grid-modern {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;
-}
-.grid-card {
-    aspect-ratio: 1.1; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; text-align: center; cursor: pointer; transition: transform 0.2s; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-.grid-card:active { transform: scale(0.95); }
-.grid-card.maroon { background-color: var(--card-maroon); }
-.grid-card.green { background-color: var(--card-green); }
-.grid-card.mustard { background-color: var(--card-mustard); }
-.grid-card.teal { background-color: var(--card-teal); }
-.grid-icon { font-size: 2rem; margin-bottom: 10px; }
-.grid-label { font-size: 0.85rem; font-weight: 600; line-height: 1.4; }
-
-/* --- BOTTOM NAV (FIXED) --- */
+/* --- BOTTOM NAV --- */
 .bottom-nav { 
     position: fixed; 
     bottom: 0; 
@@ -162,7 +136,7 @@ body {
 }
 
 .nav-item { 
-    flex: 1; /* Forces equal width for all items */
+    flex: 1; 
     text-decoration: none; 
     display: flex; 
     flex-direction: column; 
@@ -178,11 +152,29 @@ body {
 .nav-item .icon { font-size: 1.4rem; margin-bottom: 4px; }
 .nav-item .label { font-size: 0.65rem; font-weight: 600; }
 
-/* --- WHATSAPP FLOAT --- */
+/* --- OTHER STYLES (Keeping original look) --- */
+.parchment-card { background-color: #fffbf0; border: 1px solid #eaddc5; border-radius: 16px; padding: 6px; margin-bottom: 30px; margin-top: 10px; box-shadow: 0 4px 15px rgba(165, 134, 88, 0.1); }
+.parchment-inner { border: 1px solid var(--gold); border-radius: 12px; padding: 20px; text-align: center; position: relative; background: white; }
+.parchment-inner::before { content: '✦'; position: absolute; top: 8px; left: 8px; color: var(--gold); font-size: 1rem; }
+.parchment-inner::after { content: '✦'; position: absolute; bottom: 8px; right: 8px; color: var(--gold); font-size: 1rem; }
+.date-container { margin-bottom: 15px; }
+.panchangam-main-mal { font-size: 2rem; font-weight: 700; color: var(--primary); line-height: 1.2; }
+.panchangam-sub-eng { font-size: 0.9rem; color: var(--text-light); font-weight: 600; margin-top: 5px; font-family: sans-serif; }
+.panchangam-row { display: flex; justify-content: center; gap: 5px; font-size: 0.9rem; color: var(--text-dark); margin-bottom: 5px; }
+.time-highlight { font-weight: 700; font-family: sans-serif; }
+.nalla-neram { color: var(--card-green); }
+.section-heading { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 15px; }
+.service-grid-modern { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+.grid-card { aspect-ratio: 1.1; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; text-align: center; cursor: pointer; transition: transform 0.2s; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.grid-card:active { transform: scale(0.95); }
+.grid-card.maroon { background-color: var(--card-maroon); }
+.grid-card.green { background-color: var(--card-green); }
+.grid-card.mustard { background-color: var(--card-mustard); }
+.grid-card.teal { background-color: var(--card-teal); }
+.grid-icon { font-size: 2rem; margin-bottom: 10px; }
+.grid-label { font-size: 0.85rem; font-weight: 600; line-height: 1.4; }
 .float-wa { position: fixed; right: 20px; bottom: 90px; background: var(--whatsapp); width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 90; }
 .wa-icon { width: 30px; height: 30px; fill: white; }
-
-/* --- CARDS & INNER PAGES --- */
 .profile-card, .matching-card, .tip-card, .offering-card, .time-card, .about-card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee; }
 .matching-card { border: 1px solid var(--gold); }
 .profile-header, .offering-header, .time-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
@@ -220,39 +212,6 @@ body {
 .result-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; font-family: 'Noto Serif Malayalam', serif; color: #800000; }
 .result-desc { font-size: 0.95rem; color: #444; margin-bottom: 15px; line-height: 1.6; text-align: justify; }
 .disclaimer-box { background: rgba(255,255,255,0.6); padding: 10px; border-radius: 5px; font-size: 0.8rem; color: #666; margin-bottom: 15px; font-style: italic; }
-
-/* --- CALENDAR FIXES (FIXED) --- */
-.calendar-controls { 
-    display: flex; justify-content: space-between; align-items: center; 
-    margin-bottom: 15px; background: white; padding: 10px; 
-    border-radius: 12px; border: 1px solid var(--gold); 
-}
-.month-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin: 0; }
-
-.calendar-grid { 
-    display: grid; 
-    grid-template-columns: repeat(7, 1fr); 
-    gap: 2px;
-    background: white; 
-    padding: 10px; /* Padding matches controls */
-    border-radius: 12px; 
-    overflow-x: auto; 
-}
-
-/* Day Names */
-.day-name { 
-    text-align: center; font-size: 0.75rem; font-weight: bold; color: var(--primary); padding-bottom: 8px; white-space: nowrap; 
-}
-
-/* Date Cells */
-.calendar-date { 
-    min-height: 50px; background-color: #fcfcfc; border: 1px solid #eee; border-radius: 6px; padding: 2px; display: flex; flex-direction: column; justify-content: space-between; 
-}
-
-.calendar-date.sunday { background-color: #fff0f0; border-color: #ffcccc; }
-.calendar-date.today { border: 2px solid var(--gold); background-color: #fffbea; }
-.eng-date { font-size: 0.9rem; font-weight: bold; margin-left: 2px; }
-.mal-date { font-size: 0.6rem; text-align: right; color: var(--primary); font-weight: 600; line-height: 1.1; margin-right: 2px; }
 
 @media (max-width: 400px) {
     .content-wrapper { padding: 10px 5px; }
